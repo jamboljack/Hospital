@@ -34,7 +34,7 @@
         if ($this->session->flashdata('notification')) { 
         ?>
             <div class="form-body">
-                <div class="alert alert-block alert-success fade in" align="center">
+                <div class="alert alert-block alert-danger fade in" align="center">
                     <?php echo $this->session->flashdata('notification'); ?>
 	           </div>	            
             </div>

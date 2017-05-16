@@ -1,141 +1,124 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="A fully featured admin theme which can be used to build CRM, CMS, etc.">
-        <meta name="author" content="Coderthemes">
-        <link rel="shortcut icon" href="<?php echo base_url(); ?>img/shortcut.png">
-        <title>Cpanel @HOM Kudus</title>
-        <!-- Image Upload -->
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>backadmin/assets/plugins/bootstrap-fileupload/bootstrap-fileupload.css"
-        <!-- Summernote -->
-        <link href="<?php echo base_url(); ?>backadmin/assets/plugins/summernote/summernote.css" rel="stylesheet" />
-        <!-- Sweet Alert -->
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>backadmin/assets/plugins/bootstrap-sweetalert/sweetalert2.css">
-        <!-- CustomBox -->
-        <link href="<?php echo base_url(); ?>backadmin/assets/plugins/custombox/css/custombox.css" rel="stylesheet">
-        <!-- DataTables -->
-        <link href="<?php echo base_url(); ?>backadmin/assets/plugins/datatables/jquery.dataTables.min.css" rel="stylesheet" type="text/css"/>
-        <link href="<?php echo base_url(); ?>backadmin/assets/plugins/datatables/responsive.bootstrap.min.css" rel="stylesheet" type="text/css"/>
-        <link href="<?php echo base_url(); ?>backadmin/assets/plugins/datatables/dataTables.bootstrap.min.css" rel="stylesheet" type="text/css"/>
-        <!-- DatePicker -->
-        <link href="<?php echo base_url(); ?>backadmin/assets/plugins/bootstrap-datepicker/css/bootstrap-datepicker.min.css" rel="stylesheet">
-        <link href="<?php echo base_url(); ?>backadmin/assets/plugins/timepicker/bootstrap-timepicker.min.css" rel="stylesheet">
-        <link href="<?php echo base_url(); ?>backadmin/assets/plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css" rel="stylesheet">
-        <link href="<?php echo base_url(); ?>backadmin/assets/plugins/clockpicker/css/bootstrap-clockpicker.min.css" rel="stylesheet">
-        <link href="<?php echo base_url(); ?>backadmin/assets/plugins/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
-        <!-- Select2 -->
-        <link href="<?php echo base_url(); ?>backadmin/assets/plugins/select2/css/select2.min.css" rel="stylesheet" type="text/css" />
+<html lang="en" class="no-js">
+<!-- BEGIN HEAD -->
+<head>
+<meta charset="utf-8"/>
+<link rel="shortcut icon" href="<?php echo base_url(); ?>img/logo-icon.png">
+<title>RS Elisabeth Semarang</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="" name="description"/>
+<meta content="" name="author"/>
+<!-- BEGIN GLOBAL MANDATORY STYLES -->
+<link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css"/>
+<link href="<?php echo base_url(); ?>assets/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+<link href="<?php echo base_url(); ?>assets/global/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css"/>
+<link href="<?php echo base_url(); ?>assets/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+<link href="<?php echo base_url(); ?>assets/global/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css"/>
+<link href="<?php echo base_url(); ?>assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css"/>
+<!-- END GLOBAL MANDATORY STYLES -->
+<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/global/plugins/select2/select2.css"/>
+<?php 
+$mn 	= $this->uri->segment(3);
+if (empty($mn)) { 
+?>
+<!-- DATATABLES -->
+<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/global/plugins/datatables/extensions/Scroller/css/dataTables.scroller.min.css"/>
+<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/global/plugins/datatables/extensions/ColReorder/css/dataTables.colReorder.min.css"/>
+<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.css"/>
+<?php } else { ?>
+<!-- DATEPICKER -->
+<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/datepicker/css/datepicker.css" />
+<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/datepicker/css/daterangepicker-bs3.css">
+<?php } ?>
+<!-- FILE UPLOAD IMAGE -->
+<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/bootstrap-fileupload/bootstrap-fileupload.css" />
 
-        <!-- Core -->
-        <link href="<?php echo base_url(); ?>backadmin/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-        <link href="<?php echo base_url(); ?>backadmin/assets/css/core.css" rel="stylesheet" type="text/css" />
-        <link href="<?php echo base_url(); ?>backadmin/assets/css/components.css" rel="stylesheet" type="text/css" />
-        <link href="<?php echo base_url(); ?>backadmin/assets/css/icons.css" rel="stylesheet" type="text/css" />
-        <link href="<?php echo base_url(); ?>backadmin/assets/css/pages.css" rel="stylesheet" type="text/css" />
-        <link href="<?php echo base_url(); ?>backadmin/assets/css/responsive.css" rel="stylesheet" type="text/css" />
-        <script src="<?php echo base_url(); ?>backadmin/assets/js/jquery.min.js"></script>
-        <script src="<?php echo base_url(); ?>backadmin/assets/js/modernizr.min.js"></script>
-        <script src="<?php echo base_url(); ?>backadmin/assets/plugins/bootstrap-sweetalert/sweetalert2.min.js"></script>
-    </head>
-    <body class="fixed-left">
-        <div id="wrapper">
-            <?php echo $_header; ?>
-            <?php echo $_sidebar; ?>
+<script src="<?php echo base_url(); ?>assets/global/plugins/jquery.min.js" type="text/javascript"></script>
+</head>
+<!-- END HEAD -->
+<body class="page-md page-header-fixed page-quick-sidebar-over-content page-sidebar-closed-hide-logo ">
 
-            <div class="content-page">
-                <?php echo $content; ?>
-                <?php echo $_footer; ?>
-            </div>
-        </div>
+<!-- BEGIN HEADER -->
+<?php echo $_header; ?>
+<div class="clearfix"></div>
+<!-- BEGIN CONTAINER -->
+<div class="page-container">
+<!-- BEGIN SIDEBAR -->
+<?php echo $_sidebar; ?>   
+<!-- END SIDEBAR -->
+<!-- BEGIN CONTENT -->
+<?php echo $content; ?>
+<!-- END CONTENT -->
+</div>
+<!-- BEGIN FOOTER -->
+<?php echo $_footer; ?>
+<!-- END FOOTER -->
 
-        <script>
-            var resizefunc = [];
-        </script>
-        <!-- js  -->        
-        <script src="<?php echo base_url(); ?>backadmin/assets/js/bootstrap.min.js"></script>
-        <script src="<?php echo base_url(); ?>backadmin/assets/js/detect.js"></script>
-        <script src="<?php echo base_url(); ?>backadmin/assets/js/fastclick.js"></script>
-        <script src="<?php echo base_url(); ?>backadmin/assets/js/jquery.slimscroll.js"></script>
-        <script src="<?php echo base_url(); ?>backadmin/assets/js/jquery.blockUI.js"></script>
-        <script src="<?php echo base_url(); ?>backadmin/assets/js/waves.js"></script>
-        <script src="<?php echo base_url(); ?>backadmin/assets/js/wow.min.js"></script>
-        <script src="<?php echo base_url(); ?>backadmin/assets/js/jquery.nicescroll.js"></script>
-        <script src="<?php echo base_url(); ?>backadmin/assets/js/jquery.scrollTo.min.js"></script>
-        <!-- DatePicker -->
-        <script src="<?php echo base_url(); ?>backadmin/assets/plugins/moment/moment.js"></script>
-        <script src="<?php echo base_url(); ?>backadmin/assets/plugins/timepicker/bootstrap-timepicker.js"></script>
-        <script src="<?php echo base_url(); ?>backadmin/assets/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js"></script>
-        <script src="<?php echo base_url(); ?>backadmin/assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
-        <script src="<?php echo base_url(); ?>backadmin/assets/plugins/clockpicker/js/bootstrap-clockpicker.min.js"></script>
-        <script src="<?php echo base_url(); ?>backadmin/assets/plugins/bootstrap-daterangepicker/daterangepicker.js"></script>
-        <!--Select2 -->
-        <script src="<?php echo base_url(); ?>backadmin/assets/plugins/select2/js/select2.min.js" type="text/javascript"></script>
-        <!-- Datatables -->
-        <script src="<?php echo base_url(); ?>backadmin/assets/plugins/datatables/jquery.dataTables.min.js"></script>
-        <script src="<?php echo base_url(); ?>backadmin/assets/plugins/datatables/dataTables.bootstrap.js"></script>
-        <script src="<?php echo base_url(); ?>backadmin/assets/plugins/datatables/dataTables.responsive.min.js"></script>
-        <script src="<?php echo base_url(); ?>backadmin/assets/pages/datatables.init.js"></script>
-        <!-- Folder Plugins -->        
-        <script src="<?php echo base_url(); ?>backadmin/assets/plugins/peity/jquery.peity.min.js"></script>
-        <script src="<?php echo base_url(); ?>backadmin/assets/plugins/waypoints/lib/jquery.waypoints.js"></script>
-        <script src="<?php echo base_url(); ?>backadmin/assets/plugins/counterup/jquery.counterup.min.js"></script>
-        <script src="<?php echo base_url(); ?>backadmin/assets/plugins/raphael/raphael-min.js"></script>
-        <script src="<?php echo base_url(); ?>backadmin/assets/plugins/jquery-knob/jquery.knob.js"></script>
-        <!-- Picker-->
-        <script src="<?php echo base_url(); ?>backadmin/assets/pages/jquery.form-pickers.init.js"></script>
-        <!-- Advanced Form -->
-        <!--<script type="text/javascript" src="<?php // echo base_url(); ?>backadmin/assets/pages/jquery.form-advanced.init.js"></script> -->
-        <!-- js  -->
-        <script src="<?php echo base_url(); ?>backadmin/assets/js/jquery.core.js"></script>
-        <script src="<?php echo base_url(); ?>backadmin/assets/js/jquery.app.js"></script>
-        <!-- Modal-Effect -->
-        <script src="<?php echo base_url(); ?>backadmin/assets/plugins/custombox/js/custombox.min.js"></script>
-        <script src="<?php echo base_url(); ?>backadmin/assets/plugins/custombox/js/legacy.min.js"></script>
-        <!--form validation init-->
-        <script src="<?php echo base_url(); ?>backadmin/assets/plugins/summernote/summernote.min.js"></script>
-        <!-- FileUpload Image-->
-        <script type="text/javascript" src="<?php echo base_url(); ?>backadmin/assets/plugins/bootstrap-fileupload/bootstrap-fileupload.js"></script>
+<!-- BEGIN JS -->
+<script src="<?php echo base_url(); ?>assets/global/plugins/jquery-migrate.min.js" type="text/javascript"></script>
+<script src="<?php echo base_url(); ?>assets/global/plugins/jquery-ui/jquery-ui.min.js" type="text/javascript"></script>
+<script src="<?php echo base_url(); ?>assets/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="<?php echo base_url(); ?>assets/global/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js" type="text/javascript"></script>
+<script src="<?php echo base_url(); ?>assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+<script src="<?php echo base_url(); ?>assets/global/plugins/jquery.blockui.min.js" type="text/javascript"></script>
+<script src="<?php echo base_url(); ?>assets/global/plugins/jquery.cokie.min.js" type="text/javascript"></script>
+<script src="<?php echo base_url(); ?>assets/global/plugins/uniform/jquery.uniform.min.js" type="text/javascript"></script>
+<script src="<?php echo base_url(); ?>assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
+<!-- END CORE PLUGINS -->
+<!-- SELECT2 -->
+<script type="text/javascript" src="<?php echo base_url(); ?>assets/global/plugins/select2/select2.min.js"></script>
+<?php 
+$mn 	= $this->uri->segment(3);
+if (empty($mn)) { 
+?>
+<!-- DATA TABLES -->
+<script type="text/javascript" src="<?php echo base_url(); ?>assets/global/plugins/datatables/media/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="<?php echo base_url(); ?>assets/global/plugins/datatables/extensions/TableTools/js/dataTables.tableTools.min.js"></script>
+<script type="text/javascript" src="<?php echo base_url(); ?>assets/global/plugins/datatables/extensions/ColReorder/js/dataTables.colReorder.min.js"></script>
+<script type="text/javascript" src="<?php echo base_url(); ?>assets/global/plugins/datatables/extensions/Scroller/js/dataTables.scroller.min.js"></script>
+<script type="text/javascript" src="<?php echo base_url(); ?>assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.js"></script>
+<?php } else { ?>
+<!-- DATEPICKER -->
+<script type="text/javascript" src="<?php echo base_url(); ?>assets/datepicker/js/bootstrap-datepicker.js"></script>
+<script type="text/javascript" src="<?php echo base_url(); ?>assets/datepicker/js/moment.min.js"></script>
+<script type="text/javascript" src="<?php echo base_url(); ?>assets/datepicker/js/daterangepicker.js"></script>
+<script src="<?php echo base_url(); ?>js/advanced-form-components.js"></script>
+<?php } ?>
+<!-- ADDITIONAL -->
+<script src="<?php echo base_url(); ?>assets/admin/pages/scripts/table-advanced.js"></script>
+<script src="<?php echo base_url(); ?>assets/admin/pages/scripts/components-pickers.js"></script>
+<script src="<?php echo base_url(); ?>assets/admin/pages/scripts/form-samples.js"></script>
+<!-- FILE UPLOAD -->
+<script type="text/javascript" src="<?php echo base_url(); ?>assets/bootstrap-fileupload/bootstrap-fileupload.js"></script>
+<!-- CKEDITOR -->
+<script src="<?php echo base_url(); ?>assets/global/plugins/ckeditor/ckeditor.js" type="text/javascript"></script>
+<!-- BEGIN PAGE LEVEL SCRIPTS -->
+<script src="<?php echo base_url(); ?>assets/global/scripts/metronic.js" type="text/javascript"></script>
+<script src="<?php echo base_url(); ?>assets/admin/layout/scripts/layout.js" type="text/javascript"></script>
+<script src="<?php echo base_url(); ?>assets/admin/layout/scripts/demo.js" type="text/javascript"></script>
+<script src="<?php echo base_url(); ?>assets/admin/pages/scripts/index.js" type="text/javascript"></script>
+<!-- END PAGE LEVEL SCRIPTS -->
 
-        <script type="text/javascript">
-            jQuery(document).ready(function($) {
-                $('.counter').counterUp({
-                    delay: 100,
-                    time: 1200
-                });
-                $(".knob").knob();
-            });
-        </script>
-
-        <script type="text/javascript">
-            $(document).ready(function () {
-                $('#datatable').dataTable();
-            });
-            TableManageButtons.init();
-        </script>
-
-        <script>
-            jQuery(document).ready(function(){
-                $('.summernote').summernote({
-                    height: 350,                 // set editor height
-                    minHeight: null,             // set minimum height of editor
-                    maxHeight: null,             // set maximum height of editor
-                    focus: false                 // set focus to editable area after initializing summernote
-                });
-                $('.inline-editor').summernote({
-                    airMode: true            
-                });
-            });
-        </script>
-
-        <script type="text/javascript">
-            jQuery('#date-range').datepicker({
-                format: "dd-mm-yyyy",
-                toggleActive: true,
-                autoclose: true,
-                todayHighlight: true
-            });
-        </script>
-    </body>
+<script>
+jQuery(document).ready(function() {    
+   Metronic.init();
+   Layout.init();
+   ComponentsPickers.init();
+   TableAdvanced.init();
+   FormSamples.init();   
+});
+</script>
+<!-- END JAVASCRIPTS -->
+</body>
+<!-- END BODY -->
 </html>
+
+<!-- BEGIN THEME STYLES -->
+<link href="<?php echo base_url(); ?>assets/admin/pages/css/tasks.css" rel="stylesheet" type="text/css"/>
+<link href="<?php echo base_url(); ?>assets/global/css/components-md.css" id="style_components" rel="stylesheet" type="text/css"/>
+<link href="<?php echo base_url(); ?>assets/global/css/plugins-md.css" rel="stylesheet" type="text/css"/>
+<link href="<?php echo base_url(); ?>assets/admin/layout/css/layout.css" rel="stylesheet" type="text/css"/>
+<link href="<?php echo base_url(); ?>assets/admin/layout/css/themes/darkblue.css" rel="stylesheet" type="text/css" id="style_color"/>
+<link href="<?php echo base_url(); ?>assets/admin/layout/css/custom.css" rel="stylesheet" type="text/css"/>
+<!-- END THEME STYLES -->

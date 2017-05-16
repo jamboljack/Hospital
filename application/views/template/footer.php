@@ -1,3 +1,8 @@
-<footer class="footer text-right">
-	© 2017 @HOM Kudus by Horison
-</footer>
+<div class="page-footer">
+   	<div class="page-footer-inner">
+   		2017 &copy; RS Elisabeth Semarang
+   	</div>
+   	<div class="scroll-to-top">
+   		<i class="icon-arrow-up"></i>
+   	</div>
+</div>

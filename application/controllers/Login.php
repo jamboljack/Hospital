@@ -8,11 +8,11 @@ class Login extends CI_Controller {
 	}
 
 	public function index() {
-		$session = $this->session->userdata('logged_in_clinic');
+		$session = $this->session->userdata('logged_in_hospital');
 		if ($session == FALSE) {
 			$this->load->view('login_view');
 		} else {						
-			redirect(site_url('dashboard/home'));
+			redirect(site_url('admin/home'));
 		}
 	}
 
@@ -47,11 +47,11 @@ class Login extends CI_Controller {
 					$array_item = array('username' 			=> $temp_account->user_username, 
 										'nama' 				=> $temp_account->user_name,
 										'avatar' 			=> $temp_account->user_image,
-										'logged_in_clinic' 	=> TRUE
+										'logged_in_hospital'=> TRUE
 										);
 					
 					$this->session->set_userdata($array_item);
-					redirect(site_url('dashboard/home'));
+					redirect(site_url('admin/home'));
 				}
 				else
 				{
