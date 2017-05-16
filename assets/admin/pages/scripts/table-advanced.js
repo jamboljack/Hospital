@@ -45,8 +45,8 @@ var TableAdvanced = function () {
             ],
             
             "lengthMenu": [
-                [5, 10, 15, 20, -1],
-                [5, 10, 15, 20, "All"] // change per page values here
+                [10, 20, 30, 40, 50, -1],
+                [10, 20, 30, 40, 50, "All"] // change per page values here
             ],
             // set the initial value
             "pageLength": 10,
@@ -59,8 +59,9 @@ var TableAdvanced = function () {
             //"dom": "<'row' <'col-md-12'T>><'row'<'col-md-6 col-sm-12'l><'col-md-6 col-sm-12'f>r>t<'row'<'col-md-5 col-sm-12'i><'col-md-7 col-sm-12'p>>",
 
             "tableTools": {
-                "sSwfPath": "http://cdn.datatables.net/tabletools/2.2.2/swf/copy_csv_xls_pdf.swf",
-                "aButtons": [{
+                //"sSwfPath": "http://cdn.datatables.net/tabletools/2.2.2/swf/copy_csv_xls_pdf.swf",
+                "aButtons": [
+                /*{
                     "sExtends": "pdf",
                     "sButtonText": "PDF"
                 }, {
@@ -69,7 +70,7 @@ var TableAdvanced = function () {
                 }, {
                     "sExtends": "xls",
                     "sButtonText": "Excel"
-                }, {
+                }, */{
                     "sExtends": "print",
                     "sButtonText": "Print",
                     "sInfo": 'Please press "CTR+P" to print or "ESC" to quit',

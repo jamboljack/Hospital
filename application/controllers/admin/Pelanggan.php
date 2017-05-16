@@ -1,21 +1,20 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Kelompok extends CI_Controller {
+class Pelanggan extends CI_Controller {
 	function __construct() {
 		parent::__construct();
 		if(!$this->session->userdata('logged_in_hospital')) redirect(base_url());
 		$this->load->library('template');
-		$this->load->model('admin/kelompok_model');
+		$this->load->model('admin/pelanggan_model');
 	}
 
 	public function index()
 	{
-		if($this->session->userdata('logged_in_hospital'))
-		{
-			$data['daftarlist'] 	= $this->kelompok_model->select_all()->result();
-			$data['listJenisTarif'] = $this->kelompok_model->select_jenis_tarif()->result();
-			$this->template->display('admin/kelompok_view', $data);
+		if($this->session->userdata('logged_in_hospital')) {
+			$data['daftarlist'] 	= $this->pelanggan_model->select_all()->result();
+			$data['listKelompok'] 	= $this->pelanggan_model->select_kelompok()->result();
+			$this->template->display('admin/pelanggan_view', $data);
 		} else {
 			$this->session->sess_destroy();
 			redirect(base_url());
@@ -23,27 +22,27 @@ class Kelompok extends CI_Controller {
 	}
 
 	public function savedata() {		
-		$this->kelompok_model->insert_data();
+		$this->pelanggan_model->insert_data();
 		$this->session->set_flashdata('notification','Simpan Data Sukses.');
- 		redirect(site_url('admin/kelompok'));
+ 		redirect(site_url('admin/pelanggan'));
 	}
 	
 	public function updatedata() {		
-		$this->kelompok_model->update_data();
+		$this->pelanggan_model->update_data();
 		$this->session->set_flashdata('notification','Update Data Sukses.');
-		redirect(site_url('admin/kelompok'));
+		redirect(site_url('admin/pelanggan'));
 	}
 	
 	public function deletedata($kode) {
 		$kode = $this->security->xss_clean($this->uri->segment(4));
 		
 		if ($kode == null) {
-			redirect(site_url('admin/kelompok'));
+			redirect(site_url('admin/pelanggan'));
 		} else {
-			$this->kelompok_model->delete_data($kode);
+			$this->pelanggan_model->delete_data($kode);
 			$this->session->set_flashdata('notification','Hapus Data Sukses.');
-			redirect(site_url('admin/kelompok'));
+			redirect(site_url('admin/pelanggan'));
 		}
 	}	
 }
-/* Location: ./application/controller/admin/Kelompok.php */
+/* Location: ./application/controller/admin/Pelanggan.php */

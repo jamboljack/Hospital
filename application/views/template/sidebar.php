@@ -690,7 +690,7 @@ if ($uri == 'home') {
                             Pelanggan
                         </a>
                     </li>
-                    <li class="<?php echo $kelompok_unit; ?>">
+                    <!--<li class="<?php echo $kelompok_unit; ?>">
                         <a href="<?php echo site_url('admin/kelompok_unit'); ?>">
                             <i class="fa fa-check-square-o"></i>
                             Kelompok Unit
@@ -707,13 +707,13 @@ if ($uri == 'home') {
                             <i class="fa fa-check-square-o"></i>
                             Produk
                         </a>
-                    </li>
+                    </li>-->
                 </ul>
             </li>
             <li class="<?php echo $klinik; ?>">
                 <a href="javascript:;">
                     <i class="fa fa-h-square"></i>
-                    <span class="title">Master Klinik</span>
+                    <span class="title">Master Medis</span>
                     <?php echo $span_klinik_1; ; ?>
                     <span class="arrow <?php echo $span_klinik_2; ; ?>"></span>
                 </a>
