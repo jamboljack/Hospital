@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Poliklinik_model extends CI_Model {
+class Polispesialis_model extends CI_Model {
 	function __construct() {
 		parent::__construct();	
 	}
@@ -47,7 +47,7 @@ class Poliklinik_model extends CI_Model {
 		$this->db->select('*');
 		$this->db->from('hospital_ruangan');
 		$this->db->where('poliklinik_id', $poliklinik_id);
-		$this->db->order_by('ruangan_id', 'asc');
+		$this->db->order_by('ruangan_name', 'asc');
 		
 		return $this->db->get();
 	}
@@ -89,4 +89,4 @@ class Poliklinik_model extends CI_Model {
 		$this->db->delete('hospital_ruangan');
 	}
 }
-/* Location: ./application/model/admin/Poliklinik_model.php */
+/* Location: ./application/model/admin/Polispesialis_model.php */

@@ -13,7 +13,7 @@
             cancelButtonText: 'No',
             closeOnConfirm: true
         }, function() {
-            window.location.href="<?php echo site_url('admin/poliklinik/deletedataruang'.'/'.$this->uri->segment(4)); ?>"+"/"+id
+            window.location.href="<?php echo site_url('admin/polispesialis/deletedataruang'.'/'.$this->uri->segment(4)); ?>"+"/"+id
         });
     }
 </script>
@@ -46,7 +46,7 @@ if ($this->session->flashdata('notification')) { ?>
 <div class="modal bs-modal-lg" id="add" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
-            <form action="<?php echo site_url('admin/poliklinik/savedataruang'.'/'.$this->uri->segment(4)); ?>" class="form-horizontal" method="post" enctype="multipart/form-data" role="form">
+            <form action="<?php echo site_url('admin/polispesialis/savedataruang'.'/'.$this->uri->segment(4)); ?>" class="form-horizontal" method="post" enctype="multipart/form-data" role="form">
             <input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
                         
             <div class="modal-header">                      
@@ -75,7 +75,7 @@ if ($this->session->flashdata('notification')) { ?>
 <div class="modal bs-modal-lg" id="edit" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
-            <form action="<?php echo site_url('admin/poliklinik/updatedataruang'.'/'.$this->uri->segment(4)); ?>" class="form-horizontal" method="post" enctype="multipart/form-data" role="form">
+            <form action="<?php echo site_url('admin/polispesialis/updatedataruang'.'/'.$this->uri->segment(4)); ?>" class="form-horizontal" method="post" enctype="multipart/form-data" role="form">
             <input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
             <input type="hidden" class="form-control ruangan_id" name="id">
                         
@@ -104,7 +104,7 @@ if ($this->session->flashdata('notification')) { ?>
 <div class="page-content-wrapper">
     <div class="page-content">            
         <h3 class="page-title">
-            Master Medis <small>Ruangan Poliklinik</small>
+            Master Medis <small>Ruangan Polispesialis</small>
         </h3>
         <div class="page-bar">
             <ul class="page-breadcrumb">                    
@@ -118,11 +118,11 @@ if ($this->session->flashdata('notification')) { ?>
                     <i class="fa fa-angle-right"></i>
                 </li>
                 <li>
-                    <a href="<?php echo site_url('admin/poliklinik'); ?>">Poliklinik</a>
+                    <a href="<?php echo site_url('admin/polispesialis'); ?>">Polispesialis</a>
                     <i class="fa fa-angle-right"></i>
                 </li>
                 <li>
-                    <a href="#">Ruangan</a>
+                    <a href="#">Ruangan <?php echo ucwords(strtolower($detail->poliklinik_name)); ?></a>
                 </li>
             </ul>                
         </div>            
@@ -132,7 +132,7 @@ if ($this->session->flashdata('notification')) { ?>
                 <a data-toggle="modal" href="#add">
                     <button type="submit" class="btn btn-primary"><i class="fa fa-plus-square"></i> Tambah</button>
                 </a>
-                <a href="<?php echo site_url('admin/poliklinik'); ?>" class="btn red"><i class="fa fa-times"></i> Kembali</a>
+                <a href="<?php echo site_url('admin/polispesialis'); ?>" class="btn red"><i class="fa fa-times"></i> Kembali</a>
                 <br><br>
                 <div class="portlet box red-intense">
                     <div class="portlet-title">

@@ -43,6 +43,21 @@ class Dokter extends CI_Controller {
 			$this->session->set_flashdata('notification','Hapus Data Sukses.');
 			redirect(site_url('admin/dokter'));
 		}
-	}	
+	}
+
+	public function jadwal($dokter_id = '') {
+		$dokter_id 			= $this->uri->segment(4);
+		$data['detail']		= $this->dokter_model->select_detail($dokter_id)->row();
+		$data['daftarlist']	= $this->dokter_model->select_jadwal($dokter_id)->result();
+		$this->template->display('admin/jadwal_view', $data);
+	}
+
+	public function adddatajadwal($dokter_id = '') {
+		$dokter_id 			= $this->uri->segment(4);
+		$data['error']		= false;
+		$data['detail']		= $this->dokter_model->select_detail($dokter_id)->row();
+		$data['listPoli']	= $this->dokter_model->select_poliklinik()->result();
+		$this->template->display('admin/jadwal_add_view', $data);
+	}		
 }
 /* Location: ./application/controller/admin/Dokter.php */

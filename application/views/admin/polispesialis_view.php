@@ -13,7 +13,7 @@
             cancelButtonText: 'No',
             closeOnConfirm: true
         }, function() {
-            window.location.href="<?php echo site_url('admin/poliklinik/deletedata'); ?>"+"/"+id
+            window.location.href="<?php echo site_url('admin/polispesialis/deletedata'); ?>"+"/"+id
         });
     }
 </script>
@@ -46,12 +46,12 @@ if ($this->session->flashdata('notification')) { ?>
 <div class="modal bs-modal-lg" id="add" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
-            <form action="<?php echo site_url('admin/poliklinik/savedata'); ?>" class="form-horizontal" method="post" enctype="multipart/form-data" role="form">
+            <form action="<?php echo site_url('admin/polispesialis/savedata'); ?>" class="form-horizontal" method="post" enctype="multipart/form-data" role="form">
             <input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
                         
             <div class="modal-header">                      
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-                <h4 class="modal-title"><i class="fa fa-plus-square"></i> Form Tambah Poliklinik</h4>
+                <h4 class="modal-title"><i class="fa fa-plus-square"></i> Form Tambah Polispesialis</h4>
             </div>
             <div class="modal-body">                
                 <div class="form-group">                    
@@ -75,13 +75,13 @@ if ($this->session->flashdata('notification')) { ?>
 <div class="modal bs-modal-lg" id="edit" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
-            <form action="<?php echo site_url('admin/poliklinik/updatedata'); ?>" class="form-horizontal" method="post" enctype="multipart/form-data" role="form">
+            <form action="<?php echo site_url('admin/polispesialis/updatedata'); ?>" class="form-horizontal" method="post" enctype="multipart/form-data" role="form">
             <input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
             <input type="hidden" class="form-control poliklinik_id" name="id">
                         
             <div class="modal-header">                      
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-                <h4 class="modal-title"><i class="fa fa-edit"></i> Form Edit Poliklinik</h4>
+                <h4 class="modal-title"><i class="fa fa-edit"></i> Form Edit Polispesialis</h4>
             </div>
             <div class="modal-body">               
                 <div class="form-group">                    
@@ -104,7 +104,7 @@ if ($this->session->flashdata('notification')) { ?>
 <div class="page-content-wrapper">
     <div class="page-content">            
         <h3 class="page-title">
-            Master Medis <small>Poliklinik</small>
+            Master Medis <small>Polispesialis</small>
         </h3>
         <div class="page-bar">
             <ul class="page-breadcrumb">                    
@@ -118,7 +118,7 @@ if ($this->session->flashdata('notification')) { ?>
                     <i class="fa fa-angle-right"></i>
                 </li>
                 <li>
-                    <a href="#">Poliklinik</a>
+                    <a href="#">Polispesialis</a>
                 </li>
             </ul>                
         </div>            
@@ -132,7 +132,7 @@ if ($this->session->flashdata('notification')) { ?>
                 <div class="portlet box red-intense">
                     <div class="portlet-title">
                         <div class="caption">
-                            <i class="fa fa-list"></i> Daftar Poliklinik
+                            <i class="fa fa-list"></i> Daftar Polispesialis
                         </div>
                         <div class="tools"></div>
                     </div>
@@ -160,7 +160,7 @@ if ($this->session->flashdata('notification')) { ?>
                                     <?php echo $r->poliklinik_name; ?><br>
                                     <?php
                                     // Data Ruangan per Poli
-                                    $daftarruangan = $this->poliklinik_model->select_ruangan($poliklinik_id)->result();
+                                    $daftarruangan = $this->polispesialis_model->select_ruangan($poliklinik_id)->result();
                                     if (count($daftarruangan)) {
                                         echo "RUANGAN :<br>";
                                     }
@@ -170,7 +170,7 @@ if ($this->session->flashdata('notification')) { ?>
                                     ?>
                                 </td>
                                 <td>
-                                    <a href="<?php echo site_url('admin/poliklinik/ruangan/'.$poliklinik_id); ?>"><button class="btn btn-warning btn-xs" title="Hapus Data"><i class="fa fa-list"></i> Ruangan</button></a>
+                                    <a href="<?php echo site_url('admin/polispesialis/ruangan/'.$poliklinik_id); ?>"><button class="btn btn-warning btn-xs" title="Hapus Data"><i class="fa fa-list"></i> Ruangan</button></a>
                                 </td>
                                 <td>
                                     <button type="button" class="btn btn-primary btn-xs edit_button" data-toggle="modal" data-target="#edit" data-id="<?php echo $r->poliklinik_id; ?>" data-name="<?php echo $r->poliklinik_name; ?>" title="Edit Data"><i class="icon-pencil"></i> Edit

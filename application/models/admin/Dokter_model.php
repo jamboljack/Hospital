@@ -57,5 +57,32 @@ class Dokter_model extends CI_Model {
 		$this->db->where('dokter_id', $kode);
 		$this->db->delete('hospital_dokter');
 	}
+
+	function select_jadwal($dokter_id) {
+		$this->db->select('j.*, p.poliklinik_name, r.ruangan_name');
+		$this->db->from('hospital_jadwal j');
+		$this->db->join('hospital_ruangan r', 'j.ruangan_id = r.ruangan_id');
+		$this->db->join('hospital_poliklinik p', 'j.poliklinik_id = p.poliklinik_id');
+		$this->db->where('j.dokter_id', $dokter_id);
+		$this->db->order_by('j.jadwal_hari', 'asc');
+		
+		return $this->db->get();
+	}
+
+	function select_detail($dokter_id) {
+		$this->db->select('*');
+		$this->db->from('hospital_dokter');
+		$this->db->where('dokter_id', $dokter_id);
+		
+		return $this->db->get();
+	}
+
+	function select_poliklinik() {
+		$this->db->select('*');
+		$this->db->from('hospital_poliklinik');
+		$this->db->order_by('poliklinik_name', 'asc');
+		
+		return $this->db->get();
+	}
 }
 /* Location: ./application/model/admin/Dokter_model.php */

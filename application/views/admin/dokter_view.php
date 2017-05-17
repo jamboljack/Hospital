@@ -184,7 +184,7 @@ if ($this->session->flashdata('notification')) { ?>
                     <i class="fa fa-angle-right"></i>
                 </li>
                 <li>
-                    <a href="#">Dokter</a>
+                    <a href="#">Dokter & Jadwal Praktek</a>
                 </li>
             </ul>                
         </div>            
@@ -209,9 +209,9 @@ if ($this->session->flashdata('notification')) { ?>
                             <tr>
                                 <th width="5%">No</th>                                
                                 <th>Nama Dokter</th>
-                                <th width="25%">Tipe</th>                                
-                                <th width="20%">Alamat</th>
-                                <th width="10%">Telp</th>
+                                <th width="25%">Tipe</th>
+                                <th width="10%">Telp</th>                              
+                                <th width="20%">Jadwal Praktek</th>
                                 <th width="10%">Aksi</th>
                             </tr>
                         </thead>
@@ -226,13 +226,14 @@ if ($this->session->flashdata('notification')) { ?>
                                 <td><?php echo $no; ?></td>                                
                                 <td><?php echo $r->dokter_name; ?></td>
                                 <td><?php echo $r->tipe_name; ?></td>
-                                <td><?php echo $r->dokter_address; ?></td>
                                 <td><?php echo $r->dokter_phone; ?></td>
+                                <td><?php echo $r->dokter_address; ?></td>
                                 <td>
                                     <button type="button" class="btn btn-primary btn-xs edit_button" data-toggle="modal" data-target="#edit" data-id="<?php echo $r->dokter_id; ?>" data-name="<?php echo $r->dokter_name; ?>" data-tipe="<?php echo $r->tipe_id; ?>" data-address="<?php echo $r->dokter_address; ?>" data-city="<?php echo $r->dokter_city; ?>" data-phone="<?php echo $r->dokter_phone; ?>" title="Edit Data"><i class="icon-pencil"></i>
                                     </button>
                                     <a onclick="hapusData(<?php echo $dokter_id; ?>)"><button class="btn btn-danger btn-xs" title="Hapus Data"><i class="icon-trash"></i></button>
                                     </a>
+                                    <a href="<?php echo site_url('admin/dokter/jadwal/'.$dokter_id); ?>"><button class="btn btn-warning btn-xs" title="Setting Jadwal Praktek"><i class="fa fa-cog"></i> Set Jadwal</button></a>
                                 </td>
                             </tr>
                             <?php

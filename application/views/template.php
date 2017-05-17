@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8"/>
 <link rel="shortcut icon" href="<?php echo base_url(); ?>img/logo-icon.png">
-<title>RS Elisabeth Semarang</title>
+<title>RS St. Elisabeth Semarang</title>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
 <meta content="" name="description"/>
@@ -18,6 +18,7 @@
 <link href="<?php echo base_url(); ?>assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css"/>
 <!-- END GLOBAL MANDATORY STYLES -->
 <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/global/plugins/select2/select2.css"/>
+<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/global/plugins/bootstrap-timepicker/css/bootstrap-timepicker.min.css"/>
 <?php 
 $mn 	= $this->uri->segment(3);
 if (empty($mn)) { 
@@ -74,6 +75,7 @@ if (empty($mn)) {
 <!-- END CORE PLUGINS -->
 <!-- SELECT2 -->
 <script type="text/javascript" src="<?php echo base_url(); ?>assets/global/plugins/select2/select2.min.js"></script>
+<script type="text/javascript" src="<?php echo base_url(); ?>assets/global/plugins/bootstrap-timepicker/js/bootstrap-timepicker.min.js"></script>
 <?php 
 $mn 	= $this->uri->segment(3);
 if (empty($mn)) { 
