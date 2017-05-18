@@ -4,7 +4,7 @@
 <meta name="keyword" content="">
 <link rel="shortcut icon" href="<?php echo base_url(); ?>img/logo-icon.png">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>RS St. Elisabeth Semarang</title>
+<title>Login Admin | RS St. Elisabeth Semarang</title>
 <link href="<?php echo base_url(); ?>css/bootstrap.min.css" rel="stylesheet">
 <link href="<?php echo base_url(); ?>css/bootstrap-reset.css" rel="stylesheet">
 <link href="<?php echo base_url(); ?>assets/font-awesome/css/font-awesome.css" rel="stylesheet" />

@@ -22,7 +22,7 @@
                         }                        
                         ?>
                         <img alt="" class="img-circle" src="<?php echo base_url().$image; ?>"/>
-                        <span class="username username-hide-on-mobile"><?php echo $this->session->userdata('nama'); ?></span>
+                        <span class="username username-hide-on-mobile"><?php echo ucwords(strtolower($this->session->userdata('nama'))); ?></span>
                         <i class="fa fa-angle-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-default">                       

@@ -3,6 +3,36 @@ $uri = $this->uri->segment(2);
 
 if ($uri == 'home') {
     $dashboard      = 'active';
+    $menu           = '';
+    $umum           = '';
+    $span_umum_1    = '';
+    $span_umum_2    = '';
+    $pendidikan     = '';
+    $pekerjaan      = '';
+    $status         = '';
+    $darah          = '';
+    $agama          = '';
+    $asuransi       = '';
+    $identitas      = '';
+    $tarif          = '';
+    $span_tarif_1   = '';
+    $span_tarif_2   = '';
+    $jenistarif     = '';
+    $kelompok       = '';
+    $pelanggan      = '';
+    $kelompok_unit  = '';
+    $unit           = '';
+    $produk         = '';
+    $medis          = '';
+    $span_medis_1   = '';
+    $span_medis_2   = '';
+    $tipe_dokter    = '';
+    $dokter         = '';
+    $ruangan        = '';
+    $users          = '';
+} elseif ($uri == 'menu') {
+    $dashboard      = '';
+    $menu           = 'active';
     $umum           = '';
     $span_umum_1    = '';
     $span_umum_2    = '';
@@ -31,6 +61,7 @@ if ($uri == 'home') {
     $users          = '';
 } elseif ($uri == 'pendidikan') {
     $dashboard      = '';
+    $menu           = '';
     $umum           = 'active open';
     $span_umum_1    = '<span class="selected"></span>';
     $span_umum_2    = 'open';
@@ -59,6 +90,7 @@ if ($uri == 'home') {
     $users          = '';
 } elseif ($uri == 'pekerjaan') {
     $dashboard      = '';
+    $menu           = '';
     $umum           = 'active open';
     $span_umum_1    = '<span class="selected"></span>';
     $span_umum_2    = 'open';
@@ -87,6 +119,7 @@ if ($uri == 'home') {
     $users          = '';
 } elseif ($uri == 'status') {
     $dashboard      = '';
+    $menu           = '';
     $umum           = 'active open';
     $span_umum_1    = '<span class="selected"></span>';
     $span_umum_2    = 'open';
@@ -115,6 +148,7 @@ if ($uri == 'home') {
     $users          = '';
 } elseif ($uri == 'darah') {
     $dashboard      = '';
+    $menu           = '';
     $umum           = 'active open';
     $span_umum_1    = '<span class="selected"></span>';
     $span_umum_2    = 'open';
@@ -143,6 +177,7 @@ if ($uri == 'home') {
     $users          = '';
 } elseif ($uri == 'agama') {
     $dashboard      = '';
+    $menu           = '';
     $umum           = 'active open';
     $span_umum_1    = '<span class="selected"></span>';
     $span_umum_2    = 'open';
@@ -171,6 +206,7 @@ if ($uri == 'home') {
     $users          = '';
 } elseif ($uri == 'asuransi') {
     $dashboard      = '';
+    $menu           = '';
     $umum           = 'active open';
     $span_umum_1    = '<span class="selected"></span>';
     $span_umum_2    = 'open';
@@ -199,6 +235,7 @@ if ($uri == 'home') {
     $users          = '';
 } elseif ($uri == 'identitas') {
     $dashboard      = '';
+    $menu           = '';
     $umum           = 'active open';
     $span_umum_1    = '<span class="selected"></span>';
     $span_umum_2    = 'open';
@@ -227,6 +264,7 @@ if ($uri == 'home') {
     $users          = '';
 } elseif ($uri == 'jenistarif') {
     $dashboard      = '';
+    $menu           = '';
     $umum           = '';
     $span_umum_1    = '';
     $span_umum_2    = '';
@@ -255,6 +293,7 @@ if ($uri == 'home') {
     $users          = '';
 } elseif ($uri == 'kelompok') {
     $dashboard      = '';
+    $menu           = '';
     $umum           = '';
     $span_umum_1    = '';
     $span_umum_2    = '';
@@ -283,6 +322,7 @@ if ($uri == 'home') {
     $users          = '';
 } elseif ($uri == 'pelanggan') {
     $dashboard      = '';
+    $menu           = '';
     $umum           = '';
     $span_umum_1    = '';
     $span_umum_2    = '';
@@ -311,6 +351,7 @@ if ($uri == 'home') {
     $users          = '';
 } elseif ($uri == 'kelompok_unit') {
     $dashboard      = '';
+    $menu           = '';
     $umum           = '';
     $span_umum_1    = '';
     $span_umum_2    = '';
@@ -339,6 +380,7 @@ if ($uri == 'home') {
     $users          = '';
 } elseif ($uri == 'unit') {
     $dashboard      = '';
+    $menu           = '';
     $umum           = '';
     $span_umum_1    = '';
     $span_umum_2    = '';
@@ -367,6 +409,7 @@ if ($uri == 'home') {
     $users          = '';
 } elseif ($uri == 'produk') {
     $dashboard      = '';
+    $menu           = '';
     $umum           = '';
     $span_umum_1    = '';
     $span_umum_2    = '';
@@ -395,6 +438,7 @@ if ($uri == 'home') {
     $users          = '';
 } elseif ($uri == 'tipe_dokter') {
     $dashboard      = '';
+    $menu           = '';
     $umum           = '';
     $span_umum_1    = '';
     $span_umum_2    = '';
@@ -423,6 +467,7 @@ if ($uri == 'home') {
     $users          = '';
 } elseif ($uri == 'dokter') {
     $dashboard      = '';
+    $menu           = '';
     $umum           = '';
     $span_umum_1    = '';
     $span_umum_2    = '';
@@ -451,6 +496,7 @@ if ($uri == 'home') {
     $users          = '';
 } elseif ($uri == 'ruangan') {
     $dashboard      = '';
+    $menu           = '';
     $umum           = '';
     $span_umum_1    = '';
     $span_umum_2    = '';
@@ -479,6 +525,7 @@ if ($uri == 'home') {
     $users          = '';
 } elseif ($uri == 'users') {
     $dashboard      = '';
+    $menu           = '';
     $umum           = '';
     $span_umum_1    = '';
     $span_umum_2    = '';
@@ -508,6 +555,7 @@ if ($uri == 'home') {
 } else {
     $dashboard      = 'active';
     $umum           = '';
+    $menu           = '';
     $span_umum_1    = '';
     $span_umum_2    = '';
     $pendidikan     = '';
@@ -549,18 +597,22 @@ if ($uri == 'home') {
                         <i class="icon-close"></i>
                     </a>
                     <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search...">
-                        <span class="input-group-btn">
-                            <a href="javascript:;" class="btn submit"><i class="icon-magnifier"></i></a>
-                        </span>
                     </div>
                 </form>                
             </li>
-            <li class="tooltips <?php echo $dashboard; ?>" data-container="body" data-placement="right" data-html="true" data-original-title="Statistik">
+            <li class="tooltips <?php echo $dashboard; ?>" data-container="body" data-placement="right" data-html="true" data-original-title="Dashboard">
                 <a href="<?php echo site_url('admin/home'); ?>">
                     <i class="fa fa-home"></i>
                     <span class="title">
                     Dashboard
+                    </span>
+                </a>
+            </li>
+            <li class="tooltips <?php echo $menu; ?>" data-container="body" data-placement="right" data-html="true" data-original-title="Master Menu">
+                <a href="<?php echo site_url('admin/menu'); ?>">
+                    <i class="fa fa-desktop"></i>
+                    <span class="title">
+                    Master Menu
                     </span>
                 </a>
             </li>
@@ -642,24 +694,6 @@ if ($uri == 'home') {
                             Pelanggan
                         </a>
                     </li>
-                    <!--<li class="<?php echo $kelompok_unit; ?>">
-                        <a href="<?php echo site_url('admin/kelompok_unit'); ?>">
-                            <i class="fa fa-check-square-o"></i>
-                            Kelompok Unit
-                        </a>
-                    </li>
-                    <li class="<?php echo $unit; ?>">
-                        <a href="<?php echo site_url('admin/unit'); ?>">
-                            <i class="fa fa-check-square-o"></i>
-                            Unit Tarif
-                        </a>
-                    </li>
-                    <li class="<?php echo $produk; ?>">
-                        <a href="<?php echo site_url('admin/produk'); ?>">
-                            <i class="fa fa-check-square-o"></i>
-                            Produk
-                        </a>
-                    </li>-->
                 </ul>
             </li>
             <li class="<?php echo $medis; ?>">

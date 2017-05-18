@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8"/>
 <link rel="shortcut icon" href="<?php echo base_url(); ?>img/logo-icon.png">
-<title>RS St. Elisabeth Semarang</title>
+<title>Administrator | RS St. Elisabeth Semarang</title>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
 <meta content="" name="description"/>
@@ -117,7 +117,5 @@ jQuery(document).ready(function() {
    FormSamples.init();   
 });
 </script>
-<!-- END JAVASCRIPTS -->
 </body>
-<!-- END BODY -->
 </html>
