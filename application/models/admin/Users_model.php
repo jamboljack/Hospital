@@ -7,7 +7,7 @@ class Users_model extends CI_Model {
 		
 	function select_all() {
 		$this->db->select('*');
-		$this->db->from('clinic_users');		
+		$this->db->from('hospital_users');		
 		$this->db->order_by('user_username','asc');
 		
 		return $this->db->get();
@@ -33,12 +33,12 @@ class Users_model extends CI_Model {
 				);
 		}
 		
-		$this->db->insert('clinic_users', $data);
+		$this->db->insert('hospital_users', $data);
 	}
 	
 	function select_by_id($user_username) {
 		$this->db->select('*');
-		$this->db->from('clinic_users');		
+		$this->db->from('hospital_users');		
 		$this->db->where('user_username', $user_username);
 		
 		return $this->db->get();
@@ -87,7 +87,7 @@ class Users_model extends CI_Model {
 		}
 
 		$this->db->where('user_username', $user_username);
-		$this->db->update('clinic_users', $data);
+		$this->db->update('hospital_users', $data);
 	}	
 }
 /* Location: ./application/model/admin/Users_model.php */

@@ -6,8 +6,8 @@
         <div class="page-bar">
             <ul class="page-breadcrumb">                    
                 <li>
-                    <i class="fa fa-bar-chart"></i>
-                    <a href="<?php echo site_url('admin/home'); ?>">Statistik</a>
+                    <i class="fa fa-home"></i>
+                    <a href="<?php echo site_url('admin/home'); ?>">Dashboard</a>
                     <i class="fa fa-angle-right"></i>
                 </li>                
                 <li>
@@ -47,21 +47,21 @@
                                 <?php } ?>
 
                                 <div class="form-group form-md-line-input">
-                                    <label class="col-md-2 control-label" for="form_control_1">Username</label>
+                                    <label class="col-md-2 control-label">Username</label>
                                     <div class="col-md-10">
-                                        <input type="text" class="form-control" id="form_control_1" placeholder="Enter Username" name="username" value="<?php echo set_value('username'); ?>" pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{1,20}$" title="Don't Use SPACE" autocomplete="off" required autofocus>
+                                        <input type="text" class="form-control" placeholder="Enter Username" name="username" value="<?php echo set_value('username'); ?>" pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{1,20}$" title="Jangan Pakai SPASI" autocomplete="off" required autofocus>
                                         <div class="form-control-focus"></div>
                                     </div>
                                 </div>
                                 <div class="form-group form-md-line-input">
-                                    <label class="col-md-2 control-label" for="form_control_1">Password</label>
+                                    <label class="col-md-2 control-label">Password</label>
                                     <div class="col-md-10">
-                                        <input type="password" class="form-control" id="form_control_1" placeholder="Enter Password" name="password" autocomplete="off" required>
+                                        <input type="password" class="form-control" placeholder="Enter Password" name="password" autocomplete="off" required>
                                         <div class="form-control-focus"></div>
                                     </div>
                                 </div>
                                 <div class="form-group form-md-line-input">
-                                    <label class="col-md-2 control-label" for="form_control_1">Nama Lengkap</label>
+                                    <label class="col-md-2 control-label">Nama Lengkap</label>
                                     <div class="col-md-10">
                                         <input type="text" class="form-control" id="form_control_1" placeholder="Enter Nama Lengkap" name="name" value="<?php echo set_value('name'); ?>" autocomplete="off" required>
                                         <div class="form-control-focus"></div>

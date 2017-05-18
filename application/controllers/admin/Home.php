@@ -11,11 +11,11 @@ class Home extends CI_Controller{
 	
 	public function index() {
 		if($this->session->userdata('logged_in_hospital')) {
-			//$data['TotalPelanggan'] = $this->home_model->select_count_pelanggan()->result();
-			//$data['TotalProduk'] 	= $this->home_model->select_count_produk()->result();
-			//$data['TotalDokter'] 	= $this->home_model->select_count_dokter()->result();
-			//$data['TotalPerawat']   = $this->home_model->select_count_perawat()->result();
-			$this->template->display('admin/home_view');
+			$data['TotalRuangan'] 	= $this->home_model->select_count_ruangan()->result();
+			$data['TotalSpesialis']	= $this->home_model->select_count_spesialis()->result();
+			$data['TotalDokter'] 	= $this->home_model->select_count_dokter()->result();
+			$data['TotalUser']   	= $this->home_model->select_count_users()->result();
+			$this->template->display('admin/home_view', $data);
 		} else {
 			$this->session->sess_destroy();
 			redirect(base_url());

@@ -4,14 +4,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Users extends CI_Controller {
 	function __construct() {
 		parent::__construct();
-		if(!$this->session->userdata('logged_in_clinic')) redirect(base_url());
+		if(!$this->session->userdata('logged_in_hospital')) redirect(base_url());
 		$this->load->library('template');		
 		$this->load->model('admin/users_model');
 	}
 
 	public function index()
 	{
-		if($this->session->userdata('logged_in_clinic')) 
+		if($this->session->userdata('logged_in_hospital')) 
 		{
 			$data['daftarlist'] = $this->users_model->select_all()->result();
 			$this->template->display('admin/users_view', $data);
@@ -27,7 +27,7 @@ class Users extends CI_Controller {
 	}
 	
 	public function savedata() {										
-		$this->form_validation->set_rules('username','<b>Username</b>','trim|required|is_unique[clinic_users.user_username]');
+		$this->form_validation->set_rules('username','<b>Username</b>','trim|required|is_unique[hospital_users.user_username]');
 		$this->form_validation->set_rules('password','<b>Password</b>','trim|required');		
 		$this->form_validation->set_rules('name','<b>Nama Lengkap</b>','trim|required');		
 

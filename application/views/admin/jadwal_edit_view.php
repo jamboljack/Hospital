@@ -57,7 +57,7 @@
                                 <div class="form-group form-md-line-input">
                                     <label class="col-md-3 control-label" for="form_control_1">Ruangan</label>
                                     <div class="col-md-6">
-                                        <select class="select2_category form-control" data-placeholder="- Pilih Ruangan -" name="lstRuangan" id="lstRuangan" required>
+                                        <select class="select2_category form-control" data-placeholder="- Pilih Ruangan -" name="lstRuangan" id="lstRuangan" required autofocus>
                                             <option value="">- Pilih Ruangan -</option>
                                             <?php 
                                             foreach($listRuang as $r) {

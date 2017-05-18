@@ -5,30 +5,30 @@ class Home_model extends CI_Model {
 		parent::__construct();	
 	}
 
-	function select_count_pelanggan() {
+	function select_count_ruangan() {
 		$this->db->select('*');
-		$this->db->from('clinic_pelanggan');		
+		$this->db->from('hospital_ruangan');		
 		
 		return $this->db->get();
 	}
 
-	function select_count_produk() {
+	function select_count_spesialis() {
 		$this->db->select('*');
-		$this->db->from('clinic_produk');		
+		$this->db->from('hospital_tipe_dokter');		
 		
 		return $this->db->get();
 	}
 
 	function select_count_dokter() {
 		$this->db->select('*');
-		$this->db->from('clinic_dokter');		
+		$this->db->from('hospital_dokter');		
 		
 		return $this->db->get();
 	}
 
-	function select_count_perawat() {
+	function select_count_users() {
 		$this->db->select('*');
-		$this->db->from('clinic_perawat');		
+		$this->db->from('hospital_users');		
 		
 		return $this->db->get();
 	}

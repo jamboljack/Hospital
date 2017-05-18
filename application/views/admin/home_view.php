@@ -16,20 +16,20 @@
             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <div class="dashboard-stat blue-madison">
                     <div class="visual">
-                        <i class="fa fa-user"></i>
+                        <i class="fa fa-building"></i>
                     </div>
                     <div class="details">
                         <div class="number">
                         <?php 
-                            //$Jml_Pelanggan = count($TotalPelanggan);
-                            //echo number_format($Jml_Pelanggan);
+                            $Jml_Ruangan = count($TotalRuangan);
+                            echo number_format($Jml_Ruangan);
                         ?>
                         </div>
                         <div class="desc">
-                        Pelanggan
+                        Ruangan
                         </div>
                     </div>
-                    <a class="more" href="<?php // echo site_url('admin/service'); ?>">
+                    <a class="more" href="<?php echo site_url('admin/ruangan'); ?>">
                         View more <i class="m-icon-swapright m-icon-white"></i>
                     </a>
                 </div>
@@ -37,20 +37,20 @@
             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <div class="dashboard-stat red-intense">
                     <div class="visual">
-                        <i class="fa fa-medkit"></i>
+                        <i class="fa fa-stethoscope"></i>
                     </div>
                     <div class="details">
                         <div class="number">
                         <?php 
-                            //$Jml_Produk = count($TotalProduk);
-                            //echo number_format($Jml_Produk);
+                            $Jml_Spesialis = count($TotalSpesialis);
+                            echo number_format($Jml_Spesialis);
                         ?>
                         </div>
                         <div class="desc">
-                        Produk Tarif
+                        Spesialis
                         </div>
                     </div>
-                    <a class="more" href="<?php // echo site_url('admin/project'); ?>">
+                    <a class="more" href="<?php echo site_url('admin/tipe_dokter'); ?>">
                         View more <i class="m-icon-swapright m-icon-white"></i>
                     </a>
                 </div>
@@ -63,15 +63,15 @@
                     <div class="details">
                         <div class="number">
                         <?php 
-                            //$Jml_Dokter = count($TotalDokter);
-                            //echo number_format($Jml_Dokter);
+                            $Jml_Dokter = count($TotalDokter);
+                            echo number_format($Jml_Dokter);
                         ?>
                         </div>
                         <div class="desc">
                         Dokter
                         </div>
                     </div>
-                    <a class="more" href="<?php //echo site_url('admin/news'); ?>">
+                    <a class="more" href="<?php echo site_url('admin/dokter'); ?>">
                         View more <i class="m-icon-swapright m-icon-white"></i>
                     </a>
                 </div>
@@ -79,20 +79,20 @@
             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <div class="dashboard-stat purple-plum">
                     <div class="visual">
-                        <i class="fa fa-stethoscope"></i>
+                        <i class="fa fa-users"></i>
                     </div>
                     <div class="details">
                         <div class="number">
                         <?php 
-                            //$Jml_Perawat = count($TotalPerawat);
-                            //echo number_format($Jml_Perawat);
+                            $Jml_Users = count($TotalUser);
+                            echo number_format($Jml_Users);
                         ?>
                         </div>
                         <div class="desc">
-                        Perawat
+                        Users
                         </div>
                     </div>
-                    <a class="more" href="<?php //echo site_url('admin/testimoni'); ?>">
+                    <a class="more" href="<?php echo site_url('admin/users'); ?>">
                         View more <i class="m-icon-swapright m-icon-white"></i>
                     </a>
                 </div>

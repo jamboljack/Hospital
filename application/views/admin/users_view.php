@@ -21,8 +21,8 @@ if ($this->session->flashdata('notification')) { ?>
         <div class="page-bar">
             <ul class="page-breadcrumb">                    
                 <li>
-                    <i class="fa fa-bar-chart"></i>
-                    <a href="<?php echo site_url('admin/home'); ?>">Statistik</a>
+                    <i class="fa fa-home"></i>
+                    <a href="<?php echo site_url('admin/home'); ?>">Dashboard</a>
                     <i class="fa fa-angle-right"></i>
                 </li>                
                 <li>
