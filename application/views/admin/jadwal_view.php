@@ -76,10 +76,10 @@ if ($this->session->flashdata('notification')) { ?>
                         <table class="table table-striped table-bordered table-hover">
                         <thead>
                             <tr>
-                                <th width="5%">No</th>                                
-                                <th>Ruangan</th>
+                                <th width="5%">No</th>
                                 <th width="10%">Hari</th>
                                 <th width="30%">Jam Praktek</th>
+                                <th>Ruangan</th>
                                 <th width="16%">Aksi</th>
                             </tr>
                         </thead>
@@ -92,9 +92,9 @@ if ($this->session->flashdata('notification')) { ?>
                             ?>
                             <tr>
                                 <td><?php echo $no; ?></td>                                
-                                <td><?php echo $r->ruangan_name; ?></td>
                                 <td><?php echo $r->jadwal_hari; ?></td>
                                 <td><?php echo substr($r->jadwal_mulai,0,5).' - '.substr($r->jadwal_selesai,0,5); ?></td>
+                                <td><?php echo $r->ruangan_name; ?></td>
                                 <td>
                                     <a href="<?php echo site_url('admin/dokter/editdatajadwal/'.$this->uri->segment(4).'/'.$r->jadwal_id); ?>"><button class="btn btn-primary btn-xs" title="Edit Data"><i class="icon-pencil"></i> Edit</button></a>
                                     <a onclick="hapusData(<?php echo $jadwal_id; ?>)"><button class="btn btn-danger btn-xs" title="Hapus Data"><i class="icon-trash"></i> Hapus</button>

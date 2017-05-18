@@ -209,7 +209,7 @@ if ($this->session->flashdata('notification')) { ?>
                             <tr>
                                 <th width="5%">No</th>                                
                                 <th>Nama Dokter</th>
-                                <th width="20%">Tipe</th>
+                                <th width="25%">Tipe</th>
                                 <th width="30%">Jadwal Praktek</th>
                                 <th width="10%">Aksi</th>
                             </tr>
