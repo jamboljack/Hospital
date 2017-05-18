@@ -209,9 +209,8 @@ if ($this->session->flashdata('notification')) { ?>
                             <tr>
                                 <th width="5%">No</th>                                
                                 <th>Nama Dokter</th>
-                                <th width="25%">Tipe</th>
-                                <th width="10%">Telp</th>                              
-                                <th width="20%">Jadwal Praktek</th>
+                                <th width="20%">Tipe</th>
+                                <th width="30%">Jadwal Praktek</th>
                                 <th width="10%">Aksi</th>
                             </tr>
                         </thead>
@@ -226,8 +225,14 @@ if ($this->session->flashdata('notification')) { ?>
                                 <td><?php echo $no; ?></td>                                
                                 <td><?php echo $r->dokter_name; ?></td>
                                 <td><?php echo $r->tipe_name; ?></td>
-                                <td><?php echo $r->dokter_phone; ?></td>
-                                <td><?php echo $r->dokter_address; ?></td>
+                                <td>
+                                    <?php 
+                                    $listJadwal = $this->dokter_model->select_all_jadwal($dokter_id)->result();
+                                    foreach ($listJadwal as $j) {
+                                        echo '- '.$j->jadwal_hari.' Jam '.substr($j->jadwal_mulai,0,5).' - '.substr($j->jadwal_selesai,0,5).' di '.$j->ruangan_name.'<br>';
+                                    }
+                                    ?>
+                                </td>
                                 <td>
                                     <button type="button" class="btn btn-primary btn-xs edit_button" data-toggle="modal" data-target="#edit" data-id="<?php echo $r->dokter_id; ?>" data-name="<?php echo $r->dokter_name; ?>" data-tipe="<?php echo $r->tipe_id; ?>" data-address="<?php echo $r->dokter_address; ?>" data-city="<?php echo $r->dokter_city; ?>" data-phone="<?php echo $r->dokter_phone; ?>" title="Edit Data"><i class="icon-pencil"></i>
                                     </button>

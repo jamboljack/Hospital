@@ -30,7 +30,7 @@
                     <i class="fa fa-angle-right"></i>
                 </li>
                 <li>
-                    <a href="#">Tambah Jadwal Praktek <?php echo $detail->dokter_name; ?></a>
+                    <a href="#">Edit Jadwal Praktek <?php echo $detail->dokter_name; ?></a>
                 </li>
             </ul>                
         </div>            
@@ -41,7 +41,7 @@
                 <div class="portlet box red-intense">
                     <div class="portlet-title">
                         <div class="caption">
-                            <i class="fa fa-plus-square"></i> Form Tambah Jadwal Praktek - <?php echo $detail->dokter_name; ?>
+                            <i class="fa fa-edit"></i> Form Edit Jadwal Praktek - <?php echo $detail->dokter_name; ?>
                         </div>
                         <div class="tools">
                             <a href="javascript:;" class="collapse"></a>
@@ -49,8 +49,9 @@
                     </div>
                     
                     <div class="portlet-body form">
-                        <form role="form" class="form-horizontal" action="<?php echo site_url('admin/dokter/savedatajadwal/'.$this->uri->segment(4)); ?>" method="post" enctype="multipart/form-data">
+                        <form role="form" class="form-horizontal" action="<?php echo site_url('admin/dokter/updatedatajadwal/'.$this->uri->segment(4)); ?>" method="post" enctype="multipart/form-data">
                         <input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
+                        <input type="hidden" name="id" value="<?php echo $detailjadwal->jadwal_id; ?>" />
 
                             <div class="form-body">
                                 <div class="form-group form-md-line-input">
@@ -59,10 +60,14 @@
                                         <select class="select2_category form-control" data-placeholder="- Pilih Ruangan -" name="lstRuangan" id="lstRuangan" required>
                                             <option value="">- Pilih Ruangan -</option>
                                             <?php 
-                                            foreach($listRuang as $r) { 
+                                            foreach($listRuang as $r) {
+                                                if ($detailjadwal->ruangan_id == $r->ruangan_id) { 
                                             ?>
-                                            <option value="<?php echo $r->ruangan_id; ?>" <?php echo set_select('lstRuangan', $r->ruangan_id); ?>><?php echo $r->ruangan_name; ?></option>
-                                            <?php 
+                                            <option value="<?php echo $r->ruangan_id; ?>" selected><?php echo $r->ruangan_name; ?></option>
+                                            <?php } else { ?>
+                                            <option value="<?php echo $r->ruangan_id; ?>"><?php echo $r->ruangan_name; ?></option>
+                                            <?php
+                                                }
                                             }
                                             ?>
                                         </select>
@@ -73,13 +78,13 @@
                                     <div class="col-md-4">
                                         <select class="select2_category form-control" data-placeholder="- Pilih Hari -" name="lstHari" required>
                                             <option value="">- Pilih Hari -</option>
-                                            <option value="Senin">Senin</option>
-                                            <option value="Selasa">Selasa</option>
-                                            <option value="Rabu">Rabu</option>
-                                            <option value="Kamis">Kamis</option>
-                                            <option value="Jum'at">Jum'at</option>
-                                            <option value="Sabtu">Sabtu</option>
-                                            <option value="Minggu">Minggu</option>
+                                            <option value="Senin" <?php if ($detailjadwal->jadwal_hari == 'Senin') { echo "selected"; } ?>>Senin</option>
+                                            <option value="Selasa" <?php if ($detailjadwal->jadwal_hari == 'Selasa') { echo "selected"; } ?>>Selasa</option>
+                                            <option value="Rabu" <?php if ($detailjadwal->jadwal_hari == 'Rabu') { echo "selected"; } ?>>Rabu</option>
+                                            <option value="Kamis" <?php if ($detailjadwal->jadwal_hari == 'Kamis') { echo "selected"; } ?>>Kamis</option>
+                                            <option value="Jum'at" <?php if ($detailjadwal->jadwal_hari == "Jum'at") { echo "selected"; } ?>>Jum'at</option>
+                                            <option value="Sabtu" <?php if ($detailjadwal->jadwal_hari == 'Sabtu') { echo "selected"; } ?>>Sabtu</option>
+                                            <option value="Minggu" <?php if ($detailjadwal->jadwal_hari == 'Minggu') { echo "selected"; } ?>>Minggu</option>
                                         </select>
                                     </div>                      
                                 </div>
@@ -87,7 +92,7 @@
                                     <label class="control-label col-md-3">Jam Mulai</label>
                                     <div class="col-md-3">
                                         <div class="input-group">
-                                            <input type="text" class="form-control timepicker timepicker-24" name="mulai" autocomplete="off" required>
+                                            <input type="text" class="form-control timepicker timepicker-24" name="mulai" value="<?php echo $detailjadwal->jadwal_mulai; ?>" autocomplete="off" required>
                                             <span class="input-group-btn">
                                                 <button class="btn default" type="button"><i class="fa fa-clock-o"></i></button>
                                             </span>
@@ -98,7 +103,7 @@
                                     <label class="control-label col-md-3">Jam Selesai</label>
                                     <div class="col-md-3">
                                         <div class="input-group">
-                                            <input type="text" class="form-control timepicker timepicker-24" name="selesai" autocomplete="off" required>
+                                            <input type="text" class="form-control timepicker timepicker-24" name="selesai" value="<?php echo $detailjadwal->jadwal_selesai; ?>" autocomplete="off" required>
                                             <span class="input-group-btn">
                                                 <button class="btn default" type="button"><i class="fa fa-clock-o"></i></button>
                                             </span>
@@ -110,7 +115,7 @@
                             <div class="form-actions">
                                 <div class="row">
                                     <div class="col-md-offset-2 col-md-10">
-                                        <button type="submit" class="btn green"><i class="fa fa-floppy-o"></i> Simpan</button>
+                                        <button type="submit" class="btn green"><i class="fa fa-floppy-o"></i> Update</button>
                                         <a href="<?php echo site_url('admin/dokter/jadwal/'.$this->uri->segment(4)); ?>" class="btn yellow"><i class="fa fa-times"></i> Batal
                                         </a>
                                     </div>

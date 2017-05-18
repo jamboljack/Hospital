@@ -13,7 +13,7 @@
             cancelButtonText: 'No',
             closeOnConfirm: true
         }, function() {
-            window.location.href="<?php echo site_url('admin/polispesialis/deletedataruang'.'/'.$this->uri->segment(4)); ?>"+"/"+id
+            window.location.href="<?php echo site_url('admin/ruangan/deletedata'); ?>"+"/"+id
         });
     }
 </script>
@@ -46,18 +46,18 @@ if ($this->session->flashdata('notification')) { ?>
 <div class="modal bs-modal-lg" id="add" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
-            <form action="<?php echo site_url('admin/polispesialis/savedataruang'.'/'.$this->uri->segment(4)); ?>" class="form-horizontal" method="post" enctype="multipart/form-data" role="form">
+            <form action="<?php echo site_url('admin/ruangan/savedata'); ?>" class="form-horizontal" method="post" enctype="multipart/form-data" role="form">
             <input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
                         
             <div class="modal-header">                      
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-                <h4 class="modal-title"><i class="fa fa-plus-square"></i> Form Tambah Ruangan - <?php echo $detail->poliklinik_name; ?></h4>
+                <h4 class="modal-title"><i class="fa fa-plus-square"></i> Form Tambah Ruangan Praktek</h4>
             </div>
             <div class="modal-body">                
                 <div class="form-group">                    
-                    <label class="col-md-3 control-label">Nama Ruangan</label>
+                    <label class="col-md-3 control-label">Deskripsi</label>
                     <div class="col-md-9 has-error">
-                        <input type="text" class="form-control" placeholder="Enter Nama Ruangan" name="name" autocomplete="off" required>
+                        <input type="text" class="form-control" placeholder="Enter Deskripsi" name="name" autocomplete="off" required>
                     </div>
                 </div>                
             </div>
@@ -75,19 +75,19 @@ if ($this->session->flashdata('notification')) { ?>
 <div class="modal bs-modal-lg" id="edit" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
-            <form action="<?php echo site_url('admin/polispesialis/updatedataruang'.'/'.$this->uri->segment(4)); ?>" class="form-horizontal" method="post" enctype="multipart/form-data" role="form">
+            <form action="<?php echo site_url('admin/ruangan/updatedata'); ?>" class="form-horizontal" method="post" enctype="multipart/form-data" role="form">
             <input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
             <input type="hidden" class="form-control ruangan_id" name="id">
                         
             <div class="modal-header">                      
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-                <h4 class="modal-title"><i class="fa fa-edit"></i> Form Edit Ruangan - <?php echo $detail->poliklinik_name; ?></h4>
+                <h4 class="modal-title"><i class="fa fa-edit"></i> Form Edit Ruangan Praktek</h4>
             </div>
             <div class="modal-body">               
                 <div class="form-group">                    
-                    <label class="col-md-3 control-label">Nama Ruangan</label>
+                    <label class="col-md-3 control-label">Deskripsi</label>
                     <div class="col-md-9 has-error">
-                        <input type="text" class="form-control ruangan_name" placeholder="Enter Nama Ruangan" name="name" autocomplete="off" required>
+                        <input type="text" class="form-control ruangan_name" placeholder="Enter Deskripsi" name="name" autocomplete="off" required>
                     </div>
                 </div>                
             </div>
@@ -104,7 +104,7 @@ if ($this->session->flashdata('notification')) { ?>
 <div class="page-content-wrapper">
     <div class="page-content">            
         <h3 class="page-title">
-            Master Medis <small>Ruangan Polispesialis</small>
+            Master Medis <small>Ruangan Praktek</small>
         </h3>
         <div class="page-bar">
             <ul class="page-breadcrumb">                    
@@ -118,11 +118,7 @@ if ($this->session->flashdata('notification')) { ?>
                     <i class="fa fa-angle-right"></i>
                 </li>
                 <li>
-                    <a href="<?php echo site_url('admin/polispesialis'); ?>">Polispesialis</a>
-                    <i class="fa fa-angle-right"></i>
-                </li>
-                <li>
-                    <a href="#">Ruangan <?php echo ucwords(strtolower($detail->poliklinik_name)); ?></a>
+                    <a href="#">Ruangan Praktek</a>
                 </li>
             </ul>                
         </div>            
@@ -132,18 +128,17 @@ if ($this->session->flashdata('notification')) { ?>
                 <a data-toggle="modal" href="#add">
                     <button type="submit" class="btn btn-primary"><i class="fa fa-plus-square"></i> Tambah</button>
                 </a>
-                <a href="<?php echo site_url('admin/polispesialis'); ?>" class="btn red"><i class="fa fa-times"></i> Kembali</a>
                 <br><br>
                 <div class="portlet box red-intense">
                     <div class="portlet-title">
                         <div class="caption">
-                            <i class="fa fa-list"></i> Daftar Ruangan - <?php echo $detail->poliklinik_name; ?>
+                            <i class="fa fa-list"></i> Daftar Ruangan Praktek
                         </div>
                         <div class="tools"></div>
                     </div>
 
                     <div class="portlet-body">                        
-                        <table class="table table-striped table-bordered table-hover">
+                        <table class="table table-striped table-bordered table-hover" id="sample_1">
                         <thead>
                             <tr>
                                 <th width="5%">No</th>                                

@@ -48,16 +48,48 @@ class Dokter extends CI_Controller {
 	public function jadwal($dokter_id = '') {
 		$dokter_id 			= $this->uri->segment(4);
 		$data['detail']		= $this->dokter_model->select_detail($dokter_id)->row();
-		$data['daftarlist']	= $this->dokter_model->select_jadwal($dokter_id)->result();
+		$data['daftarlist']	= $this->dokter_model->select_all_jadwal($dokter_id)->result();
 		$this->template->display('admin/jadwal_view', $data);
 	}
 
 	public function adddatajadwal($dokter_id = '') {
 		$dokter_id 			= $this->uri->segment(4);
-		$data['error']		= false;
 		$data['detail']		= $this->dokter_model->select_detail($dokter_id)->row();
-		$data['listPoli']	= $this->dokter_model->select_poliklinik()->result();
+		$data['listRuang']	= $this->dokter_model->select_ruangan()->result();
 		$this->template->display('admin/jadwal_add_view', $data);
-	}		
+	}
+
+	public function savedatajadwal() {		
+		$this->dokter_model->insert_data_jadwal();
+		$this->session->set_flashdata('notification','Simpan Data Jadwal Dokter Sukses.');
+ 		redirect(site_url('admin/dokter/jadwal/'.$this->uri->segment(4)));
+	}
+
+	public function editdatajadwal($dokter_id = '', $jadwal_id = '') {
+		$dokter_id 				= $this->uri->segment(4);
+		$jadwal_id				= $this->uri->segment(5);
+		$data['detail']			= $this->dokter_model->select_detail($dokter_id)->row();
+		$data['listRuang']		= $this->dokter_model->select_ruangan()->result();
+		$data['detailjadwal']	= $this->dokter_model->select_detail_jadwal($jadwal_id)->row();
+		$this->template->display('admin/jadwal_edit_view', $data);
+	}
+
+	public function updatedatajadwal() {		
+		$this->dokter_model->update_data_jadwal();
+		$this->session->set_flashdata('notification','Update Data Jadwal Dokter Sukses.');
+		redirect(site_url('admin/dokter/jadwal/'.$this->uri->segment(4)));
+	}
+
+	public function deletedatajadwal($kode) {
+		$kode = $this->security->xss_clean($this->uri->segment(5));
+		
+		if ($kode == null) {
+			redirect(site_url('admin/dokter/jadwal/'.$this->uri->segment(4)));
+		} else {
+			$this->dokter_model->delete_data_jadwal($kode);
+			$this->session->set_flashdata('notification','Hapus Data Jadwal Dokter Sukses.');
+			redirect(site_url('admin/dokter/jadwal/'.$this->uri->segment(4)));
+		}
+	}
 }
 /* Location: ./application/controller/admin/Dokter.php */

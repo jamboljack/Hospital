@@ -77,10 +77,9 @@ if ($this->session->flashdata('notification')) { ?>
                         <thead>
                             <tr>
                                 <th width="5%">No</th>                                
-                                <th>Polispesialis & Ruangan</th>
-                                <th>Hari</th>
-                                <th>Jam Mulai</th>
-                                <th>Jam Selesai</th>
+                                <th>Ruangan</th>
+                                <th width="10%">Hari</th>
+                                <th width="30%">Jam Praktek</th>
                                 <th width="16%">Aksi</th>
                             </tr>
                         </thead>
@@ -93,13 +92,11 @@ if ($this->session->flashdata('notification')) { ?>
                             ?>
                             <tr>
                                 <td><?php echo $no; ?></td>                                
-                                <td><?php echo $r->poliklinik_name.' '.$r->ruangan_name; ?></td>
+                                <td><?php echo $r->ruangan_name; ?></td>
                                 <td><?php echo $r->jadwal_hari; ?></td>
-                                <td><?php echo $r->jadwal_mulai; ?></td>
-                                <td><?php echo $r->jadwal_selesai; ?></td>
+                                <td><?php echo substr($r->jadwal_mulai,0,5).' - '.substr($r->jadwal_selesai,0,5); ?></td>
                                 <td>
-                                    <button type="button" class="btn btn-primary btn-xs edit_button" data-toggle="modal" data-target="#edit" data-id="<?php echo $r->jadwal_id; ?>" data-hari="<?php echo $r->jadwal_hari; ?>" title="Edit Data"><i class="icon-pencil"></i> Edit
-                                    </button>
+                                    <a href="<?php echo site_url('admin/dokter/editdatajadwal/'.$this->uri->segment(4).'/'.$r->jadwal_id); ?>"><button class="btn btn-primary btn-xs" title="Edit Data"><i class="icon-pencil"></i> Edit</button></a>
                                     <a onclick="hapusData(<?php echo $jadwal_id; ?>)"><button class="btn btn-danger btn-xs" title="Hapus Data"><i class="icon-trash"></i> Hapus</button>
                                     </a>
                                 </td>
