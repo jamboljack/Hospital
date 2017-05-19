@@ -14,13 +14,24 @@ class Menu_model extends CI_Model {
 	}
 	
 	function insert_data() {
-		$data = array(    			
-	    		'menu_title' 			=> ucwords(strtolower(trim($this->input->post('title')))),
-	    		'menu_title_seo' 		=> seo_title(trim($this->input->post('title'))),
-	    		'menu_desc' 			=> $this->input->post('desc'),
-	    		'menu_date_update' 		=> date('Y-m-d'),
-	    		'menu_time_update' 		=> date('Y-m-d H:i:s')  			
-		);
+		if (!empty($_FILES['userfile']['name'])) {
+			$data = array(    			
+		    		'menu_title' 			=> ucwords(strtolower(trim($this->input->post('title')))),
+		    		'menu_title_seo' 		=> seo_title(trim($this->input->post('title'))),
+		    		'menu_desc' 			=> $this->input->post('desc'),
+		    		'menu_image' 			=> $this->upload->file_name,
+		    		'menu_date_update' 		=> date('Y-m-d'),
+		    		'menu_time_update' 		=> date('Y-m-d H:i:s')  			
+			);
+		} else {
+			$data = array(    			
+		    		'menu_title' 			=> ucwords(strtolower(trim($this->input->post('title')))),
+		    		'menu_title_seo' 		=> seo_title(trim($this->input->post('title'))),
+		    		'menu_desc' 			=> $this->input->post('desc'),
+		    		'menu_date_update' 		=> date('Y-m-d'),
+		    		'menu_time_update' 		=> date('Y-m-d H:i:s')  			
+			);
+		}
 		
 		$this->db->insert('hospital_menu', $data);
 	}
@@ -36,13 +47,24 @@ class Menu_model extends CI_Model {
 	function update_data() {
 		$menu_id  = $this->input->post('id');
 
-		$data = array(    			
-	    		'menu_title' 			=> ucwords(strtolower(trim($this->input->post('title')))),
-	    		'menu_title_seo' 		=> seo_title(trim($this->input->post('title'))),
-	    		'menu_desc' 			=> $this->input->post('desc'),
-	    		'menu_date_update' 		=> date('Y-m-d'),
-	    		'menu_time_update' 		=> date('Y-m-d H:i:s')  			
-		);
+		if (!empty($_FILES['userfile']['name'])) {
+			$data = array(    			
+		    		'menu_title' 			=> ucwords(strtolower(trim($this->input->post('title')))),
+		    		'menu_title_seo' 		=> seo_title(trim($this->input->post('title'))),
+		    		'menu_desc' 			=> $this->input->post('desc'),
+		    		'menu_image' 			=> $this->upload->file_name,
+		    		'menu_date_update' 		=> date('Y-m-d'),
+		    		'menu_time_update' 		=> date('Y-m-d H:i:s')  			
+			);
+		} else {
+			$data = array(    			
+		    		'menu_title' 			=> ucwords(strtolower(trim($this->input->post('title')))),
+		    		'menu_title_seo' 		=> seo_title(trim($this->input->post('title'))),
+		    		'menu_desc' 			=> $this->input->post('desc'),
+		    		'menu_date_update' 		=> date('Y-m-d'),
+		    		'menu_time_update' 		=> date('Y-m-d H:i:s')  			
+			);
+		}
 
 		$this->db->where('menu_id', $menu_id);
 		$this->db->update('hospital_menu', $data);

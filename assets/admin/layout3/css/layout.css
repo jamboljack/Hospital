@@ -725,7 +725,7 @@ Page Header
   z-index: 9995;
 }
 .page-header .page-header-top {
-  height: 75px;
+  height: 80px;
   /* Header logo */
   /* Top menu */
   /* Menu Toggler */
@@ -741,10 +741,10 @@ Page Header
   float: left;
   display: block;
   width: 255px;
-  height: 75px;
+  height: 80px;
 }
 .page-header .page-header-top .page-logo .logo-default {
-  margin: 29.5px 0 0 0;
+  margin: 10px 0 0 0;
 }
 .page-header .page-header-top .top-menu {
   margin: 13px 0 0;

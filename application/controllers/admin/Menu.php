@@ -31,6 +31,29 @@ class Menu extends CI_Controller {
 			$data['error']	= true;
 			$this->template->display('admin/menu_add_view', $data);
 		} else {
+			if (!empty($_FILES['userfile']['name'])) {
+				$jam 	= time();
+				$kode 	= seo_title($this->input->post('title'));
+					
+				$config['file_name']    = 'Menu_'.$kode.'_'.$jam.'.jpg';
+				$config['upload_path'] = './img/Menu_image/';
+				$config['allowed_types'] = 'jpg|png|gif|jpeg';		
+				$config['overwrite'] = TRUE;
+				$this->load->library('upload', $config);
+				$this->upload->do_upload('userfile');
+				$config['image_library'] = 'gd2';
+				$config['source_image'] = $this->upload->upload_path.$this->upload->file_name;
+				$config['maintain_ratio'] = TRUE;
+												
+				$config['width'] = 800;
+				//$config['height'] = 200;
+				$this->load->library('image_lib',$config);
+				 
+				$this->image_lib->resize();
+			} elseif (empty($_FILES['userfile']['name'])){
+				$config['file_name'] = '';
+			}
+
 			$this->menu_model->insert_data();
 			$this->session->set_flashdata('notification','Save Data Success.');
  			redirect(site_url('admin/menu'));
@@ -42,7 +65,30 @@ class Menu extends CI_Controller {
 		$this->template->display('admin/menu_edit_view', $data);
 	}
 	
-	public function updatedata() {		
+	public function updatedata() {
+		if (!empty($_FILES['userfile']['name'])) {
+			$jam 	= time();
+			$kode 	= seo_title($this->input->post('title'));
+					
+			$config['file_name']    = 'Menu_'.$kode.'_'.$jam.'.jpg';
+			$config['upload_path'] = './img/Menu_image/';
+			$config['allowed_types'] = 'jpg|png|gif|jpeg';		
+			$config['overwrite'] = TRUE;
+			$this->load->library('upload', $config);
+			$this->upload->do_upload('userfile');
+			$config['image_library'] = 'gd2';
+			$config['source_image'] = $this->upload->upload_path.$this->upload->file_name;
+			$config['maintain_ratio'] = TRUE;
+												
+			$config['width'] = 800;
+			//$config['height'] = 200;
+			$this->load->library('image_lib',$config);
+				 
+			$this->image_lib->resize();
+		} elseif (empty($_FILES['userfile']['name'])){
+			$config['file_name'] = '';
+		}
+
 		$this->menu_model->update_data();
 		$this->session->set_flashdata('notification','Update Data Success.');
  		redirect(site_url('admin/menu'));

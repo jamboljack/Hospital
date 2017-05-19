@@ -18,19 +18,22 @@
 <link href="<?php echo base_url(); ?>assets/global/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css"/>
 <link href="<?php echo base_url(); ?>assets/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
 <link href="<?php echo base_url(); ?>assets/global/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css"/>
+<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/global/plugins/select2/select2.css"/>
+<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/datepicker/css/datepicker.css" />
+<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/datepicker/css/daterangepicker-bs3.css">
 <!-- END GLOBAL MANDATORY STYLES -->
 <link href="<?php echo base_url(); ?>assets/global/css/components-rounded.css" id="style_components" rel="stylesheet" type="text/css">
 <link href="<?php echo base_url(); ?>assets/global/css/plugins.css" rel="stylesheet" type="text/css">
 
 <link href="<?php echo base_url(); ?>assets/admin/layout3/css/custom.css" rel="stylesheet" type="text/css">
 <script src="<?php echo base_url(); ?>assets/global/plugins/jquery.min.js" type="text/javascript"></script>
+<script src="<?php echo base_url(); ?>assets/global/plugins/jquery-migrate.min.js" type="text/javascript"></script>
 </head>
-<body class="page-container-bg-solid page-header-top-fixed">
+<body class="page-md page-header-menu-fixed">
 <?php echo $_header; ?>
 <?php echo $content; ?>
 <?php echo $_footer; ?>
 <!-- BEGIN CORE PLUGINS -->
-<script src="<?php echo base_url(); ?>assets/global/plugins/jquery-migrate.min.js" type="text/javascript"></script>
 <script src="<?php echo base_url(); ?>assets/global/plugins/jquery-ui/jquery-ui.min.js" type="text/javascript"></script>
 <script src="<?php echo base_url(); ?>assets/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
 <script src="<?php echo base_url(); ?>assets/global/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js" type="text/javascript"></script>
@@ -39,7 +42,19 @@
 <script src="<?php echo base_url(); ?>assets/global/plugins/jquery.cokie.min.js" type="text/javascript"></script>
 <script src="<?php echo base_url(); ?>assets/global/plugins/uniform/jquery.uniform.min.js" type="text/javascript"></script>
 <!-- END CORE PLUGINS -->
+<script type="text/javascript" src="<?php echo base_url(); ?>assets/global/plugins/select2/select2.min.js"></script>
+<script type="text/javascript" src="<?php echo base_url(); ?>assets/datepicker/js/bootstrap-datepicker.js"></script>
+<script type="text/javascript" src="<?php echo base_url(); ?>assets/datepicker/js/moment.min.js"></script>
+<script type="text/javascript" src="<?php echo base_url(); ?>assets/datepicker/js/daterangepicker.js"></script>
+<script src="<?php echo base_url(); ?>js/advanced-form-components.js"></script>
+<!-- ADDITIONAL -->
+<script src="<?php echo base_url(); ?>assets/admin/pages/scripts/table-advanced.js"></script>
+<script src="<?php echo base_url(); ?>assets/admin/pages/scripts/components-pickers.js"></script>
+<script src="<?php echo base_url(); ?>assets/admin/pages/scripts/form-samples.js"></script>
 <!-- BEGIN PAGE LEVEL SCRIPTS -->
+<?php if ($this->uri->segment(1) == '') { ?>
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;signed_in=true"></script>
+<?php } ?>
 <script src="<?php echo base_url(); ?>assets/global/scripts/metronic.js" type="text/javascript"></script>
 <script src="<?php echo base_url(); ?>assets/admin/layout3/scripts/layout.js" type="text/javascript"></script>
 <script src="<?php echo base_url(); ?>assets/admin/layout3/scripts/demo.js" type="text/javascript"></script>
@@ -51,7 +66,8 @@
 jQuery(document).ready(function() {    
    Metronic.init(); // init metronic core componets
    Layout.init(); // init layout
-   Demo.init(); // init demo(theme settings page)   
+   Demo.init(); // init demo(theme settings page)  
+   FormSamples.init();
 });
 </script>
 </body>

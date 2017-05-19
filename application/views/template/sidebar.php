@@ -3,7 +3,11 @@ $uri = $this->uri->segment(2);
 
 if ($uri == 'home') {
     $dashboard      = 'active';
+    $aplikasi       = '';
+    $span_aplikasi_1= '';
+    $span_aplikasi_2= '';
     $menu           = '';
+    $kontak         = '';
     $umum           = '';
     $span_umum_1    = '';
     $span_umum_2    = '';
@@ -32,7 +36,44 @@ if ($uri == 'home') {
     $users          = '';
 } elseif ($uri == 'menu') {
     $dashboard      = '';
+    $aplikasi       = 'active open';
+    $span_aplikasi_1= '<span class="selected"></span>';
+    $span_aplikasi_2= 'open';
     $menu           = 'active';
+    $kontak         = '';
+    $umum           = '';
+    $span_umum_1    = '';
+    $span_umum_2    = '';
+    $pendidikan     = '';
+    $pekerjaan      = '';
+    $status         = '';
+    $darah          = '';
+    $agama          = '';
+    $asuransi       = '';
+    $identitas      = '';
+    $tarif          = '';
+    $span_tarif_1   = '';
+    $span_tarif_2   = '';
+    $jenistarif     = '';
+    $kelompok       = '';
+    $pelanggan      = '';
+    $kelompok_unit  = '';
+    $unit           = '';
+    $produk         = '';
+    $medis          = '';
+    $span_medis_1   = '';
+    $span_medis_2   = '';
+    $tipe_dokter    = '';
+    $dokter         = '';
+    $ruangan        = '';
+    $users          = '';
+} elseif ($uri == 'kontak') {
+    $dashboard      = '';
+    $aplikasi       = 'active open';
+    $span_aplikasi_1= '<span class="selected"></span>';
+    $span_aplikasi_2= 'open';
+    $menu           = '';
+    $kontak         = 'active';
     $umum           = '';
     $span_umum_1    = '';
     $span_umum_2    = '';
@@ -61,7 +102,11 @@ if ($uri == 'home') {
     $users          = '';
 } elseif ($uri == 'pendidikan') {
     $dashboard      = '';
+    $aplikasi       = '';
+    $span_aplikasi_1= '';
+    $span_aplikasi_2= '';
     $menu           = '';
+    $kontak         = '';
     $umum           = 'active open';
     $span_umum_1    = '<span class="selected"></span>';
     $span_umum_2    = 'open';
@@ -90,7 +135,11 @@ if ($uri == 'home') {
     $users          = '';
 } elseif ($uri == 'pekerjaan') {
     $dashboard      = '';
+    $aplikasi       = '';
+    $span_aplikasi_1= '';
+    $span_aplikasi_2= '';
     $menu           = '';
+    $kontak         = '';
     $umum           = 'active open';
     $span_umum_1    = '<span class="selected"></span>';
     $span_umum_2    = 'open';
@@ -119,7 +168,11 @@ if ($uri == 'home') {
     $users          = '';
 } elseif ($uri == 'status') {
     $dashboard      = '';
+    $aplikasi       = '';
+    $span_aplikasi_1= '';
+    $span_aplikasi_2= '';
     $menu           = '';
+    $kontak         = '';
     $umum           = 'active open';
     $span_umum_1    = '<span class="selected"></span>';
     $span_umum_2    = 'open';
@@ -148,7 +201,11 @@ if ($uri == 'home') {
     $users          = '';
 } elseif ($uri == 'darah') {
     $dashboard      = '';
+    $aplikasi       = '';
+    $span_aplikasi_1= '';
+    $span_aplikasi_2= '';
     $menu           = '';
+    $kontak         = '';
     $umum           = 'active open';
     $span_umum_1    = '<span class="selected"></span>';
     $span_umum_2    = 'open';
@@ -177,7 +234,11 @@ if ($uri == 'home') {
     $users          = '';
 } elseif ($uri == 'agama') {
     $dashboard      = '';
+    $aplikasi       = '';
+    $span_aplikasi_1= '';
+    $span_aplikasi_2= '';
     $menu           = '';
+    $kontak         = '';
     $umum           = 'active open';
     $span_umum_1    = '<span class="selected"></span>';
     $span_umum_2    = 'open';
@@ -206,7 +267,11 @@ if ($uri == 'home') {
     $users          = '';
 } elseif ($uri == 'asuransi') {
     $dashboard      = '';
+    $aplikasi       = '';
+    $span_aplikasi_1= '';
+    $span_aplikasi_2= '';
     $menu           = '';
+    $kontak         = '';
     $umum           = 'active open';
     $span_umum_1    = '<span class="selected"></span>';
     $span_umum_2    = 'open';
@@ -235,7 +300,11 @@ if ($uri == 'home') {
     $users          = '';
 } elseif ($uri == 'identitas') {
     $dashboard      = '';
+    $aplikasi       = '';
+    $span_aplikasi_1= '';
+    $span_aplikasi_2= '';
     $menu           = '';
+    $kontak         = '';
     $umum           = 'active open';
     $span_umum_1    = '<span class="selected"></span>';
     $span_umum_2    = 'open';
@@ -264,7 +333,11 @@ if ($uri == 'home') {
     $users          = '';
 } elseif ($uri == 'jenistarif') {
     $dashboard      = '';
+    $aplikasi       = '';
+    $span_aplikasi_1= '';
+    $span_aplikasi_2= '';
     $menu           = '';
+    $kontak         = '';
     $umum           = '';
     $span_umum_1    = '';
     $span_umum_2    = '';
@@ -293,7 +366,11 @@ if ($uri == 'home') {
     $users          = '';
 } elseif ($uri == 'kelompok') {
     $dashboard      = '';
+    $aplikasi       = '';
+    $span_aplikasi_1= '';
+    $span_aplikasi_2= '';
     $menu           = '';
+    $kontak         = '';
     $umum           = '';
     $span_umum_1    = '';
     $span_umum_2    = '';
@@ -322,7 +399,11 @@ if ($uri == 'home') {
     $users          = '';
 } elseif ($uri == 'pelanggan') {
     $dashboard      = '';
+    $aplikasi       = '';
+    $span_aplikasi_1= '';
+    $span_aplikasi_2= '';
     $menu           = '';
+    $kontak         = '';
     $umum           = '';
     $span_umum_1    = '';
     $span_umum_2    = '';
@@ -351,7 +432,11 @@ if ($uri == 'home') {
     $users          = '';
 } elseif ($uri == 'kelompok_unit') {
     $dashboard      = '';
+    $aplikasi       = '';
+    $span_aplikasi_1= '';
+    $span_aplikasi_2= '';
     $menu           = '';
+    $kontak         = '';
     $umum           = '';
     $span_umum_1    = '';
     $span_umum_2    = '';
@@ -380,7 +465,11 @@ if ($uri == 'home') {
     $users          = '';
 } elseif ($uri == 'unit') {
     $dashboard      = '';
+    $aplikasi       = '';
+    $span_aplikasi_1= '';
+    $span_aplikasi_2= '';
     $menu           = '';
+    $kontak         = '';
     $umum           = '';
     $span_umum_1    = '';
     $span_umum_2    = '';
@@ -409,7 +498,11 @@ if ($uri == 'home') {
     $users          = '';
 } elseif ($uri == 'produk') {
     $dashboard      = '';
+    $aplikasi       = '';
+    $span_aplikasi_1= '';
+    $span_aplikasi_2= '';
     $menu           = '';
+    $kontak         = '';
     $umum           = '';
     $span_umum_1    = '';
     $span_umum_2    = '';
@@ -438,7 +531,11 @@ if ($uri == 'home') {
     $users          = '';
 } elseif ($uri == 'tipe_dokter') {
     $dashboard      = '';
+    $aplikasi       = '';
+    $span_aplikasi_1= '';
+    $span_aplikasi_2= '';
     $menu           = '';
+    $kontak         = '';
     $umum           = '';
     $span_umum_1    = '';
     $span_umum_2    = '';
@@ -467,7 +564,11 @@ if ($uri == 'home') {
     $users          = '';
 } elseif ($uri == 'dokter') {
     $dashboard      = '';
+    $aplikasi       = '';
+    $span_aplikasi_1= '';
+    $span_aplikasi_2= '';
     $menu           = '';
+    $kontak         = '';
     $umum           = '';
     $span_umum_1    = '';
     $span_umum_2    = '';
@@ -496,7 +597,11 @@ if ($uri == 'home') {
     $users          = '';
 } elseif ($uri == 'ruangan') {
     $dashboard      = '';
+    $aplikasi       = '';
+    $span_aplikasi_1= '';
+    $span_aplikasi_2= '';
     $menu           = '';
+    $kontak         = '';
     $umum           = '';
     $span_umum_1    = '';
     $span_umum_2    = '';
@@ -525,7 +630,11 @@ if ($uri == 'home') {
     $users          = '';
 } elseif ($uri == 'users') {
     $dashboard      = '';
+    $aplikasi       = '';
+    $span_aplikasi_1= '';
+    $span_aplikasi_2= '';
     $menu           = '';
+    $kontak         = '';
     $umum           = '';
     $span_umum_1    = '';
     $span_umum_2    = '';
@@ -555,7 +664,11 @@ if ($uri == 'home') {
 } else {
     $dashboard      = 'active';
     $umum           = '';
+    $aplikasi       = '';
+    $span_aplikasi_1= '';
+    $span_aplikasi_2= '';
     $menu           = '';
+    $kontak         = '';
     $span_umum_1    = '';
     $span_umum_2    = '';
     $pendidikan     = '';
@@ -608,13 +721,27 @@ if ($uri == 'home') {
                     </span>
                 </a>
             </li>
-            <li class="tooltips <?php echo $menu; ?>" data-container="body" data-placement="right" data-html="true" data-original-title="Master Menu">
-                <a href="<?php echo site_url('admin/menu'); ?>">
+            <li class="<?php echo $aplikasi; ?>">
+                <a href="javascript:;">
                     <i class="fa fa-desktop"></i>
-                    <span class="title">
-                    Master Menu
-                    </span>
+                    <span class="title">Master Aplikasi</span>
+                    <?php echo $span_aplikasi_1; ; ?>
+                    <span class="arrow <?php echo $span_aplikasi_2; ?>"></span>
                 </a>
+                <ul class="sub-menu">
+                    <li class="<?php echo $menu; ?>">
+                        <a href="<?php echo site_url('admin/menu'); ?>">
+                            <i class="fa fa-check-square-o"></i>
+                            Master Menu
+                        </a>
+                    </li>
+                    <li class="<?php echo $kontak; ?>">
+                        <a href="<?php echo site_url('admin/kontak'); ?>">
+                            <i class="fa fa-check-square-o"></i>
+                            Hubungi Kami
+                        </a>
+                    </li>
+                </ul>
             </li>
             <li class="<?php echo $umum; ?>">
                 <a href="javascript:;">

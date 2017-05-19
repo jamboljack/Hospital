@@ -52,6 +52,39 @@
                                         <textarea class="form-control ckeditor" name="desc" rows="10"><?php echo $detail->menu_desc; ?></textarea>
                                     </div>
                                 </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-2">Gambar Lama</label>
+                                    <div class="col-md-10 has-error">
+                                        <?php if (!empty($detail->menu_image)) { ?>
+                                        <img src="<?php echo base_url(); ?>img/Menu_image/<?php echo $detail->menu_image; ?>" width="20%">
+                                        <?php } else { ?>
+                                        <img src="<?php echo base_url(); ?>img/no_image.gif">
+                                        <?php } ?>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-2">Gambar</label>
+                                    <div class="col-md-10 has-success">
+                                        <div class="fileupload fileupload-new" data-provides="fileupload">
+                                            <div class="fileupload-new thumbnail" style="width: 200px; height: 150px;">
+                                                <img src="<?php echo base_url(); ?>img/no_image.gif" alt="" />
+                                            </div>
+                                            <div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 200px; max-height: 150px; line-height: 10px;">
+                                            </div>
+                                            <div>
+                                                <span class="btn btn-blue btn-file">
+                                                <span class="fileupload-new"><i class="icon-paper-clip"></i> Browse</span>
+                                                <span class="fileupload-exists"><i class="icon-undo"></i> Change</span>
+                                                    <input type="file" class="default" name="userfile" />
+                                                </span>                                             
+                                            </div>
+                                        </div>
+                                        <div class="clearfix margin-top-10">
+                                            <span class="label label-danger">NOTE !</span>
+                                            <span>Resolution : 800 pixel</span>
+                                        </div>
+                                    </div>                                    
+                                </div>
                             </div>
                             <div class="form-actions">
                                 <div class="row">

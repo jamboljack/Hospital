@@ -10,13 +10,13 @@ function tgl_indo($tgl){
 function getDay($tgl) {
 	$day = date('D', strtotime($tgl));
 	$dayList = array(
-		'Sun' => 'Senin',
-		'Mon' => 'Selasa',
-		'Tue' => 'Rabu',
-		'Wed' => 'Kamis',
-		'Thu' => "Jum'at",
-		'Fri' => 'Sabtu',
-		'Sat' => 'Minggu'
+		'Sun' => 'Minggu',
+		'Mon' => 'Senin',
+		'Tue' => 'Selasa',
+		'Wed' => 'Rabu',
+		'Thu' => 'Kamis',
+		'Fri' => "Jum'at",
+		'Sat' => 'Sabtu'
 	);
 
 	return $dayList[$day];
