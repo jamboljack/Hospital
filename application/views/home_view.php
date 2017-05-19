@@ -1,3 +1,19 @@
+<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>js/sweetalert2.css">
+<script src="<?php echo base_url(); ?>js/sweetalert2.min.js"></script>
+
+<?php 
+if ($this->session->flashdata('notification')) { ?>
+<script>
+    swal({
+        title: "Done",
+        text: "<?php echo $this->session->flashdata('notification'); ?>",
+        timer: 2000,
+        showConfirmButton: false,
+        type: 'success'
+    });
+</script>
+<? } ?>
+
 <div class="page-container">
     <div class="page-head">
         <div class="container">
@@ -166,28 +182,39 @@
                                     <div class="space20"></div>
                                     <form action="<?php echo site_url('home/sendmessage'); ?>" method="post">
                                     <input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
-
                                         <h3 class="form-section">Kritik & Saran</h3>
+                                        <?php if ($error == 'true') { ?>
+                                        <div class="form-group">
+                                            <div class="alert alert-danger">
+                                                <i class='fa fa-warning'></i> <b>ERROR !!</b>
+                                                <?php echo validation_errors(); ?>
+                                            </div>
+                                        </div>
+                                        <?php } ?>
                                         <div class="form-group">
                                             <div class="input-icon">
                                                 <i class="fa fa-check"></i>
-                                                <input type="text" class="form-control" placeholder="Subyek Anda" name="subject" required>
+                                                <input type="text" class="form-control" placeholder="Subyek Anda" name="subject" value="<?php echo set_value('subject'); ?>" autocomplete="off" required>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <div class="input-icon">
                                                 <i class="fa fa-user"></i>
-                                                <input type="text" class="form-control" placeholder="Nama Anda" name="name" required>
+                                                <input type="text" class="form-control" placeholder="Nama Anda" name="name" value="<?php echo set_value('name'); ?>" autocomplete="off" required>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <div class="input-icon">
                                                 <i class="fa fa-envelope"></i>
-                                                <input type="email" class="form-control" placeholder="Email Anda" name="email" required>
+                                                <input type="email" class="form-control" placeholder="Email Anda" name="email" value="<?php echo set_value('email'); ?>" autocomplete="off" required>
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <textarea class="form-control" rows="3=6" placeholder="Feedback"></textarea>
+                                            <textarea class="form-control" rows="3=6" placeholder="Kritik & Saran Anda" name="message"><?php echo set_value('message'); ?></textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <img id="imgCaptcha" src="<?php echo site_url('home/create_image'); ?>" />
+                                            <input type='text' name="verify" class="form-control" maxlength="5" placeholder="Isikan Capctha" autocomplete="off" required>
                                         </div>
                                         <button type="submit" class="btn green"><i class="fa fa-floppy-o"></i> Kirim</button>
                                     </form>

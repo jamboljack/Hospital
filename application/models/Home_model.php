@@ -28,5 +28,18 @@ class Home_model extends CI_Model {
 		
 		return $this->db->get();
 	}
+
+	function insert_message() {		
+		$data = array(
+				'message_subyek'		=> trim($this->input->post('subject')),
+				'message_nama'			=> trim($this->input->post('name')),
+				'message_email'			=> trim($this->input->post('email')),
+				'message_pesan'			=> trim($this->input->post('message')),
+		   		'message_date_post' 	=> date('Y-m-d'),
+		   		'message_time_post' 	=> date('Y-m-d H:i:s')
+		);
+
+		$this->db->insert('hospital_message', $data);
+	}
 }
 /* Location: ./application/model/Home_model.php */

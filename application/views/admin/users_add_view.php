@@ -63,7 +63,7 @@
                                 <div class="form-group form-md-line-input">
                                     <label class="col-md-2 control-label">Nama Lengkap</label>
                                     <div class="col-md-10">
-                                        <input type="text" class="form-control" id="form_control_1" placeholder="Enter Nama Lengkap" name="name" value="<?php echo set_value('name'); ?>" autocomplete="off" required>
+                                        <input type="text" class="form-control" placeholder="Enter Nama Lengkap" name="name" value="<?php echo set_value('name'); ?>" autocomplete="off" required>
                                         <div class="form-control-focus"></div>
                                     </div>
                                 </div>

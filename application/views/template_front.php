@@ -53,7 +53,7 @@
 <script src="<?php echo base_url(); ?>assets/admin/pages/scripts/form-samples.js"></script>
 <!-- BEGIN PAGE LEVEL SCRIPTS -->
 <?php if ($this->uri->segment(1) == '') { ?>
-<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;signed_in=true"></script>
+<script src="//maps.googleapis.com/maps/api/js?key=AIzaSyBSGit-VHPP7eWMCk_SxE352jfeWNDi_h4&callback=init" async="" defer="defer" type="text/javascript"></script>
 <?php } ?>
 <script src="<?php echo base_url(); ?>assets/global/scripts/metronic.js" type="text/javascript"></script>
 <script src="<?php echo base_url(); ?>assets/admin/layout3/scripts/layout.js" type="text/javascript"></script>

@@ -90,7 +90,8 @@ class Dokter_model extends CI_Model {
 				'ruangan_id'			=> trim($this->input->post('lstRuangan')),
 				'jadwal_hari'			=> trim($this->input->post('lstHari')),
 				'jadwal_mulai'			=> trim($this->input->post('mulai')),
-				'jadwal_selesai'		=> trim($this->input->post('selesai')),				
+				'jadwal_selesai'		=> trim($this->input->post('selesai')),
+				'jadwal_keterangan'		=> trim($this->input->post('keterangan')),
 		   		'jadwal_date_update' 	=> date('Y-m-d'),
 		   		'jadwal_time_update' 	=> date('Y-m-d H:i:s')
 		);
@@ -113,7 +114,8 @@ class Dokter_model extends CI_Model {
 				'ruangan_id'			=> trim($this->input->post('lstRuangan')),
 				'jadwal_hari'			=> trim($this->input->post('lstHari')),
 				'jadwal_mulai'			=> trim($this->input->post('mulai')),
-				'jadwal_selesai'		=> trim($this->input->post('selesai')),				
+				'jadwal_selesai'		=> trim($this->input->post('selesai')),
+				'jadwal_keterangan'		=> trim($this->input->post('keterangan')),
 		   		'jadwal_date_update' 	=> date('Y-m-d'),
 		   		'jadwal_time_update' 	=> date('Y-m-d H:i:s')
 		);

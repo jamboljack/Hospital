@@ -110,7 +110,13 @@
                                         </div>
                                     </div>
                                 </div>
-
+                                <div class="form-group form-md-line-input">
+                                    <label class="col-md-3 control-label">Keterangan</label>
+                                    <div class="col-md-9">
+                                        <input type="text" class="form-control" placeholder="Enter Keterangan" name="keterangan" value="<?php echo $detailjadwal->jadwal_keterangan; ?>" autocomplete="off">
+                                        <div class="form-control-focus"></div>
+                                    </div>
+                                </div>
                             </div>
                             <div class="form-actions">
                                 <div class="row">
