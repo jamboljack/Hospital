@@ -30,7 +30,7 @@ if ($this->session->flashdata('notification')) { ?>
                     <a href="<?php echo base_url(); ?>">Beranda</a><i class="fa fa-circle"></i>
                 </li>
                 <li class="active">
-                    Selamat Datang di Pendaftaran Online RS St. Elisabeth Semarang
+                    Selamat Datang di Pendaftaran Rawat Jalan Online RS St. Elisabeth Semarang
                 </li>                
             </ul>
             

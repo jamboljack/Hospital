@@ -16,7 +16,7 @@
     <div class="page-head">
         <div class="container">
             <div class="page-title">
-                <h1>Jadwal Dokter</h1>
+                <h1>Jadwal Dokter <small>Menu Informasi dan Pencarian Jadwal Praktek Dokter</small></h1>
             </div>
         </div>
     </div>
