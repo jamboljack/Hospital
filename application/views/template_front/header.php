@@ -1,5 +1,5 @@
 <?php 
-$uri = $this->uri->segment(1);
+$uri    = $this->uri->segment(1);
 
 if ($uri == '') {
     $beranda        = 'active';
@@ -10,6 +10,10 @@ if ($uri == '') {
     $jadwal_dokter  = 'active';
     $registrasi     = '';
 } elseif ($uri == 'registrasi_online') {
+    $beranda        = '';
+    $jadwal_dokter  = '';
+    $registrasi     = 'active';
+} elseif ($uri == 'registrasi') {
     $beranda        = '';
     $jadwal_dokter  = '';
     $registrasi     = 'active';
@@ -27,31 +31,6 @@ if ($uri == '') {
                 <a href="<?php echo base_url(); ?>"><img src="<?php echo base_url(); ?>img/logo-dashboard.png" alt="logo" class="logo-default"></a>
             </div>
             <a href="#" class="menu-toggler"></a>
-            
-            <?php if($this->session->userdata('logged_in_pasien')) { ?>
-            <div class="top-menu">
-                <ul class="nav navbar-nav pull-right">                                       
-                    <li class="dropdown dropdown-user dropdown-dark">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-                        <span class="username username-hide-mobile"><?php echo $this->session->userdata('nama'); ?></span>
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-default">
-                            <li>
-                                <a href="<?php echo site_url('dashboard/profil'); ?>">
-                                <i class="icon-user"></i> Profil </a>
-                            </li>                           
-                            <li class="divider">
-                            </li>
-                            <li>
-                                <a href="<?php echo site_url('login/logout'); ?>">
-                                <i class="icon-key"></i> Log Out </a>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-            <?php } ?>
-
         </div>
     </div>
     

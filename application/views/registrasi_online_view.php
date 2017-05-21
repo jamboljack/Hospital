@@ -120,9 +120,8 @@
                                     </div>
                                     <div class="tab-content">
                                         <?php if ($this->session->flashdata('notificationsuccess')) { ?>
-                                        <div class="alert alert-success alert-dismissable">
+                                        <div class="alert alert-success alert-dismissable" align="center">
                                             <button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>
-                                            <b>TERIMA KASIH !!</b> <br>
                                             <?php echo $this->session->flashdata('notificationsuccess'); ?>
                                         </div>
                                         <?php } ?>
@@ -249,7 +248,138 @@
                                             </div>
                                         </div>
                                         <div class="tab-pane <?php echo $tab2; ?>" id="tab2">
-                                                
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <!-- SIDEBAR -->
+                                                    <div class="profile-sidebar" style="width: 250px;">
+                                                        <div class="portlet light profile-sidebar-portlet">
+                                                            <div class="profile-userpic">
+                                                                <img src="<?php echo base_url('img/avatar-green.png'); ?>" class="img-responsive" alt="">
+                                                            </div>
+                                                            <div class="profile-usertitle">
+                                                                <div class="profile-usertitle-name">
+                                                                    <?php echo $this->session->userdata('username'); ?>
+                                                                </div>
+                                                            </div>
+                                                            <?php 
+                                                            $uritab = $this->uri->segment(3);
+                                                            if (empty($uritab) || $uritab == '' && $uritab <> 'ubahpassword' && $uritab <> 'ubahprofil') {
+                                                                $tabprofil1 = 'class="active"';
+                                                                $tabprofil2 = '';
+                                                                $tabprofil3 = '';
+                                                            } elseif ($uritab == 'ubahpassword') {
+                                                                $tabprofil1 = '';
+                                                                $tabprofil2 = 'class="active"';
+                                                                $tabprofil3 = '';
+                                                            } elseif ($uritab == 'ubahprofil') {
+                                                                $tabprofil1 = '';
+                                                                $tabprofil2 = '';
+                                                                $tabprofil3 = 'class="active"';
+                                                            }
+                                                            ?>
+                                                            <div class="profile-usermenu">
+                                                                <ul class="nav">
+                                                                    <li <?php echo $tabprofil1; ?>>
+                                                                        <a href="<?php echo site_url('registrasi/step_two'); ?>">
+                                                                        <i class="fa fa-list"></i>
+                                                                        Daftar Anggota Keluarga </a>
+                                                                    </li>
+                                                                    <li <?php echo $tabprofil2; ?>>
+                                                                        <a href="<?php echo site_url('registrasi/step_two/ubahpassword'); ?>">
+                                                                        <i class="fa fa-key"></i>
+                                                                        Ubah Password </a>
+                                                                    </li>
+                                                                    <li <?php echo $tabprofil3; ?>>
+                                                                        <a href="<?php echo site_url('registrasi/step_two/ubahprofil'); ?>">
+                                                                        <i class="fa fa-user"></i>
+                                                                        Ubah Profil </a>
+                                                                    </li>
+                                                                    <li>
+                                                                        <a href="<?php echo site_url('registrasi_online/logout'); ?>" title="Keluar Pendaftaran">
+                                                                        <i class="fa fa-sign-out"></i>
+                                                                        Log Out </a>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!-- END SIDEBAR -->
+
+                                                    <?php 
+                                                    if (empty($uritab) || $uritab == '' && $uritab <> 'ubahpassword' && $uritab <> 'ubahprofil') {
+                                                    ?>
+                                                    <!-- BEGIN DAFTAR ANGGOTA KELUARGA -->
+                                                    <div class="profile-content">
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <div class="portlet light">
+                                                                    <div class="portlet-title tabbable-line">
+                                                                        <div class="caption caption-md">
+                                                                            <i class="icon-globe theme-font hide"></i>
+                                                                            <span class="caption-subject font-blue-madison bold uppercase">Daftar Anggota Keluarga</span>
+                                                                        </div>
+                                                                        <ul class="nav nav-tabs">
+                                                                            <li class="active">
+                                                                                <a href="#tab_1_1" data-toggle="tab">Pasien Lama <br> (Sudah Pernah Berkunjung)</a>
+                                                                            </li>
+                                                                            <li>
+                                                                                <a href="#tab_1_2" data-toggle="tab">Pasien Baru <br> (Belum Pernah Berkunjung)</a>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </div>
+                                                                    <div class="portlet-body">
+                                                                        <div class="tab-content">
+                                                                            <!-- PASIEN LAMA -->
+                                                                            <div class="tab-pane active" id="tab_1_1">
+                                                                                <div class="row">
+                                                                                    <div class="col-md-6">
+                                                                                        <form role="form" action="<?php echo site_url('registrasi_online/register'); ?>" method="post" enctype="multipart/form-data">
+                                                                                        <input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
+
+                                                                                        <div class="form-body"> 
+                                                                                            <div class="form-group form-md-line-input">
+                                                                                                <select class="form-control">
+                                                                                                    <option value="">- Pilih Status -</option>
+                                                                                                    <option value="1">Diri Sendiri</option>
+                                                                                                    <option value="2">Suami</option>
+                                                                                                    <option value="3">Istri</option>
+                                                                                                    <option value="4">Anak</option>
+                                                                                                    <option value="4">Orang Tua</option>
+                                                                                                    <option value="4">Saudara Lainnya</option>
+                                                                                                </select>
+                                                                                                <label>Hubungan dengan Pemilik Akun ?</label>
+                                                                                            </div>
+                                                                                            <div class="form-group form-md-line-input">
+                                                                                                <input type="text" class="form-control" placeholder="Masukkan No. REKAM MEDIK">
+                                                                                                <label>NO. REKAM MEDIK</label>
+                                                                                            </div>
+
+                                                                                            <div class="margiv-top-10">
+                                                                                                <a href="" class="btn green"><i class="fa fa-search"></i>
+                                                                                                Lihat Data </a>
+                                                                                            </div>
+                                                                                            </div>
+                                                                                        </form>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <!-- END PASIEN LAMA -->
+                                                                            <!-- PASIEN BARU TAB -->
+                                                                            <div class="tab-pane" id="tab_1_2">
+                                                                                
+                                                                            </div>
+                                                                            <!-- END PASIEN BARU TAB -->
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!-- END DAFTAR ANGGOTA KELUARGA -->
+                                                    <?php } ?>
+
+                                                </div>
+                                            </div>
                                         </div>
                                         <div class="tab-pane <?php echo $tab3; ?>" id="tab3">
                                                 

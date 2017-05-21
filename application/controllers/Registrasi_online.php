@@ -31,8 +31,12 @@ class Registrasi_online extends CI_Controller{
     }
 
     public function index() {
-        $data['error'] = 'false';
-        $this->template_front->display('registrasi_online_view', $data);
+        if(!$this->session->userdata('logged_in_pasien')) {
+            $data['error'] = 'false';
+            $this->template_front->display('registrasi_online_view', $data);
+        } else {
+            redirect(site_url('registrasi/step_two'));
+        }
     }
 
     public function register() {
@@ -125,17 +129,21 @@ class Registrasi_online extends CI_Controller{
                             );
                     
                 $this->session->set_userdata($array_item);
-                redirect(site_url('registrasi_online/step_two'));
+                $this->session->set_flashdata('notificationsuccess','<b>Login Sukses.</b>');
+                redirect(site_url('registrasi/step_two'));
             } else {
                 $this->session->set_flashdata('notificationerror','<b>Login Gagal, Username atau Password Anda Salah.</b>');
-                redirect(site_url('registrasi_online'));                    
+                redirect(site_url('registrasi_online'));
             }               
         }
     }
 
-    public function step_two() {
-        $data['error'] = 'false';
-        $this->template_front->display('registrasi_online_view', $data);
-    }   
+    public function logout() {
+        $this->output->set_header('Last-Modified: ' . gmdate("D, d M Y H:i:s") . 'GMT');
+        $this->output->set_header('Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0');
+        $this->output->set_header('Pragma: no-chace');
+        $this->session->sess_destroy();
+        redirect(site_url('registrasi_online'));
+    }
 }
 /* Location: ./application/controller/Registrasi_online.php */
