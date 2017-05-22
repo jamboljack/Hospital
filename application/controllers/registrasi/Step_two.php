@@ -35,7 +35,12 @@ class Step_two extends CI_Controller{
         if(!$this->session->userdata('logged_in_pasien')) {
             redirect(site_url('registrasi_online'));
         } else {
-            $data['error'] = 'false';
+            $data['error']      = 'false';
+            $data['listAgama']  = $this->registrasi_online_model->select_agama()->result();
+            $data['listDarah']  = $this->registrasi_online_model->select_darah()->result();
+            $data['listDidik']  = $this->registrasi_online_model->select_pendidikan()->result();
+            $data['listStatus'] = $this->registrasi_online_model->select_status()->result();
+            $data['listKerja']  = $this->registrasi_online_model->select_pekerjaan()->result();
             $this->template_front->display('registrasi_online_view', $data);
         }
     }

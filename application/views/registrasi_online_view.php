@@ -16,7 +16,7 @@
 
             <div class="row">
                 <div class="col-md-12">
-                    <div class="portlet light">
+                    <div class="portlet light" id="form_wizard_1">
                         <div class="portlet-title">
                             <div class="caption">
                                 <span class="caption-subject font-green-sharp bold uppercase">
@@ -25,7 +25,7 @@
                             </div>
                         </div>
                         <div class="portlet-body form">
-                            <div class="form-wizard">
+                            <div class="form-wizard" >
                                 <div class="form-body">
                                     <ul class="nav nav-pills nav-justified steps">
                                         <?php 
@@ -336,9 +336,38 @@
                                                                                         <form role="form" action="<?php echo site_url('registrasi_online/register'); ?>" method="post" enctype="multipart/form-data">
                                                                                         <input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
 
-                                                                                        <div class="form-body"> 
+                                                                                        <div class="form-body">
                                                                                             <div class="form-group form-md-line-input">
-                                                                                                <select class="form-control">
+                                                                                                <input type="text" class="form-control" name="no_rekam_medik">
+                                                                                                <span class="help-block">Masukkan No. REKAM MEDIK</span>
+                                                                                                <label>NO. REKAM MEDIK</label>
+                                                                                            </div>
+
+                                                                                            <div class="margiv-top-10">
+                                                                                                <a href="" class="btn green"><i class="fa fa-search"></i>
+                                                                                                Cari Data </a>
+                                                                                            </div>
+                                                                                            </div>
+                                                                                        </form>
+                                                                                    </div>
+                                                                                    <div class="col-md-6">
+                                                                                        <div class="note note-success note-bordered">
+                                                                                        NO. REKAM MEDIK diisi sesuai Nomor Pasien yang tertera di Kartu Pasien RS St. Elisabeth Semarang.
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <!-- END PASIEN LAMA -->
+                                                                            <!-- PASIEN BARU TAB -->
+                                                                            <div class="tab-pane" id="tab_1_2">
+                                                                                <div class="row">
+                                                                                    <form role="form" action="<?php echo site_url('registrasi_online/register'); ?>" method="post" enctype="multipart/form-data">
+                                                                                    <input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
+                                                                                    <div class="col-md-6">
+                                                                                        <div class="form-body">
+                                                                                            <h4 class="block">Informasi Biodata</h4>
+                                                                                            <div class="form-group form-md-line-input">
+                                                                                                <select class="form-control" name="lstHubungan">
                                                                                                     <option value="">- Pilih Status -</option>
                                                                                                     <option value="1">Diri Sendiri</option>
                                                                                                     <option value="2">Suami</option>
@@ -350,23 +379,117 @@
                                                                                                 <label>Hubungan dengan Pemilik Akun ?</label>
                                                                                             </div>
                                                                                             <div class="form-group form-md-line-input">
-                                                                                                <input type="text" class="form-control" placeholder="Masukkan No. REKAM MEDIK">
-                                                                                                <label>NO. REKAM MEDIK</label>
+                                                                                                <input type="text" class="form-control" name="nama">
+                                                                                                <span class="help-block">Masukkan Nama sesuai KTP atau Kartu Keluarga</span>
+                                                                                                <label>Nama</label>
                                                                                             </div>
-
-                                                                                            <div class="margiv-top-10">
-                                                                                                <a href="" class="btn green"><i class="fa fa-search"></i>
-                                                                                                Lihat Data </a>
+                                                                                            <div class="form-group form-md-line-input">
+                                                                                                <input type="text" class="form-control" name="no_ktp" pattern="^[0-9]{1,12}$" title="Hanya Angka, maksimal 12 Digit">
+                                                                                                <span class="help-block">Masukkan No. KTP atau KK, hanya ANGKA</span>
+                                                                                                <label>No. KTP / KK</label>
                                                                                             </div>
+                                                                                            <div class="form-group form-md-radios">
+                                                                                                <label>Jenis Kelamin</label>
+                                                                                                <div class="md-radio-inline">
+                                                                                                    <div class="md-radio">
+                                                                                                        <input type="radio" id="rdJK1" name="rdJK" class="md-radiobtn" value="L">
+                                                                                                        <label for="rdJK1">
+                                                                                                        <span></span>
+                                                                                                        <span class="check"></span>
+                                                                                                        <span class="box"></span>
+                                                                                                        Laki-Laki </label>
+                                                                                                    </div>
+                                                                                                    <div class="md-radio">
+                                                                                                        <input type="radio" id="rdJK2" name="rdJK" class="md-radiobtn" value="P">
+                                                                                                        <label for="rdJK2">
+                                                                                                        <span></span>
+                                                                                                        <span class="check"></span>
+                                                                                                        <span class="box"></span>
+                                                                                                        Perempuan </label>
+                                                                                                    </div>
+                                                                                                </div>
                                                                                             </div>
-                                                                                        </form>
+                                                                                            <div class="form-group form-md-line-input">
+                                                                                                <input type="text" class="form-control" name="tempat_lahir">
+                                                                                                <span class="help-block">Tempat Lahir Pasien</span>
+                                                                                                <label>Tempat Lahir</label>
+                                                                                            </div>
+                                                                                            <div class="form-group form-md-line-input">
+                                                                                                <input class="form-control form-control-inline input-medium date-picker" size="16" type="text" name="tgl_lahir" value="<?php echo set_value('tgl_lahir'); ?>" placeholder="DD-MM-YYYY" autocomplete="off" required />
+                                                                                                <label>Tanggal Lahir</label>
+                                                                                            </div>
+                                                                                            <div class="form-group form-md-line-input">
+                                                                                                <select class="form-control" name="lstAgama" required>
+                                                                                                    <option value="">- Pilih Agama -</option>
+                                                                                                    <?php 
+                                                                                                    foreach($listAgama as $a) {
+                                                                                                    ?>
+                                                                                                    <option value="<?php echo $a->agama_id; ?>"><?php echo $a->agama_name; ?></option>
+                                                                                                    <?php } ?>
+                                                                                                </select>
+                                                                                                <label>Agama</label>
+                                                                                            </div>
+                                                                                            <div class="form-group form-md-line-input">
+                                                                                                <select class="form-control" name="lstDarah" required>
+                                                                                                    <option value="">- Pilih Golongan Darah -</option>
+                                                                                                    <?php 
+                                                                                                    foreach($listDarah as $d) {
+                                                                                                    ?>
+                                                                                                    <option value="<?php echo $d->darah_id; ?>"><?php echo $d->darah_name; ?></option>
+                                                                                                    <?php } ?>
+                                                                                                </select>
+                                                                                                <label>Golongan Darah</label>
+                                                                                            </div>
+                                                                                            <div class="form-group form-md-line-input">
+                                                                                                <select class="form-control" name="lstPendidikan" required>
+                                                                                                    <option value="">- Pilih Pendidikan -</option>
+                                                                                                    <?php 
+                                                                                                    foreach($listDidik as $p) {
+                                                                                                    ?>
+                                                                                                    <option value="<?php echo $p->pendidikan_id; ?>"><?php echo $p->pendidikan_name; ?></option>
+                                                                                                    <?php } ?>
+                                                                                                </select>
+                                                                                                <label>Pendidikan</label>
+                                                                                            </div>
+                                                                                            <div class="form-group form-md-line-input">
+                                                                                                <select class="form-control" name="lstStatus" required>
+                                                                                                    <option value="">- Pilih Status Kawin -</option>
+                                                                                                    <?php 
+                                                                                                    foreach($listStatus as $s) {
+                                                                                                    ?>
+                                                                                                    <option value="<?php echo $s->status_id; ?>"><?php echo $s->status_name; ?></option>
+                                                                                                    <?php } ?>
+                                                                                                </select>
+                                                                                                <label>Status Kawin</label>
+                                                                                            </div>
+                                                                                            <div class="form-group form-md-line-input">
+                                                                                                <select class="form-control" name="lstKerja" required>
+                                                                                                    <option value="">- Pilih Pekerjaan -</option>
+                                                                                                    <?php 
+                                                                                                    foreach($listKerja as $k) {
+                                                                                                    ?>
+                                                                                                    <option value="<?php echo $k->pekerjaan_id; ?>"><?php echo $k->pekerjaan_name; ?></option>
+                                                                                                    <?php } ?>
+                                                                                                </select>
+                                                                                                <label>Pekerjaan</label>
+                                                                                            </div>
+                                                                                        </div>
                                                                                     </div>
+                                                                                    <div class="col-md-6">
+                                                                                        <div class="form-body">
+                                                                                            <h4 class="block">Informasi Alamat</h4>
+                                                                                            <div class="form-group form-md-line-input">
+                                                                                                <input type="text" class="form-control" name="nama">
+                                                                                                <span class="help-block">Masukkan Alamat sesuai KTP</span>
+                                                                                                <label>Alamat</label>
+                                                                                            </div>
+                                                                                            
+
+
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    </form>
                                                                                 </div>
-                                                                            </div>
-                                                                            <!-- END PASIEN LAMA -->
-                                                                            <!-- PASIEN BARU TAB -->
-                                                                            <div class="tab-pane" id="tab_1_2">
-                                                                                
                                                                             </div>
                                                                             <!-- END PASIEN BARU TAB -->
                                                                         </div>

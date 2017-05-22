@@ -22,6 +22,46 @@ class Registrasi_online_model extends CI_Model {
 		$this->db->where('user_username', $username);
 		
 		return $this->db->get();
-	}	
+	}
+
+	function select_agama() {
+		$this->db->select('*');
+		$this->db->from('hospital_agama');
+		$this->db->order_by('agama_name', 'asc');
+		
+		return $this->db->get();
+	}
+
+	function select_darah() {
+		$this->db->select('*');
+		$this->db->from('hospital_darah');
+		$this->db->order_by('darah_name', 'asc');
+		
+		return $this->db->get();
+	}
+
+	function select_pendidikan() {
+		$this->db->select('*');
+		$this->db->from('hospital_pendidikan');
+		$this->db->order_by('pendidikan_name', 'asc');
+		
+		return $this->db->get();
+	}
+
+	function select_status() {
+		$this->db->select('*');
+		$this->db->from('hospital_status');
+		$this->db->order_by('status_name', 'asc');
+		
+		return $this->db->get();
+	}
+
+	function select_pekerjaan() {
+		$this->db->select('*');
+		$this->db->from('hospital_pekerjaan');
+		$this->db->order_by('pekerjaan_name', 'asc');
+		
+		return $this->db->get();
+	}
 }
 /* Location: ./application/model/Registrasi_online_model.php */

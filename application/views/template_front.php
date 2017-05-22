@@ -48,15 +48,10 @@
 <script type="text/javascript" src="<?php echo base_url(); ?>assets/datepicker/js/moment.min.js"></script>
 <script type="text/javascript" src="<?php echo base_url(); ?>assets/datepicker/js/daterangepicker.js"></script>
 <script src="<?php echo base_url(); ?>js/advanced-form-components.js"></script>
-<!-- ADDITIONAL -->
-<script src="<?php echo base_url(); ?>assets/admin/pages/scripts/table-advanced.js"></script>
-<script src="<?php echo base_url(); ?>assets/admin/pages/scripts/components-pickers.js"></script>
-<script src="<?php echo base_url(); ?>assets/admin/pages/scripts/form-samples.js"></script>
 <!-- WIZARD -->
 <script type="text/javascript" src="<?php echo base_url(); ?>assets/global/plugins/jquery-validation/js/jquery.validate.min.js"></script>
 <script type="text/javascript" src="<?php echo base_url(); ?>assets/global/plugins/jquery-validation/js/additional-methods.min.js"></script>
 <script type="text/javascript" src="<?php echo base_url(); ?>assets/global/plugins/bootstrap-wizard/jquery.bootstrap.wizard.min.js"></script>
-
 <!-- BEGIN PAGE LEVEL SCRIPTS -->
 <?php if ($this->uri->segment(1) == '') { ?>
 <script src="//maps.googleapis.com/maps/api/js?key=AIzaSyBSGit-VHPP7eWMCk_SxE352jfeWNDi_h4&callback=init" async="" defer="defer" type="text/javascript"></script>
@@ -67,16 +62,21 @@
 <script src="<?php echo base_url(); ?>assets/admin/pages/scripts/index3.js" type="text/javascript"></script>
 <script src="<?php echo base_url(); ?>assets/admin/pages/scripts/components-editors.js"></script>
 <script src="<?php echo base_url(); ?>assets/admin/pages/scripts/profile.js" type="text/javascript"></script>
-<!--<script src="<?php echo base_url(); ?>assets/admin/pages/scripts/form-wizard.js"></script>-->
+<!-- ADDITIONAL -->
+<script src="<?php echo base_url(); ?>assets/admin/pages/scripts/table-advanced.js"></script>
+<script src="<?php echo base_url(); ?>assets/admin/pages/scripts/components-pickers.js"></script>
+<script src="<?php echo base_url(); ?>assets/admin/pages/scripts/form-samples.js"></script>
+<script src="<?php echo base_url(); ?>assets/admin/pages/scripts/form-wizard.js"></script>
 <!-- END PAGE LEVEL SCRIPTS -->
 <script>
 jQuery(document).ready(function() {    
    Metronic.init(); // init metronic core componets
    Layout.init(); // init layout
-   Demo.init(); // init demo(theme settings page)  
+   ComponentsPickers.init();
+   //Demo.init(); // init demo(theme settings page)  
+   Profile.init(); // init page demo
    FormSamples.init();
    FormWizard.init();
-   Profile.init(); // init page demo
 });
 </script>
 </body>
