@@ -251,7 +251,7 @@ if ($this->session->flashdata('notification')) { ?>
                             <tr>
                                 <th width="5%">No</th>                                
                                 <th>Nama Pelanggan</th>
-                                <th width="10%">Kelompok</th>
+                                <th width="15%">Kelompok</th>
                                 <th width="10%">Tgl. Reg</th>
                                 <th width="30%">Alamat</th>
                                 <th width="10%">Telp</th>

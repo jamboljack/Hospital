@@ -781,12 +781,12 @@ if ($uri == 'home') {
                             Agama
                         </a>
                     </li>
-                    <li class="<?php echo $asuransi; ?>">
+                    <!--<li class="<?php echo $asuransi; ?>">
                         <a href="<?php echo site_url('admin/asuransi'); ?>">
                             <i class="fa fa-check-square-o"></i>
                             Asuransi
                         </a>
-                    </li>
+                    </li>-->
                     <li class="<?php echo $identitas; ?>">
                         <a href="<?php echo site_url('admin/identitas'); ?>">
                             <i class="fa fa-check-square-o"></i>

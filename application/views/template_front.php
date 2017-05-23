@@ -70,13 +70,13 @@
 <!-- END PAGE LEVEL SCRIPTS -->
 <script>
 jQuery(document).ready(function() {    
-   Metronic.init(); // init metronic core componets
-   Layout.init(); // init layout
-   ComponentsPickers.init();
-   //Demo.init(); // init demo(theme settings page)  
-   Profile.init(); // init page demo
-   FormSamples.init();
-   FormWizard.init();
+   	Metronic.init(); // init metronic core componets
+   	Layout.init(); // init layout
+   	ComponentsPickers.init();
+   	//Demo.init(); // init demo(theme settings page)  
+   	FormSamples.init();
+	Profile.init(); // init page demo
+   	FormWizard.init();   
 });
 </script>
 </body>

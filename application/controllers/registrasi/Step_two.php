@@ -35,14 +35,32 @@ class Step_two extends CI_Controller{
         if(!$this->session->userdata('logged_in_pasien')) {
             redirect(site_url('registrasi_online'));
         } else {
-            $data['error']      = 'false';
-            $data['listAgama']  = $this->registrasi_online_model->select_agama()->result();
-            $data['listDarah']  = $this->registrasi_online_model->select_darah()->result();
-            $data['listDidik']  = $this->registrasi_online_model->select_pendidikan()->result();
-            $data['listStatus'] = $this->registrasi_online_model->select_status()->result();
-            $data['listKerja']  = $this->registrasi_online_model->select_pekerjaan()->result();
+            $data['error']          = 'false';
+            $data['listIdentitas']  = $this->registrasi_online_model->select_identitas()->result();
+            $data['listAgama']      = $this->registrasi_online_model->select_agama()->result();
+            $data['listDarah']      = $this->registrasi_online_model->select_darah()->result();
+            $data['listDidik']      = $this->registrasi_online_model->select_pendidikan()->result();
+            $data['listStatus']     = $this->registrasi_online_model->select_status()->result();
+            $data['listKerja']      = $this->registrasi_online_model->select_pekerjaan()->result();
+            $data['listPelanggan']  = $this->registrasi_online_model->select_pelanggan()->result();
+            // Provinsi
+            $data['listProvinsi']   = $this->registrasi_online_model->select_provinsi()->result();
+            // List Anggota Keluarga per User Login
+            $data['listAnggota']    = $this->registrasi_online_model->select_anggota_keluarga()->result();
             $this->template_front->display('registrasi_online_view', $data);
         }
+    }
+
+    // dijalankan saat Provinsi di klik
+    public function pilih_kabupaten() {
+        $data['listKabupaten']     = $this->registrasi_online_model->select_kabupaten($this->uri->segment(4));
+        $this->load->view('v_drop_down_kabupaten', $data);
+    }
+
+    // dijalankan saat Kabupaten di klik
+    public function pilih_kecamatan() {
+        $data['listKecamatan']     = $this->registrasi_online_model->select_kecamatan($this->uri->segment(4));
+        $this->load->view('v_drop_down_kecamatan', $data);
     }
 
     public function ubahpassword() {
@@ -53,6 +71,12 @@ class Step_two extends CI_Controller{
     public function ubahprofil() {
         $data['error'] = 'false';
         $this->template_front->display('registrasi_online_view', $data);
+    }
+
+    public function savedatakeluarga() {
+        $this->registrasi_online_model->insert_data_anggota();
+        $this->session->set_flashdata('notificationsuccess','Simpan Data Anggota Keluarga Berhasil.');
+        redirect(site_url('registrasi/step_two'));
     }
 }
 /* Location: ./application/controller/registrasi_online/Step_two.php */

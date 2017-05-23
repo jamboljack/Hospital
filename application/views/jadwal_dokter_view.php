@@ -51,9 +51,19 @@
                                 <div class="form-group">
                                     <label class="control-label col-md-3">Poliklinik</label>
                                     <div class="col-md-9">
+                                        <select class="select2_category form-control" data-placeholder="- Pilih Ruangan -" name="lstTipe" id="tipe_id" required onChange="tampilDokter()" autofocus>
+                                            <option value="all">-- SEMUA POLIKLINIK --</option>
+                                            <?php 
+                                            foreach($listTipe as $r) { 
+                                            ?>
+                                            <option value="<?php echo $r->tipe_id; ?>" <?php echo set_select('lstTipe', $r->tipe_id); ?>><?php echo $r->tipe_name; ?></option>
+                                            <?php 
+                                            }
+                                            ?>
+                                        </select>
                                         <?php
-                                        $style_poliklinik = 'class="select2_category form-control" id="tipe_id"  onChange="tampilDokter()"';
-                                            echo form_dropdown('lstTipe', $listTipe, '',$style_poliklinik);
+                                        /*$style_poliklinik = 'class="select2_category form-control" id="tipe_id"  onChange="tampilDokter()"';
+                                            echo form_dropdown('lstTipe', $listTipe, '',$style_poliklinik);*/
                                         ?>
                                     </div>
                                 </div>
@@ -61,7 +71,7 @@
                                     <label class="control-label col-md-3">Dokter</label>
                                     <div class="col-md-9">
                                         <?php
-                                        $style_dokter = 'class="select2_category form-control" id="dokter_id"';
+                                        $style_dokter = 'class="form-control" id="dokter_id"';
                                         echo form_dropdown("lstDokter", array('all' => '- PILIH DOKTER -'), '',$style_dokter);
                                         ?>
                                     </div>
