@@ -7,6 +7,15 @@ class Registrasi_online extends CI_Controller{
         $this->load->library('template_front');
         $this->load->model('registrasi_online_model');
     }
+
+    public function index() {
+        if(!$this->session->userdata('logged_in_pasien')) {
+            $data['error'] = 'false';
+            $this->template_front->display('registrasi_online_view', $data);
+        } else {
+            redirect(site_url('registrasi/step_two'));
+        }
+    }
     
     public function create_image() {
         $md5_hash = md5(rand(0,999));
@@ -30,15 +39,6 @@ class Registrasi_online extends CI_Controller{
         ImageDestroy($image);
     }
 
-    public function index() {
-        if(!$this->session->userdata('logged_in_pasien')) {
-            $data['error'] = 'false';
-            $this->template_front->display('registrasi_online_view', $data);
-        } else {
-            redirect(site_url('registrasi/step_two'));
-        }
-    }
-
     public function register() {
         $this->form_validation->set_rules('username','<b>Nama Akun</b>','trim|required|min_length[5]|max_length[20]|is_unique[hospital_users.user_username]'); // Username minimal 5 karakter dan maksimal 20 karakter
         $this->form_validation->set_rules('nama','<b>Nama Lengkap</b>','trim|required|min_length[5]'); // Email harus Valid
@@ -59,7 +59,7 @@ class Registrasi_online extends CI_Controller{
                 $data = array(
                     'user_username'     => trim($this->input->post('username')),
                     'user_password'     => sha1(trim($this->input->post('password'))),
-                    'user_nama'         => strtoupper(trim($this->input->post('nama'))),
+                    'user_name'         => strtoupper(trim($this->input->post('nama'))),
                     'user_email'        => trim($this->input->post('email')),
                     'user_phone'        => trim($this->input->post('phone')),
                     'user_level'        => 'Pasien',
@@ -98,10 +98,10 @@ class Registrasi_online extends CI_Controller{
                 $this->email->send();
                 */
 
-                $this->session->set_flashdata('notificationsuccess','Registrasi Akun Anda Berhasil, Silahkan Login.');
+                $this->session->set_flashdata('notificationsuccess','<b>Registrasi Akun Anda Berhasil, Silahkan Login.</b>');
                 redirect(site_url('registrasi_online'));
             } else {
-                $this->session->set_flashdata('notificationerror','MAAF !!, Captcha Salah, ulangi lagi.');
+                $this->session->set_flashdata('notificationerror','<b>MAAF !!, Captcha Salah, ulangi lagi.</');
                 redirect(site_url('registrasi_online'));
             }
         }

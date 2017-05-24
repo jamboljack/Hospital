@@ -123,12 +123,12 @@ class Registrasi_online_model extends CI_Model {
 
 	function select_anggota_keluarga() {
 		$username  = $this->session->userdata('username');
-
-		$this->db->select('p.pasien_id, p.pasien_no_rm, p.pasien_nama, p.pasien_jk, p.pelanggan_id, l.pelanggan_name');
+		$this->db->select('p.pasien_id, p.pasien_no_rm, p.pasien_nama, p.pasien_nama_seo, p.pasien_jk, 
+							p.pelanggan_id, l.pelanggan_name');
 		$this->db->from('hospital_pasien p');
 		$this->db->join('hospital_pelanggan l', 'p.pelanggan_id = l.pelanggan_id');
 		$this->db->where('p.user_username', $username);
-		$this->db->order_by('p.pasien_nama', 'asc');
+		$this->db->order_by('p.pasien_hubungan', 'asc');
 		
 		return $this->db->get();
 	}
@@ -136,7 +136,7 @@ class Registrasi_online_model extends CI_Model {
 	// Simpan Data Anggota Keluarga
 	function insert_data_anggota() {
 		$tgl 	= $this->input->post('tgl_lahir');
-		if (!empty($tgl_daftar)) {
+		if (!empty($tgl)) {
 			$xtgl 		= explode("-", $tgl);
             $thn	 	= $xtgl[2];
             $bln 		= $xtgl[1];
@@ -150,6 +150,7 @@ class Registrasi_online_model extends CI_Model {
 				'user_username'			=> trim($this->session->userdata('username')),
 				'pasien_hubungan'		=> $this->input->post('lstHubungan'),
 				'pasien_nama'			=> strtoupper(trim($this->input->post('nama'))),
+				'pasien_nama_seo'		=> seo_title(trim($this->input->post('nama'))),
 				'identitas_id'			=> $this->input->post('lstIdentitas'),
 				'pasien_no_identitas'	=> trim($this->input->post('no_identitas')),
 				'pasien_jk'				=> trim($this->input->post('rdJK')),
@@ -177,6 +178,51 @@ class Registrasi_online_model extends CI_Model {
 		);
 
 		$this->db->insert('hospital_pasien', $data);
+	}
+
+	function select_detail_keluarga() {
+		$this->db->select('*');
+		$this->db->from('hospital_pasien');
+		$this->db->where('pasien_hubungan', '1');
+		
+		return $this->db->get();
+	}
+
+	function select_profil() {
+		$username = $this->session->userdata('username');
+		$this->db->select('*');
+		$this->db->from('hospital_users');
+		$this->db->where('user_username', $username);
+		
+		return $this->db->get();
+	}
+
+	function update_password() {
+		$user_username  = $this->session->userdata('username');
+		
+		$data = array(	    			
+		    		'user_password' 		=> sha1(trim($this->input->post('passwordbaru'))),
+	    			'user_date_update' 		=> date('Y-m-d'),
+	    			'user_time_update' 		=> date('Y-m-d H:i:s')
+				);
+
+		$this->db->where('user_username', $user_username);
+		$this->db->update('hospital_users', $data);
+	}
+
+	function update_profil() {
+		$user_username  = $this->session->userdata('username');
+		
+		$data = array(	    			
+		    		'user_name' 		=> strtoupper(trim($this->input->post('nama'))),
+		    		'user_phone' 		=> trim($this->input->post('phone')),
+		    		'user_email' 		=> trim($this->input->post('email')),
+	    			'user_date_update' 	=> date('Y-m-d'),
+	    			'user_time_update' 	=> date('Y-m-d H:i:s')
+				);
+
+		$this->db->where('user_username', $user_username);
+		$this->db->update('hospital_users', $data);
 	}
 }
 /* Location: ./application/model/Registrasi_online_model.php */

@@ -238,7 +238,7 @@
                                                                 <div class="form-group form-md-line-input">
                                                                     <label class="col-md-3 control-label">No. Handphone <span class="required" aria-required="true"> * </span></label>
                                                                     <div class="col-md-9">
-                                                                        <input type="text" class="form-control" name="phone" value="<?php echo set_value('phone'); ?>" pattern="^[0-9]{1,12}$" title="Hanya Angka, maksimal 12 Digit" autocomplete="off" required>
+                                                                        <input type="text" class="form-control" name="phone" value="<?php echo set_value('phone'); ?>" pattern="^[0-9]{1,12}$" title="Hanya Angka, maksimal 12 Digit" autocomplete="off" maxlength="12" required>
                                                                         <div class="form-control-focus"></div>
                                                                         <span class="help-block">Isi No. Handphone Anda, Hanya ANGKA</span>
                                                                     </div>
@@ -291,15 +291,15 @@
                                                             </div>
                                                             <?php 
                                                             $uritab = $this->uri->segment(3);
-                                                            if (empty($uritab) || $uritab == '' && $uritab <> 'ubahpassword' && $uritab <> 'ubahprofil') {
+                                                            if (empty($uritab) || $uritab == '' && $uritab <> 'ubahpassword' && $uritab <> 'ubahprofil' || $uritab == 'tambah_anggota') {
                                                                 $tabprofil1 = 'class="active"';
                                                                 $tabprofil2 = '';
                                                                 $tabprofil3 = '';
-                                                            } elseif ($uritab == 'ubahpassword') {
+                                                            } elseif ($uritab == 'ubahpassword' || $uritab == 'updatepassword') {
                                                                 $tabprofil1 = '';
                                                                 $tabprofil2 = 'class="active"';
                                                                 $tabprofil3 = '';
-                                                            } elseif ($uritab == 'ubahprofil') {
+                                                            } elseif ($uritab == 'ubahprofil' || $uritab == 'updateprofil') {
                                                                 $tabprofil1 = '';
                                                                 $tabprofil2 = '';
                                                                 $tabprofil3 = 'class="active"';
@@ -332,10 +332,9 @@
                                                         </div>
                                                     </div>
                                                     <!-- END SIDEBAR -->
-
                                                     <?php 
-                                                    if (empty($uritab) || $uritab == '' && $uritab <> 'ubahpassword' && $uritab <> 'ubahprofil') {
-                                                        if (count($listAnggota) == 0 || $this->uri->segment(3) == 'tambah_anggota') {
+                                                    if (empty($uritab) || $uritab == '') {
+                                                        if (count($listAnggota) == 0) {
                                                     ?>
                                                     <!-- BEGIN MENU DAFTAR ANGGOTA KELUARGA -->
                                                     <div class="profile-content">
@@ -408,7 +407,7 @@
                                                                                                 <label>Hubungan dengan Pemilik Akun ?</label>
                                                                                             </div>
                                                                                             <div class="form-group form-md-line-input">
-                                                                                                <input type="text" class="form-control" name="nama" value="<?php echo set_value('nama'); ?>" required>
+                                                                                                <input type="text" class="form-control" name="nama" value="<?php echo set_value('nama'); ?>" autocomplete="off" required>
                                                                                                 <span class="help-block">Masukkan Nama sesuai KTP atau Kartu Keluarga</span>
                                                                                                 <label>Nama</label>
                                                                                             </div>
@@ -424,7 +423,7 @@
                                                                                                 <label>Identitas</label>
                                                                                             </div>
                                                                                             <div class="form-group form-md-line-input">
-                                                                                                <input type="text" class="form-control" name="no_identitas" value="<?php echo set_value('no_identitas'); ?>" pattern="^[0-9]{1,16}$" title="Hanya Angka, maksimal 16 Digit" required>
+                                                                                                <input type="text" class="form-control" name="no_identitas" value="<?php echo set_value('no_identitas'); ?>" pattern="^[0-9]{1,16}$" maxlength="16" title="Hanya Angka, maksimal 16 Digit" autocomplete="off" required>
                                                                                                 <span class="help-block">Masukkan No. Identitas, hanya ANGKA max. 16 Angka</span>
                                                                                                 <label>No. Identitas</label>
                                                                                             </div>
@@ -450,7 +449,7 @@
                                                                                                 </div>
                                                                                             </div>
                                                                                             <div class="form-group form-md-line-input">
-                                                                                                <input type="text" class="form-control" name="tempat_lahir" value="<?php echo set_value('tempat_lahir'); ?>" required>
+                                                                                                <input type="text" class="form-control" name="tempat_lahir" value="<?php echo set_value('tempat_lahir'); ?>" autocomplete="off" required>
                                                                                                 <span class="help-block">Tempat Lahir Pasien</span>
                                                                                                 <label>Tempat Lahir</label>
                                                                                             </div>
@@ -532,7 +531,7 @@
                                                                                         <div class="form-body">
                                                                                             <h4 class="block">Informasi Alamat</h4>
                                                                                             <div class="form-group form-md-line-input">
-                                                                                                <input type="text" class="form-control" name="alamat" value="<?php echo set_value('alamat'); ?>" required>
+                                                                                                <input type="text" class="form-control" name="alamat" value="<?php echo set_value('alamat'); ?>" autocomplete="off" required>
                                                                                                 <span class="help-block">Masukkan Alamat sesuai KTP</span>
                                                                                                 <label>Alamat</label>
                                                                                             </div>
@@ -569,25 +568,25 @@
 
                                                                                             <h4 class="block">Data Keluarga</h4>
                                                                                             <div class="form-group form-md-line-input">
-                                                                                                <input type="text" class="form-control" name="namakeluarga" value="<?php echo set_value('namakeluarga'); ?>" required>
+                                                                                                <input type="text" class="form-control" name="namakeluarga" value="<?php echo set_value('namakeluarga'); ?>" autocomplete="off" required>
                                                                                                 <label>Nama Keluarga</label>
                                                                                             </div>
                                                                                             <div class="form-group form-md-line-input">
-                                                                                                <input type="text" class="form-control" name="namaayah" value="<?php echo set_value('namaayah'); ?>" required>
+                                                                                                <input type="text" class="form-control" name="namaayah" value="<?php echo set_value('namaayah'); ?>" autocomplete="off" required>
                                                                                                 <label>Nama Ayah</label>
                                                                                             </div>
                                                                                             <div class="form-group form-md-line-input">
-                                                                                                <input type="text" class="form-control" name="namaibu" value="<?php echo set_value('namaibu'); ?>" required>
+                                                                                                <input type="text" class="form-control" name="namaibu" value="<?php echo set_value('namaibu'); ?>" autocomplete="off" required>
                                                                                                 <label>Nama Ibu</label>
                                                                                             </div>
                                                                                             <div class="form-group form-md-line-input">
-                                                                                                <input type="text" class="form-control" name="namapasangan" value="<?php echo set_value('namapasangan'); ?>">
+                                                                                                <input type="text" class="form-control" name="namapasangan" value="<?php echo set_value('namapasangan'); ?>" autocomplete="off">
                                                                                                 <label>Nama Suami / Istri</label>
                                                                                             </div>
 
                                                                                             <h4 class="block">Informasi Kontak</h4>
                                                                                             <div class="form-group form-md-line-input">
-                                                                                                <input type="text" class="form-control" name="telp" value="<?php echo set_value('telp'); ?>" pattern="^[0-9]{1,12}$" title="Hanya Angka, maksimal 12 Digit" autocomplete="off" required>
+                                                                                                <input type="text" class="form-control" name="telp" value="<?php echo set_value('telp'); ?>" pattern="^[0-9]{1,12}$" title="Hanya Angka, maksimal 12 Digit" maxlength="12" autocomplete="off" required>
                                                                                                 <label>No. Handphone</label>
                                                                                             </div>
 
@@ -618,8 +617,6 @@
                                                                                 </div>
                                                                             </div>
                                                                             <!-- END PASIEN BARU TAB -->
-
-
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -627,11 +624,13 @@
                                                         </div>
                                                     </div>
                                                     <!-- END DAFTAR ANGGOTA KELUARGA -->                    
-                                                    <?php } else { // Jika sudah Ada Data Anggota, Tampilkan Datanya ?>
+                                                    <?php 
+                                                    // Jika sudah Ada Data Anggota, Tampilkan Datanya
+                                                    } elseif (count($listAnggota) > 0) { ?>
                                                     <div class="profile-content">
                                                         <div class="row">
                                                             <div class="col-md-12">
-                                                                <h4 class="block" align="center">Daftar Anggota Keluarga</h4>
+                                                                <h4 class="block" align="center"><b>Daftar Anggota Keluarga</b></h4>
                                                                 <p class="block">
                                                                     <ul>
                                                                         <li>
@@ -645,11 +644,31 @@
                                                                         </li>
                                                                     </ul>
                                                                 </p>
-                                                                <br>
-                                                                <a href="<?php echo site_url('registrasi/step_two/tambah_anggota'); ?>">
-                                                                    <button type="submit" class="btn btn-primary"><i class="fa fa-plus-square"></i> Tambah Anggota Keluarga</button>
-                                                                </a>
                                                                 <br><br>
+                                                                <div class="actions">
+                                                                    <div class="btn-group dropup">
+                                                                        <a class="btn btn-sm blue dropdown-toggle" href="#" data-toggle="dropdown">
+                                                                        <i class="fa fa-plus-square"></i> Tambah Anggota Keluarga <i class="fa fa-angle-down"></i>
+                                                                        </a>
+                                                                        <ul class="dropdown-menu pull-right">
+                                                                            <li>
+                                                                                <a href="<?php echo site_url('registrasi/step_two/tambah_anggota/2'); ?>"> Suami </a>
+                                                                            </li>
+                                                                            <li>
+                                                                                <a href="<?php echo site_url('registrasi/step_two/tambah_anggota/3'); ?>"> Istri </a>
+                                                                            </li>
+                                                                            <li>
+                                                                                <a href="<?php echo site_url('registrasi/step_two/tambah_anggota/4'); ?>"> Anak </a>
+                                                                            </li>
+                                                                            <li>
+                                                                                <a href="<?php echo site_url('registrasi/step_two/tambah_anggota/5'); ?>"> Orang Tua </a>
+                                                                            </li>
+                                                                            <li>
+                                                                                <a href="<?php echo site_url('registrasi/step_two/tambah_anggota/6'); ?>"> Saudara Lainnya </a>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
                                                                 <div class="portlet-body">                        
                                                                     <table class="table table-striped table-bordered table-hover">
                                                                     <thead>
@@ -680,8 +699,8 @@
                                                                             <td><?php echo $r->pasien_jk; ?></td>
                                                                             <td><?php echo $r->pelanggan_name; ?></td>
                                                                             <td align="center">
-                                                                                <a href="<?php echo site_url('registrasi/step_two/riwayatperiksa/'.'/'.$r->pasien_id); ?>"><button class="btn btn-warning btn-xs" title="Riwayat Pemeriksaan"><i class="fa fa-search"></i> History</button></a>
-                                                                                <a href="<?php echo site_url('registrasi/step_three/id/'.'/'.$r->pasien_id); ?>"><button class="btn btn-danger btn-xs" title="Pilih Pasien"><i class="fa fa-check"></i> Pilih</button></a>
+                                                                                <a href="<?php echo site_url('registrasi/step_two/riwayatperiksa/'.'/'.$r->pasien_id.'/'.$r->pasien_nama_seo); ?>"><button class="btn btn-warning btn-xs" title="Riwayat Pemeriksaan"><i class="fa fa-search"></i> History</button></a>
+                                                                                <a href="<?php echo site_url('registrasi/step_three/id/'.$r->pasien_id.'/'.$r->pasien_nama_seo); ?>"><button class="btn btn-danger btn-xs" title="Pilih Pasien"><i class="fa fa-check"></i> Pilih</button></a>
                                                                             </td>
                                                                         </tr>
                                                                         <?php
@@ -695,15 +714,424 @@
                                                         </div>
                                                     </div>
                                                     <?php
-                                                        } 
-                                                    } // Akhir Tab Menu Daftar Anggota
+                                                        }
+                                                    // Jika Tambah Anggota 
+                                                    } elseif ($uritab == 'tambah_anggota' && !empty($this->uri->segment(4))) {
                                                     ?>
+                                                    <!-- BEGIN MENU DAFTAR ANGGOTA KELUARGA -->
+                                                    <div class="profile-content">
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <div class="portlet light">
+                                                                    <div class="portlet-title tabbable-line">
+                                                                        <div class="caption caption-md">
+                                                                            <i class="icon-globe theme-font hide"></i>
+                                                                            <span class="caption-subject font-blue-madison bold uppercase">Daftar Anggota Keluarga</span>
+                                                                        </div>
+                                                                        <ul class="nav nav-tabs">
+                                                                            <li class="active">
+                                                                                <a href="#tab_1_1" data-toggle="tab">Pasien Lama <br> (Sudah Pernah Berkunjung)</a>
+                                                                            </li>
+                                                                            <li>
+                                                                                <a href="#tab_1_2" data-toggle="tab">Pasien Baru <br> (Belum Pernah Berkunjung)</a>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </div>
+                                                                    <div class="portlet-body">
+                                                                        <div class="tab-content">
+                                                                            <!-- PASIEN LAMA -->
+                                                                            <div class="tab-pane active" id="tab_1_1">
+                                                                                <div class="row">
+                                                                                    <div class="col-md-6">
+                                                                                        <form role="form" action="<?php echo site_url('registrasi_online/register'); ?>" method="post" enctype="multipart/form-data">
+                                                                                        <input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
 
+                                                                                        <div class="form-body">
+                                                                                            <div class="form-group form-md-line-input">
+                                                                                                <input type="text" class="form-control" name="no_rekam_medik">
+                                                                                                <span class="help-block">Masukkan No. REKAM MEDIK</span>
+                                                                                                <label>NO. REKAM MEDIK</label>
+                                                                                            </div>
+
+                                                                                            <div class="margiv-top-10">
+                                                                                                <a href="" class="btn green"><i class="fa fa-search"></i>
+                                                                                                Cari Data </a>
+                                                                                            </div>
+                                                                                            </div>
+                                                                                        </form>
+                                                                                    </div>
+                                                                                    <div class="col-md-6">
+                                                                                        <div class="note note-success note-bordered">
+                                                                                        NO. REKAM MEDIK diisi sesuai Nomor Pasien yang tertera di Kartu Pasien RS St. Elisabeth Semarang.
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <!-- END PASIEN LAMA -->
+                                                                            <!-- PASIEN BARU TAB -->
+                                                                            <?php 
+                                                                            $uri4 = $this->uri->segment(4);
+                                                                            ?>
+                                                                            <div class="tab-pane" id="tab_1_2">
+                                                                                <div class="row">
+                                                                                    <form role="form" action="<?php echo site_url('registrasi/step_two/savedatakeluarga'); ?>" method="post" enctype="multipart/form-data">
+                                                                                    <input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
+                                                                                    <div class="col-md-6">
+                                                                                        <div class="form-body">
+                                                                                            <h4 class="block">Informasi Biodata</h4>
+                                                                                            <div class="form-group form-md-line-input">
+                                                                                                <select class="form-control" name="lstHubungan" required readonly>
+                                                                                                    <option value="">- Pilih Status -</option>
+                                                                                                    <option value="1" <?php if ($uri4 == 1) { echo 'selected'; } ?>>Diri Sendiri</option>
+                                                                                                    <option value="2" <?php if ($uri4 == 2) { echo 'selected'; } ?>>Suami</option>
+                                                                                                    <option value="3" <?php if ($uri4 == 3) { echo 'selected'; } ?>>Istri</option>
+                                                                                                    <option value="4" <?php if ($uri4 == 4) { echo 'selected'; } ?>>Anak</option>
+                                                                                                    <option value="5" <?php if ($uri4 == 5) { echo 'selected'; } ?>>Orang Tua</option>
+                                                                                                    <option value="6" <?php if ($uri4 == 6) { echo 'selected'; } ?>>Saudara Lainnya</option>
+                                                                                                </select>
+                                                                                                <label>Hubungan dengan Pemilik Akun ?</label>
+                                                                                            </div>
+                                                                                            <div class="form-group form-md-line-input">
+                                                                                                <input type="text" class="form-control" name="nama" value="<?php echo set_value('nama'); ?>" autocomplete="off" required>
+                                                                                                <span class="help-block">Masukkan Nama sesuai KTP atau Kartu Keluarga</span>
+                                                                                                <label>Nama</label>
+                                                                                            </div>
+                                                                                            <div class="form-group form-md-line-input">
+                                                                                                <select class="form-control" name="lstIdentitas" required>
+                                                                                                    <option value="">- Pilih Identitas -</option>
+                                                                                                    <?php 
+                                                                                                    foreach($listIdentitas as $i) {
+                                                                                                    ?>
+                                                                                                    <option value="<?php echo $i->identitas_id; ?>" <?php echo set_select('lstIdentitas', $i->identitas_id); ?>><?php echo $i->identitas_name; ?></option>
+                                                                                                    <?php } ?>
+                                                                                                </select>
+                                                                                                <label>Identitas</label>
+                                                                                            </div>
+                                                                                            <div class="form-group form-md-line-input">
+                                                                                                <input type="text" class="form-control" name="no_identitas" value="<?php echo set_value('no_identitas'); ?>" pattern="^[0-9]{1,16}$" maxlength="16" title="Hanya Angka, maksimal 16 Digit" autocomplete="off" required>
+                                                                                                <span class="help-block">Masukkan No. Identitas, hanya ANGKA max. 16 Angka</span>
+                                                                                                <label>No. Identitas</label>
+                                                                                            </div>
+                                                                                            <div class="form-group form-md-radios">
+                                                                                                <label>Jenis Kelamin</label>
+                                                                                                <div class="md-radio-inline">
+                                                                                                    <div class="md-radio">
+                                                                                                        <input type="radio" id="rdJK1" name="rdJK" class="md-radiobtn" value="Laki-Laki" <?php echo set_checkbox('rdJK', 'Laki-Laki'); ?>>
+                                                                                                        <label for="rdJK1">
+                                                                                                        <span></span>
+                                                                                                        <span class="check"></span>
+                                                                                                        <span class="box"></span>
+                                                                                                        Laki-Laki </label>
+                                                                                                    </div>
+                                                                                                    <div class="md-radio">
+                                                                                                        <input type="radio" id="rdJK2" name="rdJK" class="md-radiobtn" value="Perempuan" <?php echo set_checkbox('rdJK', 'Perempuan'); ?>>
+                                                                                                        <label for="rdJK2">
+                                                                                                        <span></span>
+                                                                                                        <span class="check"></span>
+                                                                                                        <span class="box"></span>
+                                                                                                        Perempuan </label>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <div class="form-group form-md-line-input">
+                                                                                                <input type="text" class="form-control" name="tempat_lahir" value="<?php echo set_value('tempat_lahir'); ?>" autocomplete="off" required>
+                                                                                                <span class="help-block">Tempat Lahir Pasien</span>
+                                                                                                <label>Tempat Lahir</label>
+                                                                                            </div>
+                                                                                            <div class="form-group form-md-line-input">
+                                                                                                <input class="form-control form-control-inline input-medium date-picker" size="16" type="text" name="tgl_lahir" value="<?php echo set_value('tgl_lahir'); ?>" placeholder="DD-MM-YYYY" autocomplete="off" required />
+                                                                                                <label>Tanggal Lahir</label>
+                                                                                            </div>
+                                                                                            <div class="form-group form-md-line-input">
+                                                                                                <select class="form-control" name="lstAgama" required>
+                                                                                                    <option value="">- Pilih Agama -</option>
+                                                                                                    <?php 
+                                                                                                    foreach($listAgama as $a) {
+                                                                                                    ?>
+                                                                                                    <option value="<?php echo $a->agama_id; ?>" <?php echo set_select('lstAgama', $a->agama_id); ?>><?php echo $a->agama_name; ?></option>
+                                                                                                    <?php } ?>
+                                                                                                </select>
+                                                                                                <label>Agama</label>
+                                                                                            </div>
+                                                                                            <div class="form-group form-md-line-input">
+                                                                                                <select class="form-control" name="lstDarah" required>
+                                                                                                    <option value="">- Pilih Golongan Darah -</option>
+                                                                                                    <?php 
+                                                                                                    foreach($listDarah as $d) {
+                                                                                                    ?>
+                                                                                                    <option value="<?php echo $d->darah_id; ?>" <?php echo set_select('lstDarah', $d->darah_id); ?>><?php echo $d->darah_name; ?></option>
+                                                                                                    <?php } ?>
+                                                                                                </select>
+                                                                                                <label>Golongan Darah</label>
+                                                                                            </div>
+                                                                                            <div class="form-group form-md-line-input">
+                                                                                                <select class="form-control" name="lstPendidikan" required>
+                                                                                                    <option value="">- Pilih Pendidikan -</option>
+                                                                                                    <?php 
+                                                                                                    foreach($listDidik as $p) {
+                                                                                                    ?>
+                                                                                                    <option value="<?php echo $p->pendidikan_id; ?>" <?php echo set_select('lstPendidikan', $p->pendidikan_id); ?>><?php echo $p->pendidikan_name; ?></option>
+                                                                                                    <?php } ?>
+                                                                                                </select>
+                                                                                                <label>Pendidikan</label>
+                                                                                            </div>
+                                                                                            <div class="form-group form-md-line-input">
+                                                                                                <select class="form-control" name="lstStatus" required>
+                                                                                                    <option value="">- Pilih Status Kawin -</option>
+                                                                                                    <?php 
+                                                                                                    foreach($listStatus as $s) {
+                                                                                                    ?>
+                                                                                                    <option value="<?php echo $s->status_id; ?>" <?php echo set_select('lstStatus', $s->status_id); ?>><?php echo $s->status_name; ?></option>
+                                                                                                    <?php } ?>
+                                                                                                </select>
+                                                                                                <label>Status Kawin</label>
+                                                                                            </div>
+                                                                                            <div class="form-group form-md-line-input">
+                                                                                                <select class="form-control" name="lstKerja" required>
+                                                                                                    <option value="">- Pilih Pekerjaan -</option>
+                                                                                                    <?php 
+                                                                                                    foreach($listKerja as $k) {
+                                                                                                    ?>
+                                                                                                    <option value="<?php echo $k->pekerjaan_id; ?>" <?php echo set_select('lstKerja', $k->pekerjaan_id); ?>><?php echo $k->pekerjaan_name; ?></option>
+                                                                                                    <?php } ?>
+                                                                                                </select>
+                                                                                                <label>Pekerjaan</label>
+                                                                                            </div>
+                                                                                            <div class="form-group form-md-checkboxes">
+                                                                                                <label>WNI</label>
+                                                                                                <div class="md-checkbox-inline">
+                                                                                                    <div class="md-checkbox">
+                                                                                                        <input type="checkbox" id="check1" value="1" name="chkWNI" class="md-check" <?php echo set_checkbox('chkWNI', 1); ?>>
+                                                                                                        <label for="check1">
+                                                                                                        <span></span>
+                                                                                                        <span class="check"></span>
+                                                                                                        <span class="box"></span>
+                                                                                                        Ya </label>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="col-md-6">
+                                                                                        <div class="form-body">
+                                                                                            <h4 class="block">Informasi Alamat</h4>
+                                                                                            <div class="form-group form-md-line-input">
+                                                                                                <input type="text" class="form-control" name="alamat" value="<?php echo $detail->pasien_alamat; ?>" autocomplete="off" required>
+                                                                                                <span class="help-block">Masukkan Alamat sesuai KTP</span>
+                                                                                                <label>Alamat</label>
+                                                                                            </div>
+                                                                                            <div class="form-group form-md-line-input">
+                                                                                                <select class="form-control" name="lstProvinsi" id="provinsi_id" onchange="TampilKabupaten()" required>
+                                                                                                    <option value="">- Provinsi -</option>
+                                                                                                    <?php 
+                                                                                                    foreach($listProvinsi as $p) {
+                                                                                                    ?>
+                                                                                                    <option value="<?php echo $p->provinsi_id; ?>" <?php echo set_select('lstProvinsi', $p->provinsi_id); ?>><?php echo $p->provinsi_nama; ?></option>
+                                                                                                    <?php } ?>
+                                                                                                </select>
+                                                                                                <label>Provinsi</label>
+                                                                                            </div>
+                                                                                            <div class="form-group form-md-line-input">
+                                                                                                <?php
+                                                                                                $style_kabupaten = 'class="form-control" id="kabupaten_id" onChange="TampilKecamatan()"';
+                                                                                                echo form_dropdown("lstKabupaten", array('' => '- Kabupaten -'), '',$style_kabupaten);
+                                                                                                ?>
+                                                                                                <label>Kabupaten</label>
+                                                                                            </div>
+                                                                                            <div class="form-group form-md-line-input">
+                                                                                                <?php
+                                                                                                $style_kecamatan = 'class="form-control" id="kecamatan_id"';
+                                                                                                echo form_dropdown("lstKecamatan", array('' => '- Kecamatan -'), '',$style_kecamatan);
+                                                                                                ?>
+                                                                                                <label>Kecamatan</label>
+                                                                                            </div>
+                                                                                            <div class="form-group form-md-line-input">
+                                                                                                <input type="text" class="form-control" name="kodepos" value="<?php echo $detail->pasien_kodepos; ?>" pattern="^[0-9]{1,5}$" title="Hanya Angka, maksimal 5 Digit" maxlength="5">
+                                                                                                <span class="help-block">5 digit Kode Pos</span>
+                                                                                                <label>Kode Pos</label>
+                                                                                            </div>
+
+                                                                                            <h4 class="block">Data Keluarga</h4>
+                                                                                            <?php 
+                                                                                            if ($uri4 <> 5 && $uri4 <> 6) {
+                                                                                                $namakeluarga = $detail->pasien_nama;
+                                                                                                $namapasangan = $detail->pasien_nama;
+                                                                                            } else {
+                                                                                                $namakeluarga = '';
+                                                                                                $namapasangan = '';
+                                                                                            }
+                                                                                            ?>
+                                                                                            <div class="form-group form-md-line-input">
+                                                                                                <input type="text" class="form-control" name="namakeluarga" value="<?php echo $namakeluarga; ?>" autocomplete="off" required>
+                                                                                                <label>Nama Keluarga</label>
+                                                                                            </div>
+                                                                                            <div class="form-group form-md-line-input">
+                                                                                                <input type="text" class="form-control" name="namaayah" value="<?php echo set_value('namaayah'); ?>" autocomplete="off" required>
+                                                                                                <label>Nama Ayah</label>
+                                                                                            </div>
+                                                                                            <div class="form-group form-md-line-input">
+                                                                                                <input type="text" class="form-control" name="namaibu" value="<?php echo set_value('namaibu'); ?>" autocomplete="off" required>
+                                                                                                <label>Nama Ibu</label>
+                                                                                            </div>
+                                                                                            <div class="form-group form-md-line-input">
+                                                                                                <input type="text" class="form-control" name="namapasangan" value="<?php echo $namapasangan; ?>" autocomplete="off">
+                                                                                                <label>Nama Suami / Istri</label>
+                                                                                            </div>
+
+                                                                                            <h4 class="block">Informasi Kontak</h4>
+                                                                                            <div class="form-group form-md-line-input">
+                                                                                                <input type="text" class="form-control" name="telp" value="<?php echo set_value('telp'); ?>" pattern="^[0-9]{1,12}$" title="Hanya Angka, maksimal 12 Digit" maxlength="12" autocomplete="off" required>
+                                                                                                <label>No. Handphone</label>
+                                                                                            </div>
+
+                                                                                            <h4 class="block">Penjamin</h4>
+                                                                                            <div class="form-group form-md-line-input">
+                                                                                                <select class="form-control" name="lstPelanggan" required>
+                                                                                                    <option value="">- Pilih Penjamin -</option>
+                                                                                                    <?php 
+                                                                                                    foreach($listPelanggan as $l) {
+                                                                                                        if ($detail->pelanggan_id == $l->pelanggan_id) {
+                                                                                                    ?>
+                                                                                                    <option value="<?php echo $l->pelanggan_id; ?>" selected><?php echo $l->pelanggan_name; ?></option>
+                                                                                                    <?php } else { ?>
+                                                                                                    <option value="<?php echo $l->pelanggan_id; ?>"><?php echo $l->pelanggan_name; ?></option>
+                                                                                                    <?php } } ?>
+                                                                                                </select>
+                                                                                                <label>Penjamin</label>
+                                                                                            </div>
+
+                                                                                            <div class="form-actions">
+                                                                                                <div class="row">
+                                                                                                    <div class="col-md-12" align="right">
+                                                                                                        <p class="block alert-danger">Mohon diisi sesuai dengan LENGKAP.</p>
+                                                                                                        <button type="submit" class="btn green"><i class="fa fa-floppy-o"></i> Simpan Data</button>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    </form>
+                                                                                </div>
+                                                                            </div>
+                                                                            <!-- END PASIEN BARU TAB -->
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!-- END TAMBAH DAFTAR ANGGOTA KELUARGA --> 
+                                                    <?php
+                                                    // Ubah Password
+                                                    } elseif ($uritab == 'ubahpassword' || $uritab == 'updatepassword') {
+                                                    ?>
+                                                    <div class="profile-content">
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <h4 class="block" align="center"><b>Ubah Password</b></h4>    
+                                                                <div class="row">
+                                                                    <div class="col-md-3">
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <form role="form" action="<?php echo site_url('registrasi/step_two/updatepassword'); ?>" method="post" enctype="multipart/form-data">
+                                                                        <input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
+                                                                            <div class="form-body">
+                                                                                <div class="form-group form-md-line-input">
+                                                                                    <input type="password" class="form-control" name="passwordbaru" autocomplete="off" required>
+                                                                                    <span class="help-block">Masukkan Password Baru Anda.</span>
+                                                                                    <label>Password Baru Anda</label>
+                                                                                </div>
+                                                                                <div class="form-group form-md-line-input">
+                                                                                    <input type="password" class="form-control" name="passwordkonfirm" autocomplete="off" required>
+                                                                                    <span class="help-block">Masukkan Konfirmasi Password Baru Anda.</span>
+                                                                                    <label>Konfirmasi Password Baru</label>
+                                                                                </div>
+                                                                            </div>
+
+                                                                            <div class="form-actions">
+                                                                                <div class="row">
+                                                                                    <div class="col-md-12" align="center">
+                                                                                        <button type="submit" class="btn green"><i class="fa fa-floppy-o"></i> Update</button>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </form>
+                                                                    </div>
+                                                                    <div class="col-md-3">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <?php
+                                                    // Ubah Profil
+                                                    } elseif ($uritab == 'ubahprofil' || $uritab == 'updateprofil') {
+                                                    ?>
+                                                    <div class="profile-content">
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                            <h4 class="block" align="center"><b>Data Profil Akun</b></h4>
+                                                                <div class="row">
+                                                                    <div class="col-md-5">
+                                                                        <form role="form" action="<?php echo site_url('registrasi/step_two/updateprofil'); ?>" method="post" enctype="multipart/form-data">
+                                                                        <input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
+
+                                                                            <div class="form-body"> 
+                                                                                <div class="form-group form-md-line-input">
+                                                                                    <input type="text" class="form-control" name="username" value="<?php echo $detail->user_username; ?>" autocomplete="off" readonly>
+                                                                                    <label>Username</label>
+                                                                                </div>
+                                                                                <div class="form-group form-md-line-input">
+                                                                                    <input type="text" class="form-control" name="nama" value="<?php echo $detail->user_name; ?>" autocomplete="off" required>
+                                                                                    <span class="help-block">Masukkan Nama Lengkap Anda.</span>
+                                                                                    <label>Nama Lengkap</label>
+                                                                                </div>
+                                                                                <div class="form-group form-md-line-input">
+                                                                                    <input type="text" class="form-control" name="phone" value="<?php echo $detail->user_phone; ?>" pattern="^[0-9]{1,12}$" title="Hanya Angka, maksimal 12 Digit" autocomplete="off" maxlength="12" required>
+                                                                                    <span class="help-block">Masukkan No. Handphone Anda, harus ANGKA.</span>
+                                                                                    <label>No. Handphone</label>
+                                                                                </div>
+                                                                                <div class="form-group form-md-line-input">
+                                                                                    <input type="email" class="form-control" name="email" value="<?php echo $detail->user_email; ?>" required>
+                                                                                    <span class="help-block">Masukkan Email yang VALID.</span>
+                                                                                    <label>Alamat Email</label>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="form-actions">
+                                                                                <div class="row">
+                                                                                    <div class="col-md-12" align="center">
+                                                                                        <button type="submit" class="btn green"><i class="fa fa-floppy-o"></i> Update</button>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </form>
+                                                                    </div>
+                                                                    <div class="col-md-7">
+                                                                        <div class="note note-success note-bordered">
+                                                                        <b>USERNAME</b><br>
+                                                                        Username tidak bisa dirubah.<br><br>
+                                                                        <b>NAMA LENGKAP</b><br>
+                                                                        Isikan sesuai Data Pemilik Akun.<br><br>
+                                                                        <b>NO. HANDPHONE</b><br>
+                                                                        Isikan dengan No. Handphone yang VALID, dan hanya ANGKA.<br><br>
+                                                                        <b>EMAIL</b><br>
+                                                                        Isikan dengan EMAIL yang VALID karena informasi pendaftaran Online akan dikirim ke E-Mail.
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <?php
+                                                    } // Akhir Menu Step Two
+                                                    ?>
                                                 </div>
                                             </div>
                                         </div>
+
+                                        <!-- PILIH JADWAL -->
                                         <div class="tab-pane <?php echo $tab3; ?>" id="tab3">
-                                                
+                                            
                                         </div>
                                         <div class="tab-pane <?php echo $tab4; ?>" id="tab4">
                                             <h3 class="block">Confirm your account</h3>
