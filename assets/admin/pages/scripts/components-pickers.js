@@ -1,22 +1,20 @@
 var ComponentsPickers = function () {
-
     var handleDatePickers = function () {
-
         if (jQuery().datepicker) {
             $('.date-picker').datepicker({
                 rtl: Metronic.isRTL(),
-                format: 'dd-mm-yyyy',
+                format: "dd-mm-yyyy",
                 orientation: "left",
+                //startDate: today,
+                //daysOfWeekDisabled: [0,6],
                 autoclose: true
             });
             //$('body').removeClass("modal-open"); // fix bug when inline picker is used in modal
         }
-
         /* Workaround to restrict daterange past date select: http://stackoverflow.com/questions/11933173/how-to-restrict-the-selectable-date-ranges-in-bootstrap-datepicker */
     }
 
     var handleTimePickers = function () {
-
         if (jQuery().timepicker) {
             $('.timepicker-default').timepicker({
                 autoclose: true,

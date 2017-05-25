@@ -22,7 +22,7 @@ class Jadwal_dokter extends CI_Controller{
         $this->load->view('v_drop_down_dokter',$data);
     }
 
-     public function search($tipe_id = '', $dokter_id = '', $tgl1 = '', $tgl2 = '') {
+    public function search($tipe_id = '', $dokter_id = '', $tgl1 = '', $tgl2 = '') {
         $tipe_id        = $this->input->post('lstTipe');
         $dokter_id      = $this->input->post('lstDokter');
         $Tgl1           = $this->input->post('tgl1');
@@ -107,6 +107,6 @@ class Jadwal_dokter extends CI_Controller{
             $data['listTipeHead']   = $this->jadwal_dokter_model->select_detail_poliklinik($tipe_id)->result();
             $this->template_front->display('jadwal_dokter_view', $data);
         }
-     }    
+    }
 }
 /* Location: ./application/controller/Jadwal_dokter.php */

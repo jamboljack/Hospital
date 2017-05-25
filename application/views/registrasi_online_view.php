@@ -26,6 +26,91 @@
     }
 </script>
 
+<!-- Pilih Dokter -->
+<script type="text/javascript">
+    $(function() {
+        $(document).on("click",'.pilih_button', function(e) {
+            var pasien_id       = $(this).data('pasien_id');
+            var dokter_id       = $(this).data('dokter_id');
+            var jadwal_id       = $(this).data('jadwal_id');
+            var dokter_name     = $(this).data('dokter_name');
+            var tipe            = $(this).data('tipe');
+            var tanggal         = $(this).data('tanggal');
+            var hari            = $(this).data('hari');
+            var jam             = $(this).data('jam');
+
+            var Waktu           = hari+', '+tanggal;
+
+            $(".pasien_id").val(pasien_id);
+            $(".dokter_id").val(dokter_id);
+            $(".jadwal_id").val(jadwal_id);
+            $(".dokter_name").val(dokter_name);
+            $(".tipe").val(tipe);
+            $(".waktu").val(Waktu);
+            $(".jam").val(jam);
+        })
+    });
+</script>
+
+<!-- Pilih Dokter Modal Form -->
+<div class="modal fade" id="pilih" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form action="<?php echo site_url('registrasi/step_three/saveorder/'.$this->uri->segment(4).'/'.$this->uri->segment(5)); ?>" class="form-horizontal" method="post" enctype="multipart/form-data" role="form">
+            <input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
+            <input type="hidden" class="form-control pasien_id" name="pasien_id">
+            <input type="hidden" class="form-control dokter_id" name="dokter_id">
+            <input type="hidden" class="form-control jadwal_id" name="jadwal_id">
+                        
+            <div class="modal-header">                      
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                <h4 class="modal-title" align="center"><i class="fa fa-warning"></i> <b>Konfirmasi Pendaftaran Pasien</b></h4>
+            </div>
+
+            <div class="modal-body">
+                <div class="form-group">
+                    <p align="center">Apakah Anda ingin melakukan Pendaftaran Pemeriksaan :</p>
+                </div>
+                <div class="row">
+                    <div class="col-md-8">
+                    <h4>Data Dokter</h4>
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <input type="text" class="form-control dokter_name" readonly>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <input type="text" class="form-control tipe" readonly>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                    <h4>Data Pemeriksaan</h4>
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <input type="text" class="form-control waktu" readonly>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <input type="text" class="form-control jam" readonly>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                        
+            <div class="modal-footer">
+                <button type="submit" class="btn blue"><i class="fa fa-check-circle"></i> Ya</button>
+                <button type="button" class="btn red" data-dismiss="modal"><i class="fa fa-times-circle"></i> Tidak</button>
+            </div>
+            </form>
+        </div>        
+    </div>    
+</div>
+
+
 <div class="page-container">
     <div class="page-head">
         <div class="container">
@@ -47,8 +132,19 @@
                     <div class="portlet light" id="form_wizard_1">
                         <div class="portlet-title">
                             <div class="caption">
+                                <?php
+                                if (empty($this->uri->segment(2)) || $this->uri->segment(2) == '' || $this->uri->segment(2) == 'register' || $this->uri->segment(2) == 'login') {
+                                    $angka = 1;
+                                } elseif ($this->uri->segment(2) == 'step_two') {
+                                    $angka = 2;
+                                } elseif ($this->uri->segment(2) == 'step_three') {
+                                    $angka = 3;
+                                } elseif ($this->uri->segment(2) == 'finish') {
+                                    $angka = 4;
+                                }
+                                ?>
                                 <span class="caption-subject font-green-sharp bold uppercase">
-                                <i class="fa fa-edit"></i> Proses Pendaftaran Online - <span class="step-title">Langkah 1 dari 4 </span>
+                                <i class="fa fa-edit"></i> Proses Pendaftaran Online - <span class="step-title">Langkah <?php echo $angka; ?> dari 4 </span>
                                 </span>
                             </div>
                         </div>
@@ -85,7 +181,7 @@
                                             $toogle2= '';
                                             $toogle3= 'data-toggle="tab"';
                                             $toogle4= '';
-                                        } elseif ($this->uri->segment(2) == 'step_four') {
+                                        } elseif ($this->uri->segment(2) == 'finish') {
                                             $tab1   = 'disabled';
                                             $tab2   = 'disabled';
                                             $tab3   = 'disabled';
@@ -137,7 +233,7 @@
                                         $persen   = '50';
                                     } elseif ($this->uri->segment(2) == 'step_three') {
                                         $persen   = '75';
-                                    } elseif ($this->uri->segment(2) == 'step_four') {
+                                    } elseif ($this->uri->segment(2) == 'finish') {
                                         $persen   = '100';
                                     }
                                     ?>
@@ -146,7 +242,8 @@
                                         <span class="sr-only"></span>
                                         </div>
                                     </div>
-                                    <div class="tab-content">
+                                    
+                                    <div class="tab-content">                                        
                                         <?php if ($this->session->flashdata('notificationsuccess')) { ?>
                                         <div class="alert alert-success alert-dismissable" align="center">
                                             <button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>
@@ -169,6 +266,7 @@
                                         </div>
                                         <?php } ?>
 
+                                        <?php if (empty($this->uri->segment(2)) || $this->uri->segment(2) == '' || $this->uri->segment(2) == 'register' || $this->uri->segment(2) == 'login') {  ?>
                                         <div class="tab-pane <?php echo $tab1; ?>" id="tab1">
                                             <div class="row">
                                                 <div class="col-md-12">
@@ -275,6 +373,9 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        <?php } ?>
+                                        
+                                        <?php if ($this->uri->segment(2) == 'step_two') { ?>
                                         <div class="tab-pane <?php echo $tab2; ?>" id="tab2">
                                             <div class="row">
                                                 <div class="col-md-12">
@@ -569,7 +670,7 @@
                                                                                             <h4 class="block">Data Keluarga</h4>
                                                                                             <div class="form-group form-md-line-input">
                                                                                                 <input type="text" class="form-control" name="namakeluarga" value="<?php echo set_value('namakeluarga'); ?>" autocomplete="off" required>
-                                                                                                <label>Nama Keluarga</label>
+                                                                                                <label>Nama Keluarga / Penjamin</label>
                                                                                             </div>
                                                                                             <div class="form-group form-md-line-input">
                                                                                                 <input type="text" class="form-control" name="namaayah" value="<?php echo set_value('namaayah'); ?>" autocomplete="off" required>
@@ -590,17 +691,17 @@
                                                                                                 <label>No. Handphone</label>
                                                                                             </div>
 
-                                                                                            <h4 class="block">Penjamin</h4>
+                                                                                            <h4 class="block">Asuransi</h4>
                                                                                             <div class="form-group form-md-line-input">
                                                                                                 <select class="form-control" name="lstPelanggan" required>
-                                                                                                    <option value="">- Pilih Penjamin -</option>
+                                                                                                    <option value="">- Pilih Asuransi -</option>
                                                                                                     <?php 
                                                                                                     foreach($listPelanggan as $l) {
                                                                                                     ?>
                                                                                                     <option value="<?php echo $l->pelanggan_id; ?>" <?php echo set_select('lstPelanggan', $l->pelanggan_id); ?>><?php echo $l->pelanggan_name; ?></option>
                                                                                                     <?php } ?>
                                                                                                 </select>
-                                                                                                <label>Penjamin</label>
+                                                                                                <label>Asuransi</label>
                                                                                             </div>
 
                                                                                             <div class="form-actions">
@@ -677,7 +778,7 @@
                                                                             <th width="15%">No. RM</th>
                                                                             <th>Nama Pasien</th>
                                                                             <th width="15%">Jenis Kelamin</th>
-                                                                            <th width="20%">Penjamin</th>
+                                                                            <th width="20%">Asuransi</th>
                                                                             <th width="10%">Aksi</th>
                                                                         </tr>
                                                                     </thead>
@@ -984,10 +1085,10 @@
                                                                                                 <label>No. Handphone</label>
                                                                                             </div>
 
-                                                                                            <h4 class="block">Penjamin</h4>
+                                                                                            <h4 class="block">Asuransi</h4>
                                                                                             <div class="form-group form-md-line-input">
                                                                                                 <select class="form-control" name="lstPelanggan" required>
-                                                                                                    <option value="">- Pilih Penjamin -</option>
+                                                                                                    <option value="">- Pilih Asuransi -</option>
                                                                                                     <?php 
                                                                                                     foreach($listPelanggan as $l) {
                                                                                                         if ($detail->pelanggan_id == $l->pelanggan_id) {
@@ -997,7 +1098,7 @@
                                                                                                     <option value="<?php echo $l->pelanggan_id; ?>"><?php echo $l->pelanggan_name; ?></option>
                                                                                                     <?php } } ?>
                                                                                                 </select>
-                                                                                                <label>Penjamin</label>
+                                                                                                <label>Asuransi</label>
                                                                                             </div>
 
                                                                                             <div class="form-actions">
@@ -1035,7 +1136,14 @@
                                                                     <div class="col-md-6">
                                                                         <form role="form" action="<?php echo site_url('registrasi/step_two/updatepassword'); ?>" method="post" enctype="multipart/form-data">
                                                                         <input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
+                                                                        <input type="hidden" name="password" value="<?php echo $detail->user_password; ?>" />
+
                                                                             <div class="form-body">
+                                                                                <div class="form-group form-md-line-input">
+                                                                                    <input type="password" class="form-control" name="passwordlama" autocomplete="off" required>
+                                                                                    <span class="help-block">Masukkan Password Lama Anda.</span>
+                                                                                    <label>Password Lama Anda</label>
+                                                                                </div>
                                                                                 <div class="form-group form-md-line-input">
                                                                                     <input type="password" class="form-control" name="passwordbaru" autocomplete="off" required>
                                                                                     <span class="help-block">Masukkan Password Baru Anda.</span>
@@ -1128,28 +1236,179 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        <?php } ?>
 
+                                        <?php if ($this->uri->segment(2) == 'step_three') { ?>
                                         <!-- PILIH JADWAL -->
                                         <div class="tab-pane <?php echo $tab3; ?>" id="tab3">
-                                            
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <form role="form"  action="<?php echo site_url('registrasi/step_three/search/'.$this->uri->segment(4).'/'.$this->uri->segment(5)); ?>" class="form-horizontal" method="post" enctype="multipart/form-data">
+                                                            <input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
+
+                                                                <div class="form-body"> 
+                                                                    <div class="form-group form-md-line-input">
+                                                                        <label class="col-md-4 control-label">Nama Pendaftar</label>
+                                                                        <div class="col-md-8">
+                                                                            <input type="text" class="form-control" name="nama" value="<?php echo $detail->pasien_nama; ?>" autocomplete="off" readonly>
+                                                                            <div class="form-control-focus"></div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group form-md-line-input">
+                                                                        <label class="col-md-4 control-label">Asuransi</label>
+                                                                        <div class="col-md-8">
+                                                                            <select class="form-control" name="lstPelanggan" disabled>
+                                                                                <option value="">- Pilih Asuransi -</option>
+                                                                                <?php 
+                                                                                foreach($listPelanggan as $l) {
+                                                                                    if ($detail->pelanggan_id == $l->pelanggan_id) {
+                                                                                ?>
+                                                                                <option value="<?php echo $l->pelanggan_id; ?>" selected><?php echo $l->pelanggan_name; ?></option>
+                                                                                <?php } else { ?>
+                                                                                <option value="<?php echo $l->pelanggan_id; ?>" <?php echo set_select('lstPelanggan', $l->pelanggan_id); ?>><?php echo $l->pelanggan_name; ?></option>
+                                                                                <?php 
+                                                                                    } 
+                                                                                } 
+                                                                                ?>
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group form-md-line-input">
+                                                                        <label class="col-md-4 control-label">Poliklinik</label>
+                                                                        <div class="col-md-8">
+                                                                            <select class="form-control" name="lstPoliklinik" required autofocus>
+                                                                                <option value="all">-- SEMUA POLILINIK --</option>
+                                                                                <?php 
+                                                                                foreach($listPoliklinik as $p) {
+                                                                                ?>
+                                                                                <option value="<?php echo $p->tipe_id; ?>" <?php echo set_select('lstPoliklinik', $p->tipe_id); ?>><?php echo $p->tipe_name; ?></option>
+                                                                                <?php
+                                                                                } 
+                                                                                ?>
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group form-md-line-input">
+                                                                        <label class="col-md-4 control-label">Tanggal Pemeriksaan</label>
+                                                                        <div class="col-md-8">
+                                                                            <input class="form-control form-control-inline input-medium date-picker" size="16" type="text" name="tgl_periksa" value="<?php echo set_value('tgl_periksa'); ?>" placeholder="DD-MM-YYYY" autocomplete="off" required />
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-actions">
+                                                                    <div class="row">              
+                                                                        <div class="col-md-12" align="center">
+                                                                            <a href="<?php echo site_url('registrasi/step_two'); ?>" class="btn green"><i class="fa fa-chevron-left"></i> Batal</a>
+                                                                            <button type="submit" class="btn yellow"><i class="fa fa-search"></i> Cari Jadwal</button>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="note note-success note-bordered">
+                                                                <b>INFORMASI</b><br>
+                                                                <ul>
+                                                                    <li><b>Nama Pendaftar</b> adalah Nama Pasien yang akan Periksa.</li>
+                                                                    <li><b>Asuransi</b> adalah Jenis Penjamin Pasien.</li>
+                                                                    <li><b>Pilih Poliklinik</b> yang akan dituju untuk Pemeriksaan Pasien.</li>
+                                                                    <li>Silahkan Piih <b>Tanggal Pemeriksaan</b> Pasien.</li>
+                                                                    <li>Klik <b>Cari Jadwal</b> untuk mencari jadwal Dokter.</li>
+                                                                    <li><b>Batal</b> jika ingin kembali ke Tahap 2.</li>
+                                                                </ul>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <?php if ($status == 'cari') { ?>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <?php 
+                                                    $tanggal    = $info['Tanggal']; // Tgl Pemeriksaan
+                                                    $Tgl        = $tanggal;
+                                                    $Hari       = getDay($Tgl);
+                                                    ?>
+                                                    <h4 class="block" align="center"><b>Data Pencarian Jadwal Praktek</b></h4>
+                                                    <div class="alert alert-warning alert-dismissable" align="center">
+                                                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>
+                                                        <b><?php echo $Hari,', '.tgl_indo($tanggal); ?></b>
+                                                    </div>
+                                                    <div class="portlet-body">                        
+                                                        <table class="table table-striped table-bordered table-hover">
+                                                           <?php
+                                                            // Perulangan by Tipe Spesialis
+                                                            foreach($listTipe as $t) {
+                                                                $Dari       = $info['Tanggal']; // Tgl Pemeriksaan
+                                                                $tipe_id    = $t->tipe_id; 
+                                                                $tgl        = $Dari;
+                                                                $hari       = getDay($tgl);
+                                                                // Cari by Hari dan Tipe Spesialis Dokter
+                                                                $listJadwal  = $this->step_three_model->select_jadwal($hari, $tipe_id)->result();
+                                                            ?>
+                                                            <thead>
+                                                                <tr class="danger">
+                                                                    <th colspan="7"><i class="fa fa-user-md"></i> <?php echo $t->tipe_name; ?></th>
+                                                                </tr>
+                                                                <tr class="success">
+                                                                    <th width="5%">No</th>                                
+                                                                    <th>Nama Dokter</th>
+                                                                    <th width="8%">Hari</th>
+                                                                    <th width="10%">Jam Praktek</th>
+                                                                    <th width="15%">Ruangan</th>
+                                                                    <th width="25%">Keterangan</th>
+                                                                    <th width="10%">Aksi</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <?php
+                                                                if (count($listJadwal) > 0) {  
+                                                                    $no = 1;
+                                                                    foreach($listJadwal as $r) {
+                                                                        $jam = substr($r->jadwal_mulai,0,5).' - '.substr($r->jadwal_selesai,0,5);
+                                                                ?>
+                                                                <tr>
+                                                                    <td><?php echo $no; ?></td>
+                                                                    <td><?php echo $r->dokter_name; ?></td>
+                                                                    <td><?php echo $r->jadwal_hari; ?></td>
+                                                                    <td><?php echo $jam; ?></td>
+                                                                    <td><?php echo $r->ruangan_name; ?></td>
+                                                                    <td class="<?php if (!empty($r->jadwal_keterangan)) { echo 'danger'; } ?>"><b><?php echo $r->jadwal_keterangan; ?></b></td>
+                                                                    <td>
+                                                                        <button type="button" class="btn btn-primary btn-xs pilih_button" data-toggle="modal" data-target="#pilih" data-pasien_id="<?php echo $this->uri->segment(4); ?>" data-dokter_id="<?php echo $r->dokter_id; ?>" data-jadwal_id="<?php echo $r->jadwal_id; ?>" data-dokter_name="<?php echo $r->dokter_name; ?>" data-tipe="<?php echo $r->tipe_name; ?>" data-tanggal="<?php echo $Dari; ?>" data-hari="<?php echo $hari; ?>" data-jam="<?php echo $jam; ?>" title="Pilih Dokter"><i class="fa fa-check"></i> Pilih
+                                                                        </button>
+                                                                    </td>
+                                                                </tr>
+                                                                <?php
+                                                                    $no++;
+                                                                    }
+                                                                } else {
+                                                                ?>
+                                                                <tr>
+                                                                    <td colspan="7" align="center"><em>Tidak Ada Jadwal Praktek Dokter Hari Ini.</em></td>
+                                                                </tr>
+                                                                <?php } ?>
+                                                            </tbody>
+                                                            <?php } ?>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <?php } ?>
                                         </div>
+                                        <?php } ?>
+
+                                        <?php if ($this->uri->segment(2) == 'finish') { ?>
+                                        <!-- SELESAI -->
                                         <div class="tab-pane <?php echo $tab4; ?>" id="tab4">
-                                            <h3 class="block">Confirm your account</h3>
-                                            <h4 class="form-section">Account</h4>
-                                            <div class="form-group">
-                                                <label class="control-label col-md-3">Username:</label>
-                                                <div class="col-md-4">
-                                                    <p class="form-control-static" data-display="username"></p>
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="control-label col-md-3">Email:</label>
-                                                <div class="col-md-4">
-                                                    <p class="form-control-static" data-display="email"></p>
-                                                </div>
-                                            </div>
-                                            <h4 class="form-section">Profile</h4>
+                                            <h4 class="block" align="center"><b>Data Profil Akun</b></h4>
                                         </div>
+                                        <?php } ?>
+
                                     </div>
                                 </div>
                             </div>
