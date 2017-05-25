@@ -38,8 +38,11 @@
             var tanggal         = $(this).data('tanggal');
             var hari            = $(this).data('hari');
             var jam             = $(this).data('jam');
+            var ruang           = $(this).data('ruang');
+            var jam_layanan     = $(this).data('jam_layanan');
 
             var Waktu           = hari+', '+tanggal;
+            var Ruangan         = ruang+' | '+jam;
 
             $(".pasien_id").val(pasien_id);
             $(".dokter_id").val(dokter_id);
@@ -47,7 +50,9 @@
             $(".dokter_name").val(dokter_name);
             $(".tipe").val(tipe);
             $(".waktu").val(Waktu);
-            $(".jam").val(jam);
+            $(".ruang").val(Ruangan);
+            $(".tanggal").val(tanggal);
+            $(".jam_layanan").val(jam_layanan);
         })
     });
 </script>
@@ -56,11 +61,13 @@
 <div class="modal fade" id="pilih" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form action="<?php echo site_url('registrasi/step_three/saveorder/'.$this->uri->segment(4).'/'.$this->uri->segment(5)); ?>" class="form-horizontal" method="post" enctype="multipart/form-data" role="form">
+            <form action="<?php echo site_url('registrasi/step_three/saveantrian/'.$this->uri->segment(4).'/'.$this->uri->segment(5)); ?>" class="form-horizontal" method="post" enctype="multipart/form-data" role="form">
             <input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
             <input type="hidden" class="form-control pasien_id" name="pasien_id">
             <input type="hidden" class="form-control dokter_id" name="dokter_id">
             <input type="hidden" class="form-control jadwal_id" name="jadwal_id">
+            <input type="hidden" class="form-control tanggal" name="tanggal">
+            <input type="hidden" class="form-control jam_layanan" name="jam_layanan">
                         
             <div class="modal-header">                      
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
@@ -72,7 +79,7 @@
                     <p align="center">Apakah Anda ingin melakukan Pendaftaran Pemeriksaan :</p>
                 </div>
                 <div class="row">
-                    <div class="col-md-8">
+                    <div class="col-md-7">
                     <h4>Data Dokter</h4>
                         <div class="form-group">
                             <div class="col-md-12">
@@ -85,7 +92,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-5">
                     <h4>Data Pemeriksaan</h4>
                         <div class="form-group">
                             <div class="col-md-12">
@@ -94,7 +101,7 @@
                         </div>
                         <div class="form-group">
                             <div class="col-md-12">
-                                <input type="text" class="form-control jam" readonly>
+                                <input type="text" class="form-control ruang" readonly>
                             </div>
                         </div>
                     </div>
@@ -139,7 +146,7 @@
                                     $angka = 2;
                                 } elseif ($this->uri->segment(2) == 'step_three') {
                                     $angka = 3;
-                                } elseif ($this->uri->segment(2) == 'finish') {
+                                } elseif ($this->uri->segment(2) == 'step_four') {
                                     $angka = 4;
                                 }
                                 ?>
@@ -181,7 +188,7 @@
                                             $toogle2= '';
                                             $toogle3= 'data-toggle="tab"';
                                             $toogle4= '';
-                                        } elseif ($this->uri->segment(2) == 'finish') {
+                                        } elseif ($this->uri->segment(2) == 'step_four') {
                                             $tab1   = 'disabled';
                                             $tab2   = 'disabled';
                                             $tab3   = 'disabled';
@@ -233,7 +240,7 @@
                                         $persen   = '50';
                                     } elseif ($this->uri->segment(2) == 'step_three') {
                                         $persen   = '75';
-                                    } elseif ($this->uri->segment(2) == 'finish') {
+                                    } elseif ($this->uri->segment(2) == 'step_four') {
                                         $persen   = '100';
                                     }
                                     ?>
@@ -1379,7 +1386,7 @@
                                                                     <td><?php echo $r->ruangan_name; ?></td>
                                                                     <td class="<?php if (!empty($r->jadwal_keterangan)) { echo 'danger'; } ?>"><b><?php echo $r->jadwal_keterangan; ?></b></td>
                                                                     <td>
-                                                                        <button type="button" class="btn btn-primary btn-xs pilih_button" data-toggle="modal" data-target="#pilih" data-pasien_id="<?php echo $this->uri->segment(4); ?>" data-dokter_id="<?php echo $r->dokter_id; ?>" data-jadwal_id="<?php echo $r->jadwal_id; ?>" data-dokter_name="<?php echo $r->dokter_name; ?>" data-tipe="<?php echo $r->tipe_name; ?>" data-tanggal="<?php echo $Dari; ?>" data-hari="<?php echo $hari; ?>" data-jam="<?php echo $jam; ?>" title="Pilih Dokter"><i class="fa fa-check"></i> Pilih
+                                                                        <button type="button" class="btn btn-primary btn-xs pilih_button" data-toggle="modal" data-target="#pilih" data-pasien_id="<?php echo $this->uri->segment(4); ?>" data-dokter_id="<?php echo $r->dokter_id; ?>" data-jadwal_id="<?php echo $r->jadwal_id; ?>" data-dokter_name="<?php echo $r->dokter_name; ?>" data-tipe="<?php echo $r->tipe_name; ?>" data-tanggal="<?php echo $Dari; ?>" data-hari="<?php echo $hari; ?>" data-jam="<?php echo $jam; ?>" data-ruang="<?php echo $r->ruangan_name; ?>" data-jam_layanan="<?php echo $r->jadwal_mulai; ?>" title="Pilih Dokter"><i class="fa fa-check"></i> Pilih
                                                                         </button>
                                                                     </td>
                                                                 </tr>
@@ -1402,10 +1409,15 @@
                                         </div>
                                         <?php } ?>
 
-                                        <?php if ($this->uri->segment(2) == 'finish') { ?>
+                                        <?php if ($this->uri->segment(2) == 'step_four') { ?>
                                         <!-- SELESAI -->
                                         <div class="tab-pane <?php echo $tab4; ?>" id="tab4">
-                                            <h4 class="block" align="center"><b>Data Profil Akun</b></h4>
+                                            <h4 class="block" align="center"><b>Data Pendaftaran Online</b></h4>
+                                            <div class="row">
+                                                <div class="col-md-12" align="center">
+                                                    <a href="<?php echo site_url('registrasi/step_two'); ?>" class="btn green">Kembali ke Biodata Pendaftar</a>
+                                                </div>
+                                            </div>
                                         </div>
                                         <?php } ?>
 

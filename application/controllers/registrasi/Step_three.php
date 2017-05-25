@@ -84,17 +84,46 @@ class Step_three extends CI_Controller{
         }
     }
 
-    public function saveorder() {
+    public function saveantrian() {
+        $dokter_id          = $this->input->post('dokter_id');
+        $tanggal            = $this->input->post('tanggal');
+        $jadwal_id          = $this->input->post('jadwal_id');
+        $jam_layanan        = $this->input->post('jam_layanan');
+        // Cek Data Antrian by Dokter dan Tanggal tersebut
+        $kode               = '';
+        $CheckDatabyDocter  = $this->step_three_model->select_antrian($dokter_id, $tanggal, $jadwal_id)->result();
+        if (count($CheckDatabyDocter) > 0) { // Jika Ada Data Antrian Pasien
+            $kodeurut   = count($CheckDatabyDocter)+1;
+            $kode       = $dokter_id.$jadwal_id.$kodeurut;
+        } else {
+            $kodeurut   = 1;
+            $kode       = $dokter_id.$jadwal_id.$kodeurut;
+        }
+        // Cari Jam Terakhir
+        $CheckJam           = $this->step_three_model->select_jam_antrian($dokter_id, $tanggal, $jadwal_id)->row();
+        if (count($CheckJam) > 0) { // Jika Ada Data Antrian Pasien
+            $jamterakhir    = $CheckJam->antrian_jam_layani;
+            $jamproses      = strtotime("+15 minutes", strtotime($jamterakhir));
+            $jamantrian     = date('H:i:s', $jamproses);
+        } else {
+            $jamterakhir    = $jam_layanan;
+            $jamproses      = strtotime("+15 minutes", strtotime($jamterakhir));
+            $jamantrian     = date('H:i:s', $jamproses);
+        }
+
+        //echo $jamantrian;
+        //echo $dokter_id.'-'.$jadwal_id.'-'.$kodeurut.' Jam : '.date('H:i:s', $jamantrian).' Tgl.'.$tanggal;
+
         $data = array(
-            'user_username'     => trim($this->input->post('username')),
-            'user_password'     => sha1(trim($this->input->post('password'))),
-            'user_name'         => strtoupper(trim($this->input->post('nama'))),
-            'user_email'        => trim($this->input->post('email')),
-            'user_phone'        => trim($this->input->post('phone')),
-            'user_level'        => 'Pasien',
-            'user_status'       => 'Active',
-            'user_date_update'  => date('Y-m-d'),
-            'user_time_update'  => date('Y-m-d H:i:s')
+            'user_username'         => $this->session->userdata('username'),
+            'pasien_id'             => $this->input->post('pasien_id'),
+            'dokter_id'             => $this->input->post('dokter_id'),
+            'jadwal_id'             => $this->input->post('jadwal_id'),
+            'antrian_kode'          => $kode,
+            'antrian_tanggal'       => $this->input->post('tanggal'),
+            'antrian_jam_layani'    => $jamantrian,
+            'antrian_date_update'   => date('Y-m-d'),
+            'antrian_time_update'   => date('Y-m-d H:i:s')
         );
         
         $this->db->insert('hospital_antrian', $data);
@@ -127,8 +156,9 @@ class Step_three extends CI_Controller{
         $this->email->message($message);
         $this->email->send();
         */
+        
         $this->session->set_flashdata('notificationsuccess','<b>Pendaftaran Berhasil.</b>');
-        redirect(site_url('registrasi/finish/id/'.$antrian_id));
+        redirect(site_url('registrasi/step_four/id/'.$antrian_id.'/'.$this->uri->segment(5)));
     }
 }
 /* Location: ./application/controller/registrasi/Step_three.php */

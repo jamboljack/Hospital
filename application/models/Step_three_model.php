@@ -49,5 +49,28 @@ class Step_three_model extends CI_Model {
 			
 		return $this->db->get();
 	}
+
+	function select_antrian($dokter_id, $tanggal, $jadwal_id) {
+		$this->db->select('*');
+		$this->db->from('hospital_antrian');
+		$this->db->where('dokter_id', $dokter_id);
+		$this->db->where('antrian_tanggal', $tanggal);
+		$this->db->where('jadwal_id', $jadwal_id);
+		$this->db->order_by('antrian_id', 'desc');
+		
+		return $this->db->get();
+	}
+
+	function select_jam_antrian($dokter_id, $tanggal, $jadwal_id) {
+		$this->db->select('*');
+		$this->db->from('hospital_antrian');
+		$this->db->where('dokter_id', $dokter_id);
+		$this->db->where('antrian_tanggal', $tanggal);
+		$this->db->where('jadwal_id', $jadwal_id);
+		$this->db->order_by('antrian_id', 'desc');
+		$this->db->limit(1);
+		
+		return $this->db->get();
+	}
 }
 /* Location: ./application/model/Step_three_model.php */
