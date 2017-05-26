@@ -99,7 +99,7 @@ class Step_two extends CI_Controller{
         }
     }
 
-     public function updateprofil() {
+    public function updateprofil() {
         $this->form_validation->set_rules('phone', 'No. Handphone', 'required');
         $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
 
@@ -113,5 +113,13 @@ class Step_two extends CI_Controller{
             redirect(site_url('registrasi/step_two/ubahprofil'));
         }
     }
+
+    public function history($pasien_id = '') {
+        $data['error']          = 'false';
+        $pasien_id              = $this->uri->segment(4);
+        $data['listDaftar']     = $this->registrasi_online_model->select_history_daftar($pasien_id)->result();
+        $this->template_front->display('registrasi_online_view', $data);
+    }
+
 }
 /* Location: ./application/controller/registrasi/Step_two.php */

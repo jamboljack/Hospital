@@ -129,34 +129,6 @@ class Step_three extends CI_Controller{
         $this->db->insert('hospital_antrian', $data);
         // ID Antrian yang baru dibuat
         $antrian_id = $this->db->insert_id();
-        /*$sender_email = 'bpmppt.kudus01@gmail.com';
-        $sender_name = 'DPM PTSP Kudus';
-        $name = trim($this->input->post('name'));
-        $email = trim($this->input->post('email'));
-        $subject = "Account Activation";
-        $message = "Kepada : ".$name."
-                    <br>
-                    <p>
-                    Silahkan Klik Link untuk Aktivasi Akun Anda : <a href=".'http://bpmppt.kuduskab.go.id/aktivasi/kode/'.$kode_aktivasi.">Link</a>
-                    <br>
-                    atau Copy Paste Link berikut http://bpmppt.kuduskab.go.id/aktivasi/kode/".$kode_aktivasi.
-                    "</p><br>
-                    <p>
-                    Hormat Kami,<br>
-                    Administrator eRegistration<br>
-                    Dinas Penanaman Modal & Pelayanan Terpadu Satu Pintu Kabupaten Kudus <br>
-                    <a href='http://bpmppt.kuduskab.go.id'>http://bpmppt.kuduskab.go.id</a>
-                    </p>";
-
-        $this->load->library('email');
-        $this->email->set_mailtype("html");
-        $this->email->from($sender_email, $sender_name);
-        $this->email->to($email);
-        $this->email->subject($subject);
-        $this->email->message($message);
-        $this->email->send();
-        */
-        
         $this->session->set_flashdata('notificationsuccess','<b>Pendaftaran Berhasil.</b>');
         redirect(site_url('registrasi/step_four/id/'.$antrian_id.'/'.$this->uri->segment(5)));
     }

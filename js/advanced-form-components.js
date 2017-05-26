@@ -6,11 +6,7 @@ if (top.location != location) {
 $(function(){
     window.prettyPrint && prettyPrint();
     $('.default-date-picker').datepicker({
-        format: 'dd-mm-yyyy' 
-        orientation: "left",
-        minDate: today,
-        daysOfWeekDisabled: [0,6],
-        autoclose: true           
+        format: 'dd-mm-yyyy'            
     });
 		
     $('.dpYears').datepicker();

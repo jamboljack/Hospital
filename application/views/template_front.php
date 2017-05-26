@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en" class="no-js">
-<!-- BEGIN HEAD -->
 <head>
 <meta charset="utf-8">
 <link rel="shortcut icon" href="<?php echo base_url(); ?>img/logo-icon.png">
@@ -23,9 +22,8 @@
 <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/datepicker/css/daterangepicker-bs3.css">
 <link href="<?php echo base_url(); ?>assets/admin/pages/css/profile.css" rel="stylesheet" type="text/css"/>
 <!-- END GLOBAL MANDATORY STYLES -->
-<link href="<?php echo base_url(); ?>assets/global/css/components-rounded.css" id="style_components" rel="stylesheet" type="text/css">
+<link href="<?php echo base_url(); ?>assets/global/css/components-md.css" id="style_components" rel="stylesheet" type="text/css"/>
 <link href="<?php echo base_url(); ?>assets/global/css/plugins.css" rel="stylesheet" type="text/css">
-
 <link href="<?php echo base_url(); ?>assets/admin/layout3/css/custom.css" rel="stylesheet" type="text/css">
 <script src="<?php echo base_url(); ?>assets/global/plugins/jquery.min.js" type="text/javascript"></script>
 <script src="<?php echo base_url(); ?>assets/global/plugins/jquery-migrate.min.js" type="text/javascript"></script>
@@ -42,7 +40,6 @@
 <script src="<?php echo base_url(); ?>assets/global/plugins/jquery.blockui.min.js" type="text/javascript"></script>
 <script src="<?php echo base_url(); ?>assets/global/plugins/jquery.cokie.min.js" type="text/javascript"></script>
 <script src="<?php echo base_url(); ?>assets/global/plugins/uniform/jquery.uniform.min.js" type="text/javascript"></script>
-<!-- END CORE PLUGINS -->
 <script type="text/javascript" src="<?php echo base_url(); ?>assets/global/plugins/select2/select2.min.js"></script>
 <script type="text/javascript" src="<?php echo base_url(); ?>assets/datepicker/js/bootstrap-datepicker.js"></script>
 <script type="text/javascript" src="<?php echo base_url(); ?>assets/datepicker/js/moment.min.js"></script>
@@ -63,18 +60,16 @@
 <script src="<?php echo base_url(); ?>assets/admin/pages/scripts/components-editors.js"></script>
 <script src="<?php echo base_url(); ?>assets/admin/pages/scripts/profile.js" type="text/javascript"></script>
 <!-- ADDITIONAL -->
-<script src="<?php echo base_url(); ?>assets/admin/pages/scripts/table-advanced.js"></script>
+<!--<script src="<?php echo base_url(); ?>assets/admin/pages/scripts/table-advanced.js"></script>-->
 <script src="<?php echo base_url(); ?>assets/admin/pages/scripts/components-pickers.js"></script>
 <script src="<?php echo base_url(); ?>assets/admin/pages/scripts/form-samples.js"></script>
 <script src="<?php echo base_url(); ?>assets/admin/pages/scripts/form-wizard.js"></script>
-<!-- END PAGE LEVEL SCRIPTS -->
 <script>
 jQuery(document).ready(function() {    
    	Metronic.init(); // init metronic core componets
    	Layout.init(); // init layout
    	ComponentsPickers.init();
-   	//Demo.init(); // init demo(theme settings page)  
-   	FormSamples.init();
+	FormSamples.init();
 	Profile.init(); // init page demo
    	FormWizard.init();   
 });

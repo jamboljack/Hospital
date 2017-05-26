@@ -224,5 +224,15 @@ class Registrasi_online_model extends CI_Model {
 		$this->db->where('user_username', $user_username);
 		$this->db->update('hospital_users', $data);
 	}
+
+	function select_history_daftar($pasien_id) {
+		$this->db->select('a.*, d.dokter_name');
+		$this->db->from('hospital_antrian a');
+		$this->db->join('hospital_dokter d', 'a.dokter_id = d.dokter_id');
+		$this->db->where('a.pasien_id', $pasien_id);
+		$this->db->order_by('a.antrian_id', 'desc');
+		
+		return $this->db->get();
+	}
 }
 /* Location: ./application/model/Registrasi_online_model.php */

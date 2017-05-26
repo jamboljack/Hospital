@@ -81,12 +81,12 @@
                 <div class="row">
                     <div class="col-md-7">
                     <h4>Data Dokter</h4>
-                        <div class="form-group">
+                        <div class="form-group form-md-line-input">
                             <div class="col-md-12">
                                 <input type="text" class="form-control dokter_name" readonly>
                             </div>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group form-md-line-input">
                             <div class="col-md-12">
                                 <input type="text" class="form-control tipe" readonly>
                             </div>
@@ -94,12 +94,12 @@
                     </div>
                     <div class="col-md-5">
                     <h4>Data Pemeriksaan</h4>
-                        <div class="form-group">
+                        <div class="form-group form-md-line-input">
                             <div class="col-md-12">
                                 <input type="text" class="form-control waktu" readonly>
                             </div>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group form-md-line-input">
                             <div class="col-md-12">
                                 <input type="text" class="form-control ruang" readonly>
                             </div>
@@ -275,106 +275,108 @@
 
                                         <?php if (empty($this->uri->segment(2)) || $this->uri->segment(2) == '' || $this->uri->segment(2) == 'register' || $this->uri->segment(2) == 'login') {  ?>
                                         <div class="tab-pane <?php echo $tab1; ?>" id="tab1">
-                                            <div class="row">
+                                            <div class="row">                                                
                                                 <div class="col-md-12">
-                                                    <div class="row">
-                                                        <div class="col-md-6">
-                                                            <h3 class="block" align="center">Login</h3>
-                                                            <p class="block" align="center">Masukkan Nama Akun dan Password Anda untuk LOGIN</p>
-                                                            <form role="form"  action="<?php echo site_url('registrasi_online/login'); ?>" class="form-horizontal" method="post" enctype="multipart/form-data">
-                                                            <input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
+                                                    <div class="portlet light">
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <h3 class="block" align="center">Login</h3>
+                                                                <p class="block" align="center">Masukkan Nama Akun dan Password Anda untuk LOGIN</p>
+                                                                <form role="form"  action="<?php echo site_url('registrasi_online/login'); ?>" class="form-horizontal" method="post" enctype="multipart/form-data">
+                                                                <input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
 
-                                                            <div class="form-body"> 
-                                                                <div class="form-group form-md-line-input">
-                                                                    <div class="col-md-12">
-                                                                        <input type="text" class="form-control" placeholder="Nama Akun Anda" name="username" placeholder="Nama Akun" value="<?php echo set_value('username'); ?>" pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{1,20}$" title="Jangan Pakai SPASI" autocomplete="off" required autofocus>
-                                                                        <div class="form-control-focus"></div>
+                                                                <div class="form-body"> 
+                                                                    <div class="form-group form-md-line-input">
+                                                                        <div class="col-md-12">
+                                                                            <input type="text" class="form-control" placeholder="Nama Akun Anda" name="username" placeholder="Nama Akun" value="<?php echo set_value('username'); ?>" pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{1,20}$" title="Jangan Pakai SPASI" autocomplete="off" required autofocus>
+                                                                            <div class="form-control-focus"></div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group form-md-line-input">
+                                                                        <div class="col-md-12">
+                                                                            <input type="password" placeholder="Password Anda" class="form-control" name="password" value="<?php echo set_value('password'); ?>" autocomplete="off" required>
+                                                                            <div class="form-control-focus"></div>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
-                                                                <div class="form-group form-md-line-input">
-                                                                    <div class="col-md-12">
-                                                                        <input type="password" placeholder="Password Anda" class="form-control" name="password" value="<?php echo set_value('password'); ?>" autocomplete="off" required>
-                                                                        <div class="form-control-focus"></div>
+                                                                <div class="form-actions">
+                                                                    <div class="row">              
+                                                                        <div class="col-md-12" align="center">
+                                                                            <button type="submit" class="btn green"><i class="fa fa-sign-in"></i> Log In</button>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
+                                                                <a href="">Lupa Password ?</a><br>
+                                                                <a href="">Lupa Nama Akun ?</a>
+                                                                </form>
                                                             </div>
-                                                            <div class="form-actions">
-                                                                <div class="row">              
-                                                                    <div class="col-md-12" align="center">
-                                                                        <button type="submit" class="btn green"><i class="fa fa-sign-in"></i> Log In</button>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <a href="">Lupa Password ?</a><br>
-                                                            <a href="">Lupa Nama Akun ?</a>
-                                                            </form>
-                                                        </div>
-                                                        <div class="col-md-6">
-                                                            <h3 class="block" align="center">Register</h3>
-                                                            <p class="block" align="center">Register dilakukan jika Anda belum mempunyai Akun. Proses Register hanya sekali saja dan digunakan untuk membuat Akun yang nantinya berfungsi untuk LOGIN. Dengan melakukan Register, Anda bisa melakukan Pendaftaran Online bagi diri Anda sendiri dan keluarga Anda.</p>
-                                                            <form role="form" class="form-horizontal" action="<?php echo site_url('registrasi_online/register'); ?>" method="post" enctype="multipart/form-data">
-                                                            <input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
+                                                            <div class="col-md-6">
+                                                                <h3 class="block" align="center">Register</h3>
+                                                                <p class="block" align="center">Register dilakukan jika Anda belum mempunyai Akun. Proses Register hanya sekali saja dan digunakan untuk membuat Akun yang nantinya berfungsi untuk LOGIN. Dengan melakukan Register, Anda bisa melakukan Pendaftaran Online bagi diri Anda sendiri dan keluarga Anda.</p>
+                                                                <form role="form" class="form-horizontal" action="<?php echo site_url('registrasi_online/register'); ?>" method="post" enctype="multipart/form-data">
+                                                                <input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
 
-                                                            <div class="form-body"> 
-                                                                <div class="form-group form-md-line-input">
-                                                                    <label class="col-md-3 control-label">Nama Akun <span class="required" aria-required="true"> * </span></label>
-                                                                    <div class="col-md-9">
-                                                                        <input type="text" class="form-control" name="username" value="<?php echo set_value('username'); ?>" pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{1,20}$" title="Jangan Pakai SPASI" autocomplete="off" required autofocus>
-                                                                        <div class="form-control-focus"></div>
-                                                                        <span class="help-block">Isi Nama Akun Anda, berisi 5-20 Karakter tanpa Spasi</span>
+                                                                <div class="form-body"> 
+                                                                    <div class="form-group form-md-line-input">
+                                                                        <label class="col-md-3 control-label">Nama Akun <span class="required" aria-required="true"> * </span></label>
+                                                                        <div class="col-md-9">
+                                                                            <input type="text" class="form-control" name="username" value="<?php echo set_value('username'); ?>" pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{1,20}$" title="Jangan Pakai SPASI" autocomplete="off" required autofocus>
+                                                                            <div class="form-control-focus"></div>
+                                                                            <span class="help-block">Isi Nama Akun Anda, berisi 5-20 Karakter tanpa Spasi</span>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group form-md-line-input">
+                                                                        <label class="col-md-3 control-label">Nama Lengkap <span class="required" aria-required="true"> * </span></label>
+                                                                        <div class="col-md-9">
+                                                                            <input type="text" class="form-control" name="nama" value="<?php echo set_value('nama'); ?>" required>
+                                                                            <div class="form-control-focus"></div>
+                                                                            <span class="help-block">Isi Nama Lengkap Anda</span>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group form-md-line-input">
+                                                                        <label class="col-md-3 control-label">Email <span class="required" aria-required="true"> * </span></label>
+                                                                        <div class="col-md-9">
+                                                                            <input type="email" class="form-control" name="email" value="<?php echo set_value('email'); ?>" autocomplete="off" required>
+                                                                            <div class="form-control-focus"></div>
+                                                                            <span class="help-block">Isi EMAIL VALID, ex. xxx@gmail.com</span>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group form-md-line-input">
+                                                                        <label class="col-md-3 control-label">No. Handphone <span class="required" aria-required="true"> * </span></label>
+                                                                        <div class="col-md-9">
+                                                                            <input type="text" class="form-control" name="phone" value="<?php echo set_value('phone'); ?>" pattern="^[0-9]{1,12}$" title="Hanya Angka, maksimal 12 Digit" autocomplete="off" maxlength="12" required>
+                                                                            <div class="form-control-focus"></div>
+                                                                            <span class="help-block">Isi No. Handphone Anda, Hanya ANGKA</span>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group form-md-line-input">
+                                                                        <label class="col-md-3 control-label">Password <span class="required" aria-required="true"> * </span></label>
+                                                                        <div class="col-md-9">
+                                                                            <input type="password" class="form-control" name="password" value="<?php echo set_value('password'); ?>" autocomplete="off" required>
+                                                                            <div class="form-control-focus"></div>
+                                                                            <span class="help-block">Isi Password Akun Anda, minimal 3 Karakter</span>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group form-md-line-input">
+                                                                        <label class="col-md-3 control-label">
+                                                                            <img id="imgCaptcha" src="<?php echo site_url('registrasi_online/create_image'); ?>" />
+                                                                        </label>
+                                                                        <div class="col-md-9">
+                                                                            <input type='text' name="verify" class="form-control" maxlength="5" autocomplete="off" required>
+                                                                            <div class="form-control-focus"></div>
+                                                                            <span class="help-block">Masukkan 5 Karakter di Samping</span>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
-                                                                <div class="form-group form-md-line-input">
-                                                                    <label class="col-md-3 control-label">Nama Lengkap <span class="required" aria-required="true"> * </span></label>
-                                                                    <div class="col-md-9">
-                                                                        <input type="text" class="form-control" name="nama" value="<?php echo set_value('nama'); ?>" required>
-                                                                        <div class="form-control-focus"></div>
-                                                                        <span class="help-block">Isi Nama Lengkap Anda</span>
+                                                                <div class="form-actions">
+                                                                    <div class="row">
+                                                                        <div class="col-md-12" align="center">
+                                                                            <button type="submit" class="btn green"><i class="fa fa-sign-in"></i> Register</button>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
-                                                                <div class="form-group form-md-line-input">
-                                                                    <label class="col-md-3 control-label">Email <span class="required" aria-required="true"> * </span></label>
-                                                                    <div class="col-md-9">
-                                                                        <input type="email" class="form-control" name="email" value="<?php echo set_value('email'); ?>" autocomplete="off" required>
-                                                                        <div class="form-control-focus"></div>
-                                                                        <span class="help-block">Isi EMAIL VALID, ex. xxx@gmail.com</span>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="form-group form-md-line-input">
-                                                                    <label class="col-md-3 control-label">No. Handphone <span class="required" aria-required="true"> * </span></label>
-                                                                    <div class="col-md-9">
-                                                                        <input type="text" class="form-control" name="phone" value="<?php echo set_value('phone'); ?>" pattern="^[0-9]{1,12}$" title="Hanya Angka, maksimal 12 Digit" autocomplete="off" maxlength="12" required>
-                                                                        <div class="form-control-focus"></div>
-                                                                        <span class="help-block">Isi No. Handphone Anda, Hanya ANGKA</span>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="form-group form-md-line-input">
-                                                                    <label class="col-md-3 control-label">Password <span class="required" aria-required="true"> * </span></label>
-                                                                    <div class="col-md-9">
-                                                                        <input type="password" class="form-control" name="password" value="<?php echo set_value('password'); ?>" autocomplete="off" required>
-                                                                        <div class="form-control-focus"></div>
-                                                                        <span class="help-block">Isi Password Akun Anda, minimal 3 Karakter</span>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="form-group form-md-line-input">
-                                                                    <label class="col-md-3 control-label">
-                                                                        <img id="imgCaptcha" src="<?php echo site_url('registrasi_online/create_image'); ?>" />
-                                                                    </label>
-                                                                    <div class="col-md-9">
-                                                                        <input type='text' name="verify" class="form-control" maxlength="5" autocomplete="off" required>
-                                                                        <div class="form-control-focus"></div>
-                                                                        <span class="help-block">Masukkan 5 Karakter di Samping</span>
-                                                                    </div>
-                                                                </div>
+                                                                </form>
                                                             </div>
-                                                            <div class="form-actions">
-                                                                <div class="row">
-                                                                    <div class="col-md-12" align="center">
-                                                                        <button type="submit" class="btn green"><i class="fa fa-sign-in"></i> Register</button>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            </form>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -384,9 +386,8 @@
                                         
                                         <?php if ($this->uri->segment(2) == 'step_two') { ?>
                                         <div class="tab-pane <?php echo $tab2; ?>" id="tab2">
-                                            <div class="row">
+                                            <div class="row margin-top-10">
                                                 <div class="col-md-12">
-                                                    <!-- SIDEBAR -->
                                                     <div class="profile-sidebar" style="width: 250px;">
                                                         <div class="portlet light profile-sidebar-portlet">
                                                             <div class="profile-userpic">
@@ -399,7 +400,7 @@
                                                             </div>
                                                             <?php 
                                                             $uritab = $this->uri->segment(3);
-                                                            if (empty($uritab) || $uritab == '' && $uritab <> 'ubahpassword' && $uritab <> 'ubahprofil' || $uritab == 'tambah_anggota') {
+                                                            if (empty($uritab) || $uritab == '' || $uritab == 'history' || $uritab == 'tambah_anggota' && $uritab <> 'ubahpassword' && $uritab <> 'ubahprofil') {
                                                                 $tabprofil1 = 'class="active"';
                                                                 $tabprofil2 = '';
                                                                 $tabprofil3 = '';
@@ -439,7 +440,6 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <!-- END SIDEBAR -->
                                                     <?php 
                                                     if (empty($uritab) || $uritab == '') {
                                                         if (count($listAnggota) == 0) {
@@ -738,85 +738,87 @@
                                                     <div class="profile-content">
                                                         <div class="row">
                                                             <div class="col-md-12">
-                                                                <h4 class="block" align="center"><b>Daftar Anggota Keluarga</b></h4>
-                                                                <p class="block">
-                                                                    <ul>
-                                                                        <li>
-                                                                        Untuk menambah Anggota Keluarga lainnya, silahkan klik <b>Tambah Anggota Keluarga</b> dan pilih Hubungan dengan Akun Utama.
-                                                                        </li>
-                                                                        <li>
-                                                                        Klik <b>Riwayat</b> untuk melihat riwayat pendaftaran Online yang telah dilakukan. Opsi ini juga digunakan untuk memunculkan <b>Kode Pendaftaran/Bukti Pendaftaran Online</b> yang digunakan untuk mendaftar di Loket Pendaftaran untuk di periksa.
-                                                                        </li>
-                                                                        <li>
-                                                                        Klik <b>Pilih</b> untuk melakukan Pendaftaran Rawat Jalan Online kembali.
-                                                                        </li>
-                                                                    </ul>
-                                                                </p>
-                                                                <br><br>
-                                                                <div class="actions">
-                                                                    <div class="btn-group dropup">
-                                                                        <a class="btn btn-sm blue dropdown-toggle" href="#" data-toggle="dropdown">
-                                                                        <i class="fa fa-plus-square"></i> Tambah Anggota Keluarga <i class="fa fa-angle-down"></i>
-                                                                        </a>
-                                                                        <ul class="dropdown-menu pull-right">
+                                                                <div class="portlet light">
+                                                                    <h4 class="block" align="center"><b>Daftar Anggota Keluarga</b></h4>
+                                                                    <p class="block">
+                                                                        <ul>
                                                                             <li>
-                                                                                <a href="<?php echo site_url('registrasi/step_two/tambah_anggota/2'); ?>"> Suami </a>
+                                                                            Untuk menambah Anggota Keluarga lainnya, silahkan klik <b>Tambah Anggota Keluarga</b> dan pilih Hubungan dengan Akun Utama.
                                                                             </li>
                                                                             <li>
-                                                                                <a href="<?php echo site_url('registrasi/step_two/tambah_anggota/3'); ?>"> Istri </a>
+                                                                            Klik <b>Riwayat</b> untuk melihat riwayat pendaftaran Online yang telah dilakukan. Opsi ini juga digunakan untuk memunculkan <b>Kode Pendaftaran/Bukti Pendaftaran Online</b> yang digunakan untuk mendaftar di Loket Pendaftaran untuk di periksa.
                                                                             </li>
                                                                             <li>
-                                                                                <a href="<?php echo site_url('registrasi/step_two/tambah_anggota/4'); ?>"> Anak </a>
-                                                                            </li>
-                                                                            <li>
-                                                                                <a href="<?php echo site_url('registrasi/step_two/tambah_anggota/5'); ?>"> Orang Tua </a>
-                                                                            </li>
-                                                                            <li>
-                                                                                <a href="<?php echo site_url('registrasi/step_two/tambah_anggota/6'); ?>"> Saudara Lainnya </a>
+                                                                            Klik <b>Pilih</b> untuk melakukan Pendaftaran Rawat Jalan Online kembali.
                                                                             </li>
                                                                         </ul>
+                                                                    </p>
+                                                                    <br><br>
+                                                                    <div class="actions">
+                                                                        <div class="btn-group dropup">
+                                                                            <a class="btn btn-sm blue dropdown-toggle" href="#" data-toggle="dropdown">
+                                                                            <i class="fa fa-plus-square"></i> Tambah Anggota Keluarga <i class="fa fa-angle-down"></i>
+                                                                            </a>
+                                                                            <ul class="dropdown-menu pull-right">
+                                                                                <li>
+                                                                                    <a href="<?php echo site_url('registrasi/step_two/tambah_anggota/2'); ?>"> Suami </a>
+                                                                                </li>
+                                                                                <li>
+                                                                                    <a href="<?php echo site_url('registrasi/step_two/tambah_anggota/3'); ?>"> Istri </a>
+                                                                                </li>
+                                                                                <li>
+                                                                                    <a href="<?php echo site_url('registrasi/step_two/tambah_anggota/4'); ?>"> Anak </a>
+                                                                                </li>
+                                                                                <li>
+                                                                                    <a href="<?php echo site_url('registrasi/step_two/tambah_anggota/5'); ?>"> Orang Tua </a>
+                                                                                </li>
+                                                                                <li>
+                                                                                    <a href="<?php echo site_url('registrasi/step_two/tambah_anggota/6'); ?>"> Saudara Lainnya </a>
+                                                                                </li>
+                                                                            </ul>
+                                                                        </div>
                                                                     </div>
-                                                                </div>
-                                                                <div class="portlet-body">                        
-                                                                    <table class="table table-striped table-bordered table-hover">
-                                                                    <thead>
-                                                                        <tr class="success">
-                                                                            <th width="5%">No</th>
-                                                                            <th width="15%">No. RM</th>
-                                                                            <th>Nama Pasien</th>
-                                                                            <th width="15%">Jenis Kelamin</th>
-                                                                            <th width="20%">Asuransi</th>
-                                                                            <th width="10%">Aksi</th>
-                                                                        </tr>
-                                                                    </thead>
-                                                                    <tbody>
-                                                                        <?php 
-                                                                        $no = 1;
-                                                                        foreach($listAnggota as $r) {
-                                                                            $pasien_id = $r->pasien_id;
-                                                                            if (empty($r->pasien_no_rm)) {
-                                                                                $no_rm = 'Pasien Baru';
-                                                                            } else {
-                                                                                $no_rm = $r->pasien_no_rm;
+                                                                    <div class="portlet-body">                        
+                                                                        <table class="table table-striped table-bordered table-hover">
+                                                                        <thead>
+                                                                            <tr class="success">
+                                                                                <th width="5%">No</th>
+                                                                                <th width="15%">No. RM</th>
+                                                                                <th>Nama Pasien</th>
+                                                                                <th width="15%">Jenis Kelamin</th>
+                                                                                <th width="20%">Asuransi</th>
+                                                                                <th width="10%">Aksi</th>
+                                                                            </tr>
+                                                                        </thead>
+                                                                        <tbody>
+                                                                            <?php 
+                                                                            $no = 1;
+                                                                            foreach($listAnggota as $r) {
+                                                                                $pasien_id = $r->pasien_id;
+                                                                                if (empty($r->pasien_no_rm)) {
+                                                                                    $no_rm = 'Pasien Baru';
+                                                                                } else {
+                                                                                    $no_rm = $r->pasien_no_rm;
+                                                                                }
+                                                                            ?>
+                                                                            <tr>
+                                                                                <td><?php echo $no; ?></td>
+                                                                                <td><?php echo $no_rm; ?></td>
+                                                                                <td><?php echo $r->pasien_nama; ?></td>
+                                                                                <td><?php echo $r->pasien_jk; ?></td>
+                                                                                <td><?php echo $r->pelanggan_name; ?></td>
+                                                                                <td align="center">
+                                                                                    <a href="<?php echo site_url('registrasi/step_two/history/'.$r->pasien_id.'/'.$r->pasien_nama_seo); ?>"><button class="btn btn-success btn-xs" title="Riwayat Pendaftaran"><i class="fa fa-search"></i> History</button></a>
+                                                                                    <a href="<?php echo site_url('registrasi/step_three/id/'.$r->pasien_id.'/'.$r->pasien_nama_seo); ?>"><button class="btn btn-danger btn-xs" title="Pilih Pasien"><i class="fa fa-check"></i> Pilih</button></a>
+                                                                                </td>
+                                                                            </tr>
+                                                                            <?php
+                                                                                $no++;
                                                                             }
-                                                                        ?>
-                                                                        <tr>
-                                                                            <td><?php echo $no; ?></td>
-                                                                            <td><?php echo $no_rm; ?></td>
-                                                                            <td><?php echo $r->pasien_nama; ?></td>
-                                                                            <td><?php echo $r->pasien_jk; ?></td>
-                                                                            <td><?php echo $r->pelanggan_name; ?></td>
-                                                                            <td align="center">
-                                                                                <a href="<?php echo site_url('registrasi/step_two/riwayatperiksa/'.'/'.$r->pasien_id.'/'.$r->pasien_nama_seo); ?>"><button class="btn btn-warning btn-xs" title="Riwayat Pemeriksaan"><i class="fa fa-search"></i> History</button></a>
-                                                                                <a href="<?php echo site_url('registrasi/step_three/id/'.$r->pasien_id.'/'.$r->pasien_nama_seo); ?>"><button class="btn btn-danger btn-xs" title="Pilih Pasien"><i class="fa fa-check"></i> Pilih</button></a>
-                                                                            </td>
-                                                                        </tr>
-                                                                        <?php
-                                                                            $no++;
-                                                                        }
-                                                                        ?>
-                                                                    </tbody>
-                                                                    </table>
+                                                                            ?>
+                                                                        </tbody>
+                                                                        </table>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -1129,6 +1131,61 @@
                                                         </div>
                                                     </div>
                                                     <!-- END TAMBAH DAFTAR ANGGOTA KELUARGA --> 
+                                                    <?php 
+                                                    // History Pendaftaran Pasien
+                                                    } elseif ($uritab == 'history') {
+                                                    ?>
+                                                    <div class="profile-content">
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <div class="portlet light">
+                                                                <h4 class="block" align="center"><b>Riwayat Pendaftaran Online</b></h4>
+                                                                    <div class="portlet-body">                        
+                                                                        <table class="table table-striped table-bordered table-hover">
+                                                                        <thead>
+                                                                            <tr class="success">
+                                                                                <th width="5%">No</th>
+                                                                                <th width="20%">Tgl. Pendaftaran</th>
+                                                                                <th>Dokter</th>
+                                                                                <th width="20%">Tgl. Pemeriksaan</th>
+                                                                                <th width="10%">Aksi</th>
+                                                                            </tr>
+                                                                        </thead>
+                                                                        <tbody>
+                                                                            <?php 
+                                                                            $no = 1;
+                                                                            foreach($listDaftar as $r) {
+                                                                                $antrian_id     = $r->antrian_id;
+                                                                                
+                                                                                $TglDaftar      = $r->antrian_date_update;
+                                                                                $DateDaftar     = date("d-m-Y", strtotime($TglDaftar));
+
+                                                                                $TglPeriksa     = $r->antrian_tanggal;
+                                                                                $DatePeriksa    = date("d-m-Y", strtotime($TglPeriksa));
+                                                                            ?>
+                                                                            <tr>
+                                                                                <td><?php echo $no; ?></td>
+                                                                                <td><?php echo $DateDaftar.' '.$r->antrian_time_update; ?></td>
+                                                                                <td><?php echo $r->dokter_name; ?></td>
+                                                                                <td><?php echo $DatePeriksa.' '.$r->antrian_jam_layani; ?></td>
+                                                                                <td align="center">
+                                                                                    <a href="<?php echo site_url('registrasi/step_four/id/'.$r->antrian_id.'/'.$this->uri->segment(5)); ?>"><button class="btn btn-success btn-xs" title="Riwayat Pendaftaran"><i class="fa fa-list"></i> Detail</button></a>
+                                                                                </td>
+                                                                            </tr>
+                                                                            <?php
+                                                                                $no++;
+                                                                            }
+                                                                            ?>
+                                                                        </tbody>
+                                                                        </table>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-12">
+                                                                <a href="<?php echo site_url('registrasi/step_two'); ?>" class="btn red"><i class="fa fa-chevron-left"></i> Batal</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                     <?php
                                                     // Ubah Password
                                                     } elseif ($uritab == 'ubahpassword' || $uritab == 'updatepassword') {
@@ -1136,43 +1193,45 @@
                                                     <div class="profile-content">
                                                         <div class="row">
                                                             <div class="col-md-12">
-                                                                <h4 class="block" align="center"><b>Ubah Password</b></h4>    
-                                                                <div class="row">
-                                                                    <div class="col-md-3">
-                                                                    </div>
-                                                                    <div class="col-md-6">
-                                                                        <form role="form" action="<?php echo site_url('registrasi/step_two/updatepassword'); ?>" method="post" enctype="multipart/form-data">
-                                                                        <input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
-                                                                        <input type="hidden" name="password" value="<?php echo $detail->user_password; ?>" />
+                                                                <div class="portlet light">
+                                                                    <h4 class="block" align="center"><b>Ubah Password</b></h4>
+                                                                    <div class="row">
+                                                                        <div class="col-md-3">
+                                                                        </div>
+                                                                        <div class="col-md-6">
+                                                                            <form role="form" action="<?php echo site_url('registrasi/step_two/updatepassword'); ?>" method="post" enctype="multipart/form-data">
+                                                                            <input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
+                                                                            <input type="hidden" name="password" value="<?php echo $detail->user_password; ?>" />
 
-                                                                            <div class="form-body">
-                                                                                <div class="form-group form-md-line-input">
-                                                                                    <input type="password" class="form-control" name="passwordlama" autocomplete="off" required>
-                                                                                    <span class="help-block">Masukkan Password Lama Anda.</span>
-                                                                                    <label>Password Lama Anda</label>
-                                                                                </div>
-                                                                                <div class="form-group form-md-line-input">
-                                                                                    <input type="password" class="form-control" name="passwordbaru" autocomplete="off" required>
-                                                                                    <span class="help-block">Masukkan Password Baru Anda.</span>
-                                                                                    <label>Password Baru Anda</label>
-                                                                                </div>
-                                                                                <div class="form-group form-md-line-input">
-                                                                                    <input type="password" class="form-control" name="passwordkonfirm" autocomplete="off" required>
-                                                                                    <span class="help-block">Masukkan Konfirmasi Password Baru Anda.</span>
-                                                                                    <label>Konfirmasi Password Baru</label>
-                                                                                </div>
-                                                                            </div>
-
-                                                                            <div class="form-actions">
-                                                                                <div class="row">
-                                                                                    <div class="col-md-12" align="center">
-                                                                                        <button type="submit" class="btn green"><i class="fa fa-floppy-o"></i> Update</button>
+                                                                                <div class="form-body">
+                                                                                    <div class="form-group form-md-line-input">
+                                                                                        <input type="password" class="form-control" name="passwordlama" autocomplete="off" required>
+                                                                                        <span class="help-block">Masukkan Password Lama Anda.</span>
+                                                                                        <label>Password Lama Anda</label>
+                                                                                    </div>
+                                                                                    <div class="form-group form-md-line-input">
+                                                                                        <input type="password" class="form-control" name="passwordbaru" autocomplete="off" required>
+                                                                                        <span class="help-block">Masukkan Password Baru Anda.</span>
+                                                                                        <label>Password Baru Anda</label>
+                                                                                    </div>
+                                                                                    <div class="form-group form-md-line-input">
+                                                                                        <input type="password" class="form-control" name="passwordkonfirm" autocomplete="off" required>
+                                                                                        <span class="help-block">Masukkan Konfirmasi Password Baru Anda.</span>
+                                                                                        <label>Konfirmasi Password Baru</label>
                                                                                     </div>
                                                                                 </div>
-                                                                            </div>
-                                                                        </form>
-                                                                    </div>
-                                                                    <div class="col-md-3">
+
+                                                                                <div class="form-actions">
+                                                                                    <div class="row">
+                                                                                        <div class="col-md-12" align="center">
+                                                                                            <button type="submit" class="btn green"><i class="fa fa-floppy-o"></i> Update</button>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </form>
+                                                                        </div>
+                                                                        <div class="col-md-3">
+                                                                        </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -1185,52 +1244,54 @@
                                                     <div class="profile-content">
                                                         <div class="row">
                                                             <div class="col-md-12">
-                                                            <h4 class="block" align="center"><b>Data Profil Akun</b></h4>
-                                                                <div class="row">
-                                                                    <div class="col-md-5">
-                                                                        <form role="form" action="<?php echo site_url('registrasi/step_two/updateprofil'); ?>" method="post" enctype="multipart/form-data">
-                                                                        <input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
+                                                                <div class="portlet light">
+                                                                    <h4 class="block" align="center"><b>Data Profil Akun</b></h4>
+                                                                    <div class="row">
+                                                                        <div class="col-md-5">
+                                                                            <form role="form" action="<?php echo site_url('registrasi/step_two/updateprofil'); ?>" method="post" enctype="multipart/form-data">
+                                                                            <input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
 
-                                                                            <div class="form-body"> 
-                                                                                <div class="form-group form-md-line-input">
-                                                                                    <input type="text" class="form-control" name="username" value="<?php echo $detail->user_username; ?>" autocomplete="off" readonly>
-                                                                                    <label>Username</label>
-                                                                                </div>
-                                                                                <div class="form-group form-md-line-input">
-                                                                                    <input type="text" class="form-control" name="nama" value="<?php echo $detail->user_name; ?>" autocomplete="off" required>
-                                                                                    <span class="help-block">Masukkan Nama Lengkap Anda.</span>
-                                                                                    <label>Nama Lengkap</label>
-                                                                                </div>
-                                                                                <div class="form-group form-md-line-input">
-                                                                                    <input type="text" class="form-control" name="phone" value="<?php echo $detail->user_phone; ?>" pattern="^[0-9]{1,12}$" title="Hanya Angka, maksimal 12 Digit" autocomplete="off" maxlength="12" required>
-                                                                                    <span class="help-block">Masukkan No. Handphone Anda, harus ANGKA.</span>
-                                                                                    <label>No. Handphone</label>
-                                                                                </div>
-                                                                                <div class="form-group form-md-line-input">
-                                                                                    <input type="email" class="form-control" name="email" value="<?php echo $detail->user_email; ?>" required>
-                                                                                    <span class="help-block">Masukkan Email yang VALID.</span>
-                                                                                    <label>Alamat Email</label>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="form-actions">
-                                                                                <div class="row">
-                                                                                    <div class="col-md-12" align="center">
-                                                                                        <button type="submit" class="btn green"><i class="fa fa-floppy-o"></i> Update</button>
+                                                                                <div class="form-body"> 
+                                                                                    <div class="form-group form-md-line-input">
+                                                                                        <input type="text" class="form-control" name="username" value="<?php echo $detail->user_username; ?>" autocomplete="off" readonly>
+                                                                                        <label>Username</label>
+                                                                                    </div>
+                                                                                    <div class="form-group form-md-line-input">
+                                                                                        <input type="text" class="form-control" name="nama" value="<?php echo $detail->user_name; ?>" autocomplete="off" required>
+                                                                                        <span class="help-block">Masukkan Nama Lengkap Anda.</span>
+                                                                                        <label>Nama Lengkap</label>
+                                                                                    </div>
+                                                                                    <div class="form-group form-md-line-input">
+                                                                                        <input type="text" class="form-control" name="phone" value="<?php echo $detail->user_phone; ?>" pattern="^[0-9]{1,12}$" title="Hanya Angka, maksimal 12 Digit" autocomplete="off" maxlength="12" required>
+                                                                                        <span class="help-block">Masukkan No. Handphone Anda, harus ANGKA.</span>
+                                                                                        <label>No. Handphone</label>
+                                                                                    </div>
+                                                                                    <div class="form-group form-md-line-input">
+                                                                                        <input type="email" class="form-control" name="email" value="<?php echo $detail->user_email; ?>" required>
+                                                                                        <span class="help-block">Masukkan Email yang VALID.</span>
+                                                                                        <label>Alamat Email</label>
                                                                                     </div>
                                                                                 </div>
+                                                                                <div class="form-actions">
+                                                                                    <div class="row">
+                                                                                        <div class="col-md-12" align="center">
+                                                                                            <button type="submit" class="btn green"><i class="fa fa-floppy-o"></i> Update</button>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </form>
+                                                                        </div>
+                                                                        <div class="col-md-7">
+                                                                            <div class="note note-success note-bordered">
+                                                                            <b>USERNAME</b><br>
+                                                                            Username tidak bisa dirubah.<br><br>
+                                                                            <b>NAMA LENGKAP</b><br>
+                                                                            Isikan sesuai Data Pemilik Akun.<br><br>
+                                                                            <b>NO. HANDPHONE</b><br>
+                                                                            Isikan dengan No. Handphone yang VALID, dan hanya ANGKA.<br><br>
+                                                                            <b>EMAIL</b><br>
+                                                                            Isikan dengan EMAIL yang VALID karena informasi pendaftaran Online akan dikirim ke E-Mail.
                                                                             </div>
-                                                                        </form>
-                                                                    </div>
-                                                                    <div class="col-md-7">
-                                                                        <div class="note note-success note-bordered">
-                                                                        <b>USERNAME</b><br>
-                                                                        Username tidak bisa dirubah.<br><br>
-                                                                        <b>NAMA LENGKAP</b><br>
-                                                                        Isikan sesuai Data Pemilik Akun.<br><br>
-                                                                        <b>NO. HANDPHONE</b><br>
-                                                                        Isikan dengan No. Handphone yang VALID, dan hanya ANGKA.<br><br>
-                                                                        <b>EMAIL</b><br>
-                                                                        Isikan dengan EMAIL yang VALID karena informasi pendaftaran Online akan dikirim ke E-Mail.
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -1250,82 +1311,84 @@
                                         <div class="tab-pane <?php echo $tab3; ?>" id="tab3">
                                             <div class="row">
                                                 <div class="col-md-12">
-                                                    <div class="row">
-                                                        <div class="col-md-6">
-                                                            <form role="form"  action="<?php echo site_url('registrasi/step_three/search/'.$this->uri->segment(4).'/'.$this->uri->segment(5)); ?>" class="form-horizontal" method="post" enctype="multipart/form-data">
-                                                            <input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
+                                                    <div class="portlet light">
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <form role="form"  action="<?php echo site_url('registrasi/step_three/search/'.$this->uri->segment(4).'/'.$this->uri->segment(5)); ?>" class="form-horizontal" method="post" enctype="multipart/form-data">
+                                                                <input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
 
-                                                                <div class="form-body"> 
-                                                                    <div class="form-group form-md-line-input">
-                                                                        <label class="col-md-4 control-label">Nama Pendaftar</label>
-                                                                        <div class="col-md-8">
-                                                                            <input type="text" class="form-control" name="nama" value="<?php echo $detail->pasien_nama; ?>" autocomplete="off" readonly>
-                                                                            <div class="form-control-focus"></div>
+                                                                    <div class="form-body"> 
+                                                                        <div class="form-group form-md-line-input">
+                                                                            <label class="col-md-4 control-label">Nama Pendaftar</label>
+                                                                            <div class="col-md-8">
+                                                                                <input type="text" class="form-control" name="nama" value="<?php echo $detail->pasien_nama; ?>" autocomplete="off" readonly>
+                                                                                <div class="form-control-focus"></div>
+                                                                            </div>
                                                                         </div>
-                                                                    </div>
-                                                                    <div class="form-group form-md-line-input">
-                                                                        <label class="col-md-4 control-label">Asuransi</label>
-                                                                        <div class="col-md-8">
-                                                                            <select class="form-control" name="lstPelanggan" disabled>
-                                                                                <option value="">- Pilih Asuransi -</option>
-                                                                                <?php 
-                                                                                foreach($listPelanggan as $l) {
-                                                                                    if ($detail->pelanggan_id == $l->pelanggan_id) {
-                                                                                ?>
-                                                                                <option value="<?php echo $l->pelanggan_id; ?>" selected><?php echo $l->pelanggan_name; ?></option>
-                                                                                <?php } else { ?>
-                                                                                <option value="<?php echo $l->pelanggan_id; ?>" <?php echo set_select('lstPelanggan', $l->pelanggan_id); ?>><?php echo $l->pelanggan_name; ?></option>
-                                                                                <?php 
+                                                                        <div class="form-group form-md-line-input">
+                                                                            <label class="col-md-4 control-label">Asuransi</label>
+                                                                            <div class="col-md-8">
+                                                                                <select class="form-control" name="lstPelanggan" disabled>
+                                                                                    <option value="">- Pilih Asuransi -</option>
+                                                                                    <?php 
+                                                                                    foreach($listPelanggan as $l) {
+                                                                                        if ($detail->pelanggan_id == $l->pelanggan_id) {
+                                                                                    ?>
+                                                                                    <option value="<?php echo $l->pelanggan_id; ?>" selected><?php echo $l->pelanggan_name; ?></option>
+                                                                                    <?php } else { ?>
+                                                                                    <option value="<?php echo $l->pelanggan_id; ?>" <?php echo set_select('lstPelanggan', $l->pelanggan_id); ?>><?php echo $l->pelanggan_name; ?></option>
+                                                                                    <?php 
+                                                                                        } 
                                                                                     } 
-                                                                                } 
-                                                                                ?>
-                                                                            </select>
+                                                                                    ?>
+                                                                                </select>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group form-md-line-input">
+                                                                            <label class="col-md-4 control-label">Poliklinik</label>
+                                                                            <div class="col-md-8">
+                                                                                <select class="form-control" name="lstPoliklinik" required autofocus>
+                                                                                    <option value="all">-- SEMUA POLILINIK --</option>
+                                                                                    <?php 
+                                                                                    foreach($listPoliklinik as $p) {
+                                                                                    ?>
+                                                                                    <option value="<?php echo $p->tipe_id; ?>" <?php echo set_select('lstPoliklinik', $p->tipe_id); ?>><?php echo $p->tipe_name; ?></option>
+                                                                                    <?php
+                                                                                    } 
+                                                                                    ?>
+                                                                                </select>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group form-md-line-input">
+                                                                            <label class="col-md-4 control-label">Tanggal Pemeriksaan</label>
+                                                                            <div class="col-md-8">
+                                                                                <input class="form-control form-control-inline input-medium date-picker" size="16" type="text" name="tgl_periksa" value="<?php echo set_value('tgl_periksa'); ?>" placeholder="DD-MM-YYYY" autocomplete="off" required />
+                                                                            </div>
                                                                         </div>
                                                                     </div>
-                                                                    <div class="form-group form-md-line-input">
-                                                                        <label class="col-md-4 control-label">Poliklinik</label>
-                                                                        <div class="col-md-8">
-                                                                            <select class="form-control" name="lstPoliklinik" required autofocus>
-                                                                                <option value="all">-- SEMUA POLILINIK --</option>
-                                                                                <?php 
-                                                                                foreach($listPoliklinik as $p) {
-                                                                                ?>
-                                                                                <option value="<?php echo $p->tipe_id; ?>" <?php echo set_select('lstPoliklinik', $p->tipe_id); ?>><?php echo $p->tipe_name; ?></option>
-                                                                                <?php
-                                                                                } 
-                                                                                ?>
-                                                                            </select>
+                                                                    <div class="form-actions">
+                                                                        <div class="row">              
+                                                                            <div class="col-md-12" align="center">
+                                                                                <a href="<?php echo site_url('registrasi/step_two'); ?>" class="btn green"><i class="fa fa-chevron-left"></i> Batal</a>
+                                                                                <button type="submit" class="btn yellow"><i class="fa fa-search"></i> Cari Jadwal</button>
+                                                                            </div>
                                                                         </div>
                                                                     </div>
-                                                                    <div class="form-group form-md-line-input">
-                                                                        <label class="col-md-4 control-label">Tanggal Pemeriksaan</label>
-                                                                        <div class="col-md-8">
-                                                                            <input class="form-control form-control-inline input-medium date-picker" size="16" type="text" name="tgl_periksa" value="<?php echo set_value('tgl_periksa'); ?>" placeholder="DD-MM-YYYY" autocomplete="off" required />
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="form-actions">
-                                                                    <div class="row">              
-                                                                        <div class="col-md-12" align="center">
-                                                                            <a href="<?php echo site_url('registrasi/step_two'); ?>" class="btn green"><i class="fa fa-chevron-left"></i> Batal</a>
-                                                                            <button type="submit" class="btn yellow"><i class="fa fa-search"></i> Cari Jadwal</button>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </form>
-                                                        </div>
-                                                        <div class="col-md-6">
-                                                            <div class="note note-success note-bordered">
-                                                                <b>INFORMASI</b><br>
-                                                                <ul>
-                                                                    <li><b>Nama Pendaftar</b> adalah Nama Pasien yang akan Periksa.</li>
-                                                                    <li><b>Asuransi</b> adalah Jenis Penjamin Pasien.</li>
-                                                                    <li><b>Pilih Poliklinik</b> yang akan dituju untuk Pemeriksaan Pasien.</li>
-                                                                    <li>Silahkan Piih <b>Tanggal Pemeriksaan</b> Pasien.</li>
-                                                                    <li>Klik <b>Cari Jadwal</b> untuk mencari jadwal Dokter.</li>
-                                                                    <li><b>Batal</b> jika ingin kembali ke Tahap 2.</li>
-                                                                </ul>
+                                                                </form>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <div class="note note-success note-bordered">
+                                                                    <b>INFORMASI</b><br>
+                                                                    <ul>
+                                                                        <li><b>Nama Pendaftar</b> adalah Nama Pasien yang akan Periksa.</li>
+                                                                        <li><b>Asuransi</b> adalah Jenis Penjamin Pasien.</li>
+                                                                        <li><b>Pilih Poliklinik</b> yang akan dituju untuk Pemeriksaan Pasien.</li>
+                                                                        <li>Silahkan Piih <b>Tanggal Pemeriksaan</b> Pasien.</li>
+                                                                        <li>Klik <b>Cari Jadwal</b> untuk mencari jadwal Dokter.</li>
+                                                                        <li><b>Batal</b> jika ingin kembali ke Tahap 2.</li>
+                                                                    </ul>
 
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -1335,73 +1398,75 @@
                                             <?php if ($status == 'cari') { ?>
                                             <div class="row">
                                                 <div class="col-md-12">
-                                                    <?php 
-                                                    $tanggal    = $info['Tanggal']; // Tgl Pemeriksaan
-                                                    $Tgl        = $tanggal;
-                                                    $Hari       = getDay($Tgl);
-                                                    ?>
-                                                    <h4 class="block" align="center"><b>Data Pencarian Jadwal Praktek</b></h4>
-                                                    <div class="alert alert-warning alert-dismissable" align="center">
-                                                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>
-                                                        <b><?php echo $Hari,', '.tgl_indo($tanggal); ?></b>
-                                                    </div>
-                                                    <div class="portlet-body">                        
-                                                        <table class="table table-striped table-bordered table-hover">
-                                                           <?php
-                                                            // Perulangan by Tipe Spesialis
-                                                            foreach($listTipe as $t) {
-                                                                $Dari       = $info['Tanggal']; // Tgl Pemeriksaan
-                                                                $tipe_id    = $t->tipe_id; 
-                                                                $tgl        = $Dari;
-                                                                $hari       = getDay($tgl);
-                                                                // Cari by Hari dan Tipe Spesialis Dokter
-                                                                $listJadwal  = $this->step_three_model->select_jadwal($hari, $tipe_id)->result();
-                                                            ?>
-                                                            <thead>
-                                                                <tr class="danger">
-                                                                    <th colspan="7"><i class="fa fa-user-md"></i> <?php echo $t->tipe_name; ?></th>
-                                                                </tr>
-                                                                <tr class="success">
-                                                                    <th width="5%">No</th>                                
-                                                                    <th>Nama Dokter</th>
-                                                                    <th width="8%">Hari</th>
-                                                                    <th width="10%">Jam Praktek</th>
-                                                                    <th width="15%">Ruangan</th>
-                                                                    <th width="25%">Keterangan</th>
-                                                                    <th width="10%">Aksi</th>
-                                                                </tr>
-                                                            </thead>
-                                                            <tbody>
-                                                                <?php
-                                                                if (count($listJadwal) > 0) {  
-                                                                    $no = 1;
-                                                                    foreach($listJadwal as $r) {
-                                                                        $jam = substr($r->jadwal_mulai,0,5).' - '.substr($r->jadwal_selesai,0,5);
+                                                    <div class="portlet light">
+                                                        <?php 
+                                                        $tanggal    = $info['Tanggal']; // Tgl Pemeriksaan
+                                                        $Tgl        = $tanggal;
+                                                        $Hari       = getDay($Tgl);
+                                                        ?>
+                                                        <h4 class="block" align="center"><b>Data Pencarian Jadwal Praktek</b></h4>
+                                                        <div class="alert alert-warning alert-dismissable" align="center">
+                                                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>
+                                                            <b><?php echo $Hari,', '.tgl_indo($tanggal); ?></b>
+                                                        </div>
+                                                        <div class="portlet-body">                        
+                                                            <table class="table table-striped table-bordered table-hover">
+                                                               <?php
+                                                                // Perulangan by Tipe Spesialis
+                                                                foreach($listTipe as $t) {
+                                                                    $Dari       = $info['Tanggal']; // Tgl Pemeriksaan
+                                                                    $tipe_id    = $t->tipe_id; 
+                                                                    $tgl        = $Dari;
+                                                                    $hari       = getDay($tgl);
+                                                                    // Cari by Hari dan Tipe Spesialis Dokter
+                                                                    $listJadwal  = $this->step_three_model->select_jadwal($hari, $tipe_id)->result();
                                                                 ?>
-                                                                <tr>
-                                                                    <td><?php echo $no; ?></td>
-                                                                    <td><?php echo $r->dokter_name; ?></td>
-                                                                    <td><?php echo $r->jadwal_hari; ?></td>
-                                                                    <td><?php echo $jam; ?></td>
-                                                                    <td><?php echo $r->ruangan_name; ?></td>
-                                                                    <td class="<?php if (!empty($r->jadwal_keterangan)) { echo 'danger'; } ?>"><b><?php echo $r->jadwal_keterangan; ?></b></td>
-                                                                    <td>
-                                                                        <button type="button" class="btn btn-primary btn-xs pilih_button" data-toggle="modal" data-target="#pilih" data-pasien_id="<?php echo $this->uri->segment(4); ?>" data-dokter_id="<?php echo $r->dokter_id; ?>" data-jadwal_id="<?php echo $r->jadwal_id; ?>" data-dokter_name="<?php echo $r->dokter_name; ?>" data-tipe="<?php echo $r->tipe_name; ?>" data-tanggal="<?php echo $Dari; ?>" data-hari="<?php echo $hari; ?>" data-jam="<?php echo $jam; ?>" data-ruang="<?php echo $r->ruangan_name; ?>" data-jam_layanan="<?php echo $r->jadwal_mulai; ?>" title="Pilih Dokter"><i class="fa fa-check"></i> Pilih
-                                                                        </button>
-                                                                    </td>
-                                                                </tr>
-                                                                <?php
-                                                                    $no++;
-                                                                    }
-                                                                } else {
-                                                                ?>
-                                                                <tr>
-                                                                    <td colspan="7" align="center"><em>Tidak Ada Jadwal Praktek Dokter Hari Ini.</em></td>
-                                                                </tr>
+                                                                <thead>
+                                                                    <tr class="danger">
+                                                                        <th colspan="7"><i class="fa fa-user-md"></i> <?php echo $t->tipe_name; ?></th>
+                                                                    </tr>
+                                                                    <tr class="success">
+                                                                        <th width="5%">No</th>                                
+                                                                        <th>Nama Dokter</th>
+                                                                        <th width="8%">Hari</th>
+                                                                        <th width="10%">Jam Praktek</th>
+                                                                        <th width="15%">Ruangan</th>
+                                                                        <th width="25%">Keterangan</th>
+                                                                        <th width="10%">Aksi</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    <?php
+                                                                    if (count($listJadwal) > 0) {  
+                                                                        $no = 1;
+                                                                        foreach($listJadwal as $r) {
+                                                                            $jam = substr($r->jadwal_mulai,0,5).' - '.substr($r->jadwal_selesai,0,5);
+                                                                    ?>
+                                                                    <tr>
+                                                                        <td><?php echo $no; ?></td>
+                                                                        <td><?php echo $r->dokter_name; ?></td>
+                                                                        <td><?php echo $r->jadwal_hari; ?></td>
+                                                                        <td><?php echo $jam; ?></td>
+                                                                        <td><?php echo $r->ruangan_name; ?></td>
+                                                                        <td class="<?php if (!empty($r->jadwal_keterangan)) { echo 'danger'; } ?>"><b><?php echo $r->jadwal_keterangan; ?></b></td>
+                                                                        <td>
+                                                                            <button type="button" class="btn btn-primary btn-xs pilih_button" data-toggle="modal" data-target="#pilih" data-pasien_id="<?php echo $this->uri->segment(4); ?>" data-dokter_id="<?php echo $r->dokter_id; ?>" data-jadwal_id="<?php echo $r->jadwal_id; ?>" data-dokter_name="<?php echo $r->dokter_name; ?>" data-tipe="<?php echo $r->tipe_name; ?>" data-tanggal="<?php echo $Dari; ?>" data-hari="<?php echo $hari; ?>" data-jam="<?php echo $jam; ?>" data-ruang="<?php echo $r->ruangan_name; ?>" data-jam_layanan="<?php echo $r->jadwal_mulai; ?>" title="Pilih Dokter"><i class="fa fa-check"></i> Pilih
+                                                                            </button>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <?php
+                                                                        $no++;
+                                                                        }
+                                                                    } else {
+                                                                    ?>
+                                                                    <tr>
+                                                                        <td colspan="7" align="center"><em>Tidak Ada Jadwal Praktek Dokter Hari Ini.</em></td>
+                                                                    </tr>
+                                                                    <?php } ?>
+                                                                </tbody>
                                                                 <?php } ?>
-                                                            </tbody>
-                                                            <?php } ?>
-                                                        </table>
+                                                            </table>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -1412,10 +1477,110 @@
                                         <?php if ($this->uri->segment(2) == 'step_four') { ?>
                                         <!-- SELESAI -->
                                         <div class="tab-pane <?php echo $tab4; ?>" id="tab4">
-                                            <h4 class="block" align="center"><b>Data Pendaftaran Online</b></h4>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <h4 class="block" align="center"><b>Pendaftaran Selesai</b></h4>
+                                                    <div class="portlet box green">
+                                                        <div class="portlet-title">
+                                                            <div class="caption">Data Pendaftaran Online</div>
+                                                        </div>
+                                                        <div class="portlet-body form">
+                                                            <div class="form-body">
+                                                                <div class="col-md-4">
+                                                                    <h4 class="form-section"><b>Bukti Pendaftaran Online</b></h4>
+                                                                    <p class="block" align="center">
+                                                                    Tunjukkan Bukti Pendaftaran Berikut ke Petugas Loket <br><b>Pendaftaran RS St. Elisabeth Semarang.</b></p>
+                                                                    <h2 align="center"><b>No. Antrian<br>
+                                                                    <?php echo $detail->antrian_kode; ?></b></h2>
+                                                                    <p class="block" align="center">
+                                                                    Akan dilayani pada Tanggal : <b><?php echo tgl_indo($detail->antrian_tanggal); ?></b>, Perkiraan pelayanan pada Jam : <b><?php echo substr($detail->antrian_jam_layani,0,5); ?> WIB</b>. Dimohon datang sebelumnya, antrian tidak dapat digunakan apabila Anda datang lebih dari 15 menit dari perkiraan waktu pelayanan. Terima Kasih.
+                                                                    </p>
+                                                                </div>
+                                                                <div class="col-md-4">
+                                                                    <h4 class="form-section"><b>Data Pendaftar</b></h4>    
+                                                                    <div class="row static-info align-reverse">
+                                                                        <div class="col-md-5 name">No. Rekam Medik :</div>
+                                                                        <?php
+                                                                        // Kondisi Jika RM kosong maka -
+                                                                        $noRM     = !empty($detail->pasien_no_rm)?$detail->pasien_no_rm:'-';
+                                                                        ?>
+                                                                        <div class="col-md-7"><?php echo $noRM; ?>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row static-info align-reverse">
+                                                                        <div class="col-md-5 name">Nama :</div>
+                                                                        <div class="col-md-7"><?php echo $detail->pasien_nama; ?>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row static-info align-reverse">
+                                                                        <div class="col-md-5 name">TTL :</div>
+                                                                        <div class="col-md-7"><?php echo $detail->pasien_tmpt_lhr.', '.tgl_indo($detail->pasien_tgl_lhr); ?>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row static-info align-reverse">
+                                                                        <div class="col-md-5 name">Jenis Kelamin :</div>
+                                                                        <div class="col-md-7"><?php echo $detail->pasien_jk; ?></div>
+                                                                    </div>
+                                                                    <div class="row static-info align-reverse">
+                                                                        <div class="col-md-5 name">No. Identitas :</div>
+                                                                        <div class="col-md-7"><?php echo $detail->pasien_no_identitas; ?>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row static-info align-reverse">
+                                                                        <div class="col-md-5 name">Nama Ibu :</div>
+                                                                        <div class="col-md-7"><?php echo $detail->pasien_nama_ibu; ?></div>
+                                                                    </div>
+                                                                    <div class="row static-info align-reverse">
+                                                                        <div class="col-md-5 name">Alamat :</div>
+                                                                        <div class="col-md-7"><?php echo $detail->pasien_alamat; ?></div>
+                                                                    </div>
+                                                                    <div class="row static-info align-reverse">
+                                                                        <div class="col-md-5 name">Provinsi :</div>
+                                                                        <div class="col-md-7"><?php echo $detail->provinsi_nama; ?></div>
+                                                                    </div>
+                                                                    <div class="row static-info align-reverse">
+                                                                        <div class="col-md-5 name">Kab. / Kota :</div>
+                                                                        <div class="col-md-7"><?php echo ucwords(strtolower($detail->kabupaten_nama)); ?></div>
+                                                                    </div>
+                                                                    <div class="row static-info align-reverse">
+                                                                        <div class="col-md-5 name">Kecamatan :</div>
+                                                                        <div class="col-md-7"><?php echo ucwords(strtolower($detail->kecamatan_nama)); ?></div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-4">
+                                                                    <h4 class="form-section"><b>Data Pemeriksaan</b></h4>
+                                                                    <div class="row static-info align-reverse">
+                                                                        <div class="col-md-5 name">Dokter Tujuan :</div>
+                                                                        <div class="col-md-7"><?php echo $detail->dokter_name; ?></div>
+                                                                    </div>
+                                                                    <div class="row static-info align-reverse">
+                                                                        <div class="col-md-5 name">Spesialis :</div>
+                                                                        <div class="col-md-7"><?php echo $detail->tipe_name; ?></div>
+                                                                    </div>
+                                                                    <div class="row static-info align-reverse">
+                                                                        <div class="col-md-5 name">Tgl. Pemeriksaan :</div>
+                                                                        <div class="col-md-7"><b><?php echo tgl_indo($detail->antrian_tanggal); ?></b></div>
+                                                                    </div>
+                                                                    <div class="row static-info align-reverse">
+                                                                        <div class="col-md-5 name">Penjamin :</div>
+                                                                        <div class="col-md-7"><?php echo $detail->pelanggan_name; ?>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row static-info align-reverse">
+                                                                        <div class="col-md-5 name">Ruangan :</div>
+                                                                        <div class="col-md-7"><?php echo $detail->ruangan_name; ?></div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-actions"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                             <div class="row">
                                                 <div class="col-md-12" align="center">
                                                     <a href="<?php echo site_url('registrasi/step_two'); ?>" class="btn green">Kembali ke Biodata Pendaftar</a>
+                                                    <a href="<?php echo site_url('registrasi/step_four/cetak/'.$this->uri->segment(4).'/'.$this->uri->segment(5)); ?>" class="btn blue"><i class="fa fa-print"></i> Cetak Bukti Pendaftaran</a>
                                                 </div>
                                             </div>
                                         </div>
