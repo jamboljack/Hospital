@@ -57,6 +57,38 @@
     });
 </script>
 
+<!-- Forgto Password Modal -->
+<div class="modal fade" id="forgotpassword" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form action="<?php echo site_url('registrasi_online/forgotpassword'); ?>" class="form-horizontal" method="post" enctype="multipart/form-data" role="form">
+            <input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
+                        
+            <div class="modal-header">                      
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                <h4 class="modal-title"><i class="fa fa-email"></i> Masukkan Email Anda :</h4>
+            </div>
+            <div class="modal-body">                
+                <div class="form-group form-md-line-input">                    
+                    <label class="col-md-3 control-label">Email :</label>
+                    <div class="col-md-9">
+                        <input type="email" class="form-control"  name="email" autocomplete="off" required>
+                        <div class="form-control-focus"></div>
+                        <span class="help-block">Masukkan Email Anda yang sudah terdaftar.</span>
+                    </div>
+                </div>                
+            </div>
+                        
+            <div class="modal-footer">
+                <button type="submit" class="btn green"><i class="fa fa-floppy-o"></i> Kirim</button>
+                <button type="button" class="btn yellow" data-dismiss="modal"><i class="fa fa-times"></i> Batal</button>
+            </div>
+            </form>
+        </div>        
+    </div>    
+</div>
+
+
 <!-- Pilih Dokter Modal Form -->
 <div class="modal fade" id="pilih" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog">
@@ -140,7 +172,7 @@
                         <div class="portlet-title">
                             <div class="caption">
                                 <?php
-                                if (empty($this->uri->segment(2)) || $this->uri->segment(2) == '' || $this->uri->segment(2) == 'register' || $this->uri->segment(2) == 'login') {
+                                if (empty($this->uri->segment(2)) || $this->uri->segment(2) == '' || $this->uri->segment(2) == 'register' || $this->uri->segment(2) == 'login' || $this->uri->segment(2) == 'forgotpassword') {
                                     $angka = 1;
                                 } elseif ($this->uri->segment(2) == 'step_two') {
                                     $angka = 2;
@@ -161,7 +193,7 @@
                                     <ul class="nav nav-pills nav-justified steps">
                                         <?php 
                                         // Kondisi Tab Aktif
-                                        if (empty($this->uri->segment(2)) || $this->uri->segment(2) == '' || $this->uri->segment(2) == 'register' || $this->uri->segment(2) == 'login') { 
+                                        if (empty($this->uri->segment(2)) || $this->uri->segment(2) == '' || $this->uri->segment(2) == 'register' || $this->uri->segment(2) == 'login' || $this->uri->segment(2) == 'forgotpassword') { 
                                             $tab1   = 'active';
                                             $tab2   = 'disabled';
                                             $tab3   = 'disabled';
@@ -234,7 +266,7 @@
                                     </ul>
                                     <?php 
                                     // Kondisi Persen
-                                    if (empty($this->uri->segment(2)) || $this->uri->segment(2) == '' || $this->uri->segment(2) == 'register' || $this->uri->segment(2) == 'login') { 
+                                    if (empty($this->uri->segment(2)) || $this->uri->segment(2) == '' || $this->uri->segment(2) == 'register' || $this->uri->segment(2) == 'login' || $this->uri->segment(2) == 'forgotpassword') { 
                                         $persen   = '25';
                                     } elseif ($this->uri->segment(2) == 'step_two') {
                                         $persen   = '50';
@@ -273,7 +305,7 @@
                                         </div>
                                         <?php } ?>
 
-                                        <?php if (empty($this->uri->segment(2)) || $this->uri->segment(2) == '' || $this->uri->segment(2) == 'register' || $this->uri->segment(2) == 'login') {  ?>
+                                        <?php if (empty($this->uri->segment(2)) || $this->uri->segment(2) == '' || $this->uri->segment(2) == 'register' || $this->uri->segment(2) == 'login' || $this->uri->segment(2) == 'forgotpassword') {  ?>
                                         <div class="tab-pane <?php echo $tab1; ?>" id="tab1">
                                             <div class="row">                                                
                                                 <div class="col-md-12">
@@ -306,8 +338,7 @@
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                                <a href="">Lupa Password ?</a><br>
-                                                                <a href="">Lupa Nama Akun ?</a>
+                                                                <a data-toggle="modal" href="#forgotpassword"> Lupa Password ?</a>
                                                                 </form>
                                                             </div>
                                                             <div class="col-md-6">
@@ -318,50 +349,50 @@
 
                                                                 <div class="form-body"> 
                                                                     <div class="form-group form-md-line-input">
-                                                                        <label class="col-md-3 control-label">Nama Akun <span class="required" aria-required="true"> * </span></label>
-                                                                        <div class="col-md-9">
+                                                                        <label class="col-md-4 control-label">Nama Akun<span class="required" aria-required="true"> * </span> :</label>
+                                                                        <div class="col-md-8">
                                                                             <input type="text" class="form-control" name="username" value="<?php echo set_value('username'); ?>" pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{1,20}$" title="Jangan Pakai SPASI" autocomplete="off" required autofocus>
                                                                             <div class="form-control-focus"></div>
                                                                             <span class="help-block">Isi Nama Akun Anda, berisi 5-20 Karakter tanpa Spasi</span>
                                                                         </div>
                                                                     </div>
                                                                     <div class="form-group form-md-line-input">
-                                                                        <label class="col-md-3 control-label">Nama Lengkap <span class="required" aria-required="true"> * </span></label>
-                                                                        <div class="col-md-9">
+                                                                        <label class="col-md-4 control-label">Nama Lengkap <span class="required" aria-required="true"> * </span> :</label>
+                                                                        <div class="col-md-8">
                                                                             <input type="text" class="form-control" name="nama" value="<?php echo set_value('nama'); ?>" required>
                                                                             <div class="form-control-focus"></div>
                                                                             <span class="help-block">Isi Nama Lengkap Anda</span>
                                                                         </div>
                                                                     </div>
                                                                     <div class="form-group form-md-line-input">
-                                                                        <label class="col-md-3 control-label">Email <span class="required" aria-required="true"> * </span></label>
-                                                                        <div class="col-md-9">
+                                                                        <label class="col-md-4 control-label">Email <span class="required" aria-required="true"> * </span> :</label>
+                                                                        <div class="col-md-8">
                                                                             <input type="email" class="form-control" name="email" value="<?php echo set_value('email'); ?>" autocomplete="off" required>
                                                                             <div class="form-control-focus"></div>
                                                                             <span class="help-block">Isi EMAIL VALID, ex. xxx@gmail.com</span>
                                                                         </div>
                                                                     </div>
                                                                     <div class="form-group form-md-line-input">
-                                                                        <label class="col-md-3 control-label">No. Handphone <span class="required" aria-required="true"> * </span></label>
-                                                                        <div class="col-md-9">
+                                                                        <label class="col-md-4 control-label">No. Handphone <span class="required" aria-required="true"> * </span> :</label>
+                                                                        <div class="col-md-8">
                                                                             <input type="text" class="form-control" name="phone" value="<?php echo set_value('phone'); ?>" pattern="^[0-9]{1,12}$" title="Hanya Angka, maksimal 12 Digit" autocomplete="off" maxlength="12" required>
                                                                             <div class="form-control-focus"></div>
                                                                             <span class="help-block">Isi No. Handphone Anda, Hanya ANGKA</span>
                                                                         </div>
                                                                     </div>
                                                                     <div class="form-group form-md-line-input">
-                                                                        <label class="col-md-3 control-label">Password <span class="required" aria-required="true"> * </span></label>
-                                                                        <div class="col-md-9">
+                                                                        <label class="col-md-4 control-label">Password <span class="required" aria-required="true"> * </span> :</label>
+                                                                        <div class="col-md-8">
                                                                             <input type="password" class="form-control" name="password" value="<?php echo set_value('password'); ?>" autocomplete="off" required>
                                                                             <div class="form-control-focus"></div>
                                                                             <span class="help-block">Isi Password Akun Anda, minimal 3 Karakter</span>
                                                                         </div>
                                                                     </div>
                                                                     <div class="form-group form-md-line-input">
-                                                                        <label class="col-md-3 control-label">
+                                                                        <label class="col-md-4 control-label">
                                                                             <img id="imgCaptcha" src="<?php echo site_url('registrasi_online/create_image'); ?>" />
                                                                         </label>
-                                                                        <div class="col-md-9">
+                                                                        <div class="col-md-8">
                                                                             <input type='text' name="verify" class="form-control" maxlength="5" autocomplete="off" required>
                                                                             <div class="form-control-focus"></div>
                                                                             <span class="help-block">Masukkan 5 Karakter di Samping</span>
@@ -469,19 +500,19 @@
                                                                             <div class="tab-pane active" id="tab_1_1">
                                                                                 <div class="row">
                                                                                     <div class="col-md-6">
-                                                                                        <form role="form" action="<?php echo site_url('registrasi_online/register'); ?>" method="post" enctype="multipart/form-data">
+                                                                                        <form role="form" action="<?php echo site_url('registrasi_online/carinorm'); ?>" method="post" enctype="multipart/form-data">
                                                                                         <input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
 
                                                                                         <div class="form-body">
                                                                                             <div class="form-group form-md-line-input">
-                                                                                                <input type="text" class="form-control" name="no_rekam_medik">
+                                                                                                <input type="text" class="form-control" name="no_rekam_medik" required>
                                                                                                 <span class="help-block">Masukkan No. REKAM MEDIK</span>
                                                                                                 <label>NO. REKAM MEDIK</label>
                                                                                             </div>
 
                                                                                             <div class="margiv-top-10">
-                                                                                                <a href="" class="btn green"><i class="fa fa-search"></i>
-                                                                                                Cari Data </a>
+                                                                                                <button type="submit" class="btn btn-success"><i class="fa fa-search"></i>
+                                                                                                Cari Data </button>
                                                                                             </div>
                                                                                             </div>
                                                                                         </form>
@@ -746,7 +777,7 @@
                                                                             Untuk menambah Anggota Keluarga lainnya, silahkan klik <b>Tambah Anggota Keluarga</b> dan pilih Hubungan dengan Akun Utama.
                                                                             </li>
                                                                             <li>
-                                                                            Klik <b>Riwayat</b> untuk melihat riwayat pendaftaran Online yang telah dilakukan. Opsi ini juga digunakan untuk memunculkan <b>Kode Pendaftaran/Bukti Pendaftaran Online</b> yang digunakan untuk mendaftar di Loket Pendaftaran untuk di periksa.
+                                                                            Klik <b>History</b> untuk melihat History pendaftaran Online yang telah dilakukan. Opsi ini juga digunakan untuk memunculkan <b>Kode Pendaftaran/Bukti Pendaftaran Online</b> yang digunakan untuk mendaftar di Loket Pendaftaran untuk di periksa.
                                                                             </li>
                                                                             <li>
                                                                             Klik <b>Pilih</b> untuk melakukan Pendaftaran Rawat Jalan Online kembali.

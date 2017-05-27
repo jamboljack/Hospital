@@ -53,7 +53,8 @@ if ($this->session->flashdata('notification')) { ?>
                                 <th>Username</th>
                                 <th width="35%">Name</th>
                                 <th width="10%">Status</th>
-                                <th width="10%">Avatar</th>
+                                <th width="10%">Level</th>
+                                <th width="10%">Tgl. Daftar</th>
                                 <th width="10%">Action</th>
                             </tr>
                         </thead>
@@ -61,7 +62,9 @@ if ($this->session->flashdata('notification')) { ?>
                         <tbody>
                             <?php 
                             $no = 1;
-                            foreach($daftarlist as $r) {                                
+                            foreach($daftarlist as $r) {
+                                $TglDaftar      = $r->user_date_register;
+                                $DateDaftar     = date("d-m-Y", strtotime($TglDaftar));
                             ?>
                             <tr>
                                 <td><?php echo $no; ?></td>                                
@@ -74,13 +77,8 @@ if ($this->session->flashdata('notification')) { ?>
                                         <span class="label label-sm label-danger"><?php echo $r->user_status; ?></span>
                                     <?php } ?>                                
                                 </td>
-                                <td>
-                                <?php if (empty($r->user_image)) { ?>
-                                    <img src="<?php echo base_url(); ?>img/avatar.png">
-                                <?php } else { ?>
-                                    <img src="<?php echo base_url(); ?>icon/<?php echo $r->user_image; ?>" width="50%">
-                                <?php } ?>
-                                </td>                               
+                                <td><?php echo $r->user_level; ?></td> 
+                                <td><?php echo $DateDaftar;  ?></td>                               
                                 <td>
                                     <a href="<?php echo site_url('admin/users/editdata/'.$r->user_username); ?>"><button class="btn btn-primary btn-xs" title="Edit Data"><i class="icon-pencil"></i> Edit</button></a>
                                 </td>

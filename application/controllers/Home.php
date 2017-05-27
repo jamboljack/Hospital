@@ -53,10 +53,10 @@ class Home extends CI_Controller{
 
             if((!empty($verify) && ($verify == $security))) {
                 $this->home_model->insert_message();
-                $this->session->set_flashdata('notification','Terima Kasih atas Kritik & Saran Anda.');
+                $this->session->set_flashdata('notificationsuccess','Terima Kasih atas Kritik & Saran Anda.');
                 redirect(site_url('home'));
             } else {                
-                $this->session->set_flashdata('notification','MAAF !!, Captcha Salah, ulangi lagi.');
+                $this->session->set_flashdata('notificationerror','MAAF !!, Captcha Salah, ulangi lagi.');
                 redirect(site_url('home'));
             }
         }

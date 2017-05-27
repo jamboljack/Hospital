@@ -15,6 +15,7 @@ class Home extends CI_Controller{
 			$data['TotalSpesialis']	= $this->home_model->select_count_spesialis()->result();
 			$data['TotalDokter'] 	= $this->home_model->select_count_dokter()->result();
 			$data['TotalUser']   	= $this->home_model->select_count_users()->result();
+			$data['listKelompok'] 	= $this->home_model->select_kelompok()->result();
 			$this->template->display('admin/home_view', $data);
 		} else {
 			$this->session->sess_destroy();

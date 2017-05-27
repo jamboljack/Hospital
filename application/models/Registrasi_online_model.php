@@ -234,5 +234,15 @@ class Registrasi_online_model extends CI_Model {
 		
 		return $this->db->get();
 	}
+
+	function select_email($email) {
+		$this->db->select('*');
+		$this->db->from('hospital_users');
+		$this->db->where('user_email', $email);
+		$this->db->where('user_level', 'Pasien');
+		$this->db->where('user_status', 'ACTIVE');
+		
+		return $this->db->get();
+	}
 }
 /* Location: ./application/model/Registrasi_online_model.php */

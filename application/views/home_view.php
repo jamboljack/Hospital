@@ -2,14 +2,27 @@
 <script src="<?php echo base_url(); ?>js/sweetalert2.min.js"></script>
 
 <?php 
-if ($this->session->flashdata('notification')) { ?>
+if ($this->session->flashdata('notificationsuccess')) { ?>
 <script>
     swal({
         title: "Done",
-        text: "<?php echo $this->session->flashdata('notification'); ?>",
+        text: "<?php echo $this->session->flashdata('notificationsuccess'); ?>",
         timer: 2000,
         showConfirmButton: false,
         type: 'success'
+    });
+</script>
+<? } ?>
+
+<?php 
+if ($this->session->flashdata('notificationerror')) { ?>
+<script>
+    swal({
+        title: "Alert",
+        text: "<?php echo $this->session->flashdata('notificationerror'); ?>",
+        timer: 2000,
+        showConfirmButton: false,
+        type: 'warning'
     });
 </script>
 <? } ?>
@@ -38,11 +51,13 @@ if ($this->session->flashdata('notification')) { ?>
                 <div class="col-md-12 col-sm-12">
                     <h1 align="center">Pendaftaran Rawat Jalan Online<br>RS St. Elisabeth Semarang</h1>
                     <br>
-                    <h4 align="center">JUMLAH PENDAFTAR HARI INI : <b><?php $tgl = date('Y-m-d'); echo strtoupper(getDay($tgl)).', '.date('d-m-Y'); ?></b></h4>
+                    <h4 align="center">JUMLAH PENDAFTAR ONLINE HARI INI : <b><?php $tgl = date('Y-m-d'); echo strtoupper(getDay($tgl)).', '.date('d-m-Y'); ?></b></h4>
                     <br>
                     <?php
                     $no = 1; 
                     foreach($listKelompok as $k) {
+                        $kelompok_id  = $k->kelompok_id;
+
                         if ($no == 1) {
                             $warna = "blue-madison";
                         } elseif($no == 2) {
@@ -62,6 +77,8 @@ if ($this->session->flashdata('notification')) { ?>
                                 <div class="number">
                                     <?php 
                                         // Hitung Jumlah Pasien per Hari di Sini
+                                        $listPerKelompok = $this->home_model->select_total($kelompok_id)->result();
+                                        echo count($listPerKelompok);
                                     ?>
                                 </div>
                                 <div class="desc">
