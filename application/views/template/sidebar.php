@@ -33,6 +33,8 @@ if ($uri == 'home') {
     $tipe_dokter    = '';
     $dokter         = '';
     $ruangan        = '';
+    $pasien         = '';
+    $antrian        = '';
     $users          = '';
 } elseif ($uri == 'menu') {
     $dashboard      = '';
@@ -66,6 +68,8 @@ if ($uri == 'home') {
     $tipe_dokter    = '';
     $dokter         = '';
     $ruangan        = '';
+    $pasien         = '';
+    $antrian        = '';
     $users          = '';
 } elseif ($uri == 'kontak') {
     $dashboard      = '';
@@ -99,6 +103,8 @@ if ($uri == 'home') {
     $tipe_dokter    = '';
     $dokter         = '';
     $ruangan        = '';
+    $pasien         = '';
+    $antrian        = '';
     $users          = '';
 } elseif ($uri == 'pendidikan') {
     $dashboard      = '';
@@ -132,6 +138,8 @@ if ($uri == 'home') {
     $tipe_dokter    = '';
     $dokter         = '';
     $ruangan        = '';
+    $pasien         = '';
+    $antrian        = '';
     $users          = '';
 } elseif ($uri == 'pekerjaan') {
     $dashboard      = '';
@@ -165,6 +173,8 @@ if ($uri == 'home') {
     $tipe_dokter    = '';
     $dokter         = '';
     $ruangan        = '';
+    $pasien         = '';
+    $antrian        = '';
     $users          = '';
 } elseif ($uri == 'status') {
     $dashboard      = '';
@@ -198,6 +208,8 @@ if ($uri == 'home') {
     $tipe_dokter    = '';
     $dokter         = '';
     $ruangan        = '';
+    $pasien         = '';
+    $antrian        = '';
     $users          = '';
 } elseif ($uri == 'darah') {
     $dashboard      = '';
@@ -231,6 +243,8 @@ if ($uri == 'home') {
     $tipe_dokter    = '';
     $dokter         = '';
     $ruangan        = '';
+    $pasien         = '';
+    $antrian        = '';
     $users          = '';
 } elseif ($uri == 'agama') {
     $dashboard      = '';
@@ -264,6 +278,8 @@ if ($uri == 'home') {
     $tipe_dokter    = '';
     $dokter         = '';
     $ruangan        = '';
+    $pasien         = '';
+    $antrian        = '';
     $users          = '';
 } elseif ($uri == 'asuransi') {
     $dashboard      = '';
@@ -297,6 +313,8 @@ if ($uri == 'home') {
     $tipe_dokter    = '';
     $dokter         = '';
     $ruangan        = '';
+    $pasien         = '';
+    $antrian        = '';
     $users          = '';
 } elseif ($uri == 'identitas') {
     $dashboard      = '';
@@ -330,6 +348,8 @@ if ($uri == 'home') {
     $tipe_dokter    = '';
     $dokter         = '';
     $ruangan        = '';
+    $pasien         = '';
+    $antrian        = '';
     $users          = '';
 } elseif ($uri == 'jenistarif') {
     $dashboard      = '';
@@ -363,6 +383,8 @@ if ($uri == 'home') {
     $tipe_dokter    = '';
     $dokter         = '';
     $ruangan        = '';
+    $pasien         = '';
+    $antrian        = '';
     $users          = '';
 } elseif ($uri == 'kelompok') {
     $dashboard      = '';
@@ -396,6 +418,8 @@ if ($uri == 'home') {
     $tipe_dokter    = '';
     $dokter         = '';
     $ruangan        = '';
+    $pasien         = '';
+    $antrian        = '';
     $users          = '';
 } elseif ($uri == 'pelanggan') {
     $dashboard      = '';
@@ -429,6 +453,8 @@ if ($uri == 'home') {
     $tipe_dokter    = '';
     $dokter         = '';
     $ruangan        = '';
+    $pasien         = '';
+    $antrian        = '';
     $users          = '';
 } elseif ($uri == 'kelompok_unit') {
     $dashboard      = '';
@@ -462,6 +488,8 @@ if ($uri == 'home') {
     $tipe_dokter    = '';
     $dokter         = '';
     $ruangan        = '';
+    $pasien         = '';
+    $antrian        = '';
     $users          = '';
 } elseif ($uri == 'unit') {
     $dashboard      = '';
@@ -495,6 +523,8 @@ if ($uri == 'home') {
     $tipe_dokter    = '';
     $dokter         = '';
     $ruangan        = '';
+    $pasien         = '';
+    $antrian        = '';
     $users          = '';
 } elseif ($uri == 'produk') {
     $dashboard      = '';
@@ -528,6 +558,8 @@ if ($uri == 'home') {
     $tipe_dokter    = '';
     $dokter         = '';
     $ruangan        = '';
+    $pasien         = '';
+    $antrian        = '';
     $users          = '';
 } elseif ($uri == 'tipe_dokter') {
     $dashboard      = '';
@@ -561,6 +593,8 @@ if ($uri == 'home') {
     $tipe_dokter    = 'active';
     $dokter         = '';
     $ruangan        = '';
+    $pasien         = '';
+    $antrian        = '';
     $users          = '';
 } elseif ($uri == 'dokter') {
     $dashboard      = '';
@@ -594,6 +628,8 @@ if ($uri == 'home') {
     $tipe_dokter    = '';
     $dokter         = 'active';
     $ruangan        = '';
+    $pasien         = '';
+    $antrian        = '';
     $users          = '';
 } elseif ($uri == 'ruangan') {
     $dashboard      = '';
@@ -627,6 +663,78 @@ if ($uri == 'home') {
     $tipe_dokter    = '';
     $dokter         = '';
     $ruangan        = 'active';
+    $pasien         = '';
+    $antrian        = '';
+    $users          = '';
+} elseif ($uri == 'pasien') {
+    $dashboard      = '';
+    $aplikasi       = '';
+    $span_aplikasi_1= '';
+    $span_aplikasi_2= '';
+    $menu           = '';
+    $kontak         = '';
+    $umum           = '';
+    $span_umum_1    = '';
+    $span_umum_2    = '';
+    $pendidikan     = '';
+    $pekerjaan      = '';
+    $status         = '';
+    $darah          = '';
+    $agama          = '';
+    $asuransi       = '';
+    $identitas      = '';
+    $tarif          = '';
+    $span_tarif_1   = '';
+    $span_tarif_2   = '';
+    $jenistarif     = '';
+    $kelompok       = '';
+    $pelanggan      = '';
+    $kelompok_unit  = '';
+    $unit           = '';
+    $produk         = '';
+    $medis          = '';
+    $span_medis_1   = '';
+    $span_medis_2   = '';
+    $tipe_dokter    = '';
+    $dokter         = '';
+    $ruangan        = '';
+    $pasien         = 'active';
+    $antrian        = '';
+    $users          = '';
+} elseif ($uri == 'antrian') {
+    $dashboard      = '';
+    $aplikasi       = '';
+    $span_aplikasi_1= '';
+    $span_aplikasi_2= '';
+    $menu           = '';
+    $kontak         = '';
+    $umum           = '';
+    $span_umum_1    = '';
+    $span_umum_2    = '';
+    $pendidikan     = '';
+    $pekerjaan      = '';
+    $status         = '';
+    $darah          = '';
+    $agama          = '';
+    $asuransi       = '';
+    $identitas      = '';
+    $tarif          = '';
+    $span_tarif_1   = '';
+    $span_tarif_2   = '';
+    $jenistarif     = '';
+    $kelompok       = '';
+    $pelanggan      = '';
+    $kelompok_unit  = '';
+    $unit           = '';
+    $produk         = '';
+    $medis          = '';
+    $span_medis_1   = '';
+    $span_medis_2   = '';
+    $tipe_dokter    = '';
+    $dokter         = '';
+    $ruangan        = '';
+    $pasien         = '';
+    $antrian        = 'active';
     $users          = '';
 } elseif ($uri == 'users') {
     $dashboard      = '';
@@ -660,6 +768,8 @@ if ($uri == 'home') {
     $tipe_dokter    = '';
     $dokter         = '';
     $ruangan        = '';
+    $pasien         = '';
+    $antrian        = '';
     $users          = 'active';
 } else {
     $dashboard      = 'active';
@@ -693,6 +803,8 @@ if ($uri == 'home') {
     $tipe_dokter    = '';
     $dokter         = '';
     $ruangan        = '';
+    $pasien         = '';
+    $antrian        = '';
     $users          = '';  
 }
 
@@ -850,7 +962,23 @@ if ($uri == 'home') {
                         </a>
                     </li>
                 </ul>
-            </li>            
+            </li>
+            <li class="tooltips <?php echo $pasien; ?>" data-container="body" data-placement="right" data-html="true" data-original-title="Pasien">
+                <a href="<?php echo site_url('admin/pasien'); ?>">
+                    <i class="fa fa-user"></i>
+                    <span class="title">
+                    Pasien
+                    </span>
+                </a>
+            </li>
+            <li class="tooltips <?php echo $antrian; ?>" data-container="body" data-placement="right" data-html="true" data-original-title="Antrian Pasien">
+                <a href="<?php echo site_url('admin/antrian'); ?>">
+                    <i class="fa fa-wheelchair"></i>
+                    <span class="title">
+                    Antrian Pasien
+                    </span>
+                </a>
+            </li>
             <li class="tooltips <?php echo $users; ?>" data-container="body" data-placement="right" data-html="true" data-original-title="Users">
                 <a href="<?php echo site_url('admin/users'); ?>">
                     <i class="fa fa-users"></i>
