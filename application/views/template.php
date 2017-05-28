@@ -21,17 +21,17 @@
 <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/global/plugins/bootstrap-timepicker/css/bootstrap-timepicker.min.css"/>
 <?php 
 $mn 	= $this->uri->segment(3);
-if (empty($mn)) { 
+//if (empty($mn)) { 
 ?>
 <!-- DATATABLES -->
 <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/global/plugins/datatables/extensions/Scroller/css/dataTables.scroller.min.css"/>
 <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/global/plugins/datatables/extensions/ColReorder/css/dataTables.colReorder.min.css"/>
 <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.css"/>
-<?php } else { ?>
+<?php // } else { ?>
 <!-- DATEPICKER -->
 <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/datepicker/css/datepicker.css" />
 <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/datepicker/css/daterangepicker-bs3.css">
-<?php } ?>
+<?php // } ?>
 <!-- FILE UPLOAD IMAGE -->
 <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/bootstrap-fileupload/bootstrap-fileupload.css" />
 <link href="<?php echo base_url(); ?>assets/admin/pages/css/tasks.css" rel="stylesheet" type="text/css"/>
@@ -77,7 +77,7 @@ if (empty($mn)) {
 <script type="text/javascript" src="<?php echo base_url(); ?>assets/global/plugins/bootstrap-timepicker/js/bootstrap-timepicker.min.js"></script>
 <?php 
 $mn 	= $this->uri->segment(3);
-if (empty($mn)) { 
+//if (empty($mn)) { 
 ?>
 <!-- DATA TABLES -->
 <script type="text/javascript" src="<?php echo base_url(); ?>assets/global/plugins/datatables/media/js/jquery.dataTables.min.js"></script>
@@ -85,13 +85,13 @@ if (empty($mn)) {
 <script type="text/javascript" src="<?php echo base_url(); ?>assets/global/plugins/datatables/extensions/ColReorder/js/dataTables.colReorder.min.js"></script>
 <script type="text/javascript" src="<?php echo base_url(); ?>assets/global/plugins/datatables/extensions/Scroller/js/dataTables.scroller.min.js"></script>
 <script type="text/javascript" src="<?php echo base_url(); ?>assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.js"></script>
-<?php } else { ?>
+<?php //} else { ?>
 <!-- DATEPICKER -->
 <script type="text/javascript" src="<?php echo base_url(); ?>assets/datepicker/js/bootstrap-datepicker.js"></script>
 <script type="text/javascript" src="<?php echo base_url(); ?>assets/datepicker/js/moment.min.js"></script>
 <script type="text/javascript" src="<?php echo base_url(); ?>assets/datepicker/js/daterangepicker.js"></script>
 <script src="<?php echo base_url(); ?>js/advanced-form-components.js"></script>
-<?php } ?>
+<?php //} ?>
 <!-- ADDITIONAL -->
 <script src="<?php echo base_url(); ?>assets/admin/pages/scripts/table-advanced.js"></script>
 <script src="<?php echo base_url(); ?>assets/admin/pages/scripts/components-pickers.js"></script>

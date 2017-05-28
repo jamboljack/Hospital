@@ -13,6 +13,14 @@ class Step_three_model extends CI_Model {
 		return $this->db->get();
 	}
 
+	function select_informasi($info_id = 1) {
+		$this->db->select('*');
+		$this->db->from('hospital_info');
+		$this->db->where('info_id', $info_id);
+		
+		return $this->db->get();
+	}
+
 	function select_pelanggan() {
 		$this->db->select('*');
 		$this->db->from('hospital_pelanggan');

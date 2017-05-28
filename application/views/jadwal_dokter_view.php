@@ -91,7 +91,7 @@
                                 <div class="form-group">
                                     <label class="control-label col-md-3">Tanggal Periksa</label>
                                     <div class="col-md-4">
-                                        <div class="input-group input-large" data-date="<? echo date('Y-m-d'); ?>" data-date-format="yyyy-mm-dd">
+                                        <div class="input-group input-large" data-date="<? echo date('Y-m-d'); ?>" data-date-format="dd-mm-yyyy">
                                             <input type="text" class="form-control default-date-picker" name="tgl1" value="<?php echo set_value('tgl1'); ?>" required>
                                             <span class="input-group-addon">s/d</span>
                                             <input type="text" class="form-control default-date-picker" name="tgl2" value="<?php echo set_value('tgl2'); ?>" required>
@@ -108,6 +108,15 @@
                             </div>
                             </form>
                         </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="alert alert-danger alert-dismissable">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>
+                        <?php echo $Informasi->info_desc; ?>
                     </div>
                 </div>
             </div>

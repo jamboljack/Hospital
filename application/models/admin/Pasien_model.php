@@ -24,14 +24,6 @@ class Pasien_model extends CI_Model {
 		return $this->db->get();
 	}
 
-	function select_provinsi() {
-		$this->db->select('*');
-		$this->db->from('hospital_provinsi');
-		$this->db->order_by('provinsi_id', 'asc');
-		
-		return $this->db->get();
-	}
-
 	function select_identitas() {
 		$this->db->select('*');
 		$this->db->from('hospital_identitas');
@@ -88,6 +80,30 @@ class Pasien_model extends CI_Model {
 		return $this->db->get();
 	}
 
+	function select_provinsi() {
+		$this->db->select('*');
+		$this->db->from('hospital_provinsi');
+		$this->db->order_by('provinsi_id', 'asc');
+		
+		return $this->db->get();
+	}
+
+	function select_kabupaten_detail() {
+		$this->db->select('*');
+		$this->db->from('hospital_kabupaten');
+		$this->db->order_by('kabupaten_id', 'asc');
+		
+		return $this->db->get();
+	}
+
+	function select_kecamatan_detail() {
+		$this->db->select('*');
+		$this->db->from('hospital_kecamatan');
+		$this->db->order_by('kecamatan_id', 'asc');
+		
+		return $this->db->get();
+	}
+
 	public function select_kabupaten($provinsi_id){
 		$this->db->where('provinsi_id', $provinsi_id);
 		$this->db->order_by('kabupaten_nama', 'asc');
@@ -119,17 +135,43 @@ class Pasien_model extends CI_Model {
 	}
 
 	function update_data() {
-		$pekerjaan_id     = $this->input->post('id');
+		$pasien_id 	= $this->input->post('id');
+		$TglLahir   = $this->input->post('tgl_lahir');
+		$Tanggal    = date("Y-m-d", strtotime($TglLahir));
 		
 		$data = array(
-				'pekerjaan_name'			=> strtoupper(trim($this->input->post('name'))),
-				'pekerjaan_name_seo'		=> seo_title($this->input->post('name')),
-		   		'pekerjaan_date_update' 	=> date('Y-m-d'),
-		   		'pekerjaan_time_update' 	=> date('Y-m-d H:i:s')
+				'pasien_no_rm'			=> strtoupper(trim($this->input->post('no_rm'))),
+				'pasien_nama'			=> strtoupper(trim($this->input->post('nama'))),
+				'pasien_nama_seo'		=> seo_title(trim($this->input->post('nama'))),
+				'identitas_id'			=> $this->input->post('lstIdentitas'),
+				'pasien_no_identitas'	=> trim($this->input->post('no_identitas')),
+				'pasien_jk'				=> trim($this->input->post('rdJK')),
+				'pasien_tmpt_lhr'		=> strtoupper(trim($this->input->post('tmpt_lahir'))),
+				'pasien_tgl_lhr'		=> $Tanggal,
+				'agama_id'				=> $this->input->post('lstAgama'),
+				'darah_id'				=> $this->input->post('lstDarah'),
+				'pendidikan_id'			=> $this->input->post('lstPendidikan'),
+				'status_id'				=> $this->input->post('lstStatus'),
+				'pekerjaan_id'			=> $this->input->post('lstKerja'),
+				'pasien_wni'			=> $this->input->post('chkWNI'),
+				'pasien_alamat'			=> strtoupper(trim($this->input->post('alamat'))),
+				'provinsi_id'			=> trim($this->input->post('lstProvinsi')),
+				'kabupaten_id'			=> trim($this->input->post('lstKabupaten')),
+				'kecamatan_id'			=> trim($this->input->post('lstKecamatan')),
+				'pasien_kodepos'		=> trim($this->input->post('kodepos')),
+				'pasien_nama_keluarga'	=> strtoupper(trim($this->input->post('namakeluarga'))),
+				'pasien_nama_ayah'		=> strtoupper(trim($this->input->post('namaayah'))),
+				'pasien_nama_ibu'		=> strtoupper(trim($this->input->post('namaibu'))),
+				'pasien_nama_pasangan'	=> strtoupper(trim($this->input->post('namapasangan'))),
+				'pasien_telp'			=> trim($this->input->post('telp')),
+				'pelanggan_id'			=> trim($this->input->post('lstPelanggan')),
+				'pasien_no_asuransi'	=> trim($this->input->post('no_asuransi')),
+		   		'pasien_date_update' 	=> date('Y-m-d'),
+		   		'pasien_time_update' 	=> date('Y-m-d H:i:s')
 		);
 
-		$this->db->where('pekerjaan_id', $pekerjaan_id);
-		$this->db->update('hospital_pekerjaan', $data);
+		$this->db->where('pasien_id', $pasien_id);
+		$this->db->update('hospital_pasien', $data);
 	}
 }
 /* Location: ./application/model/admin/Pasien_model.php */

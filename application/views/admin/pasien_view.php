@@ -60,8 +60,8 @@ if ($this->session->flashdata('notification')) { ?>
                             foreach($daftarlist as $r) {
                                 $pasien_id  = $r->pasien_id;
 
-                                // Kondisi Jika RM kosong maka -
-                                $noRM       = !empty($r->pasien_no_rm)?$detail->pasien_no_rm:'-';
+                                // Kondisi Jika RM kosong maka -, jika ada No maka tampil
+                                $noRM       = !empty($r->pasien_no_rm)?$r->pasien_no_rm:'-';
                                 $TglLahir   = $r->pasien_tgl_lhr;
                                 $Tanggal    = date("d-m-Y", strtotime($TglLahir));
                             ?>
@@ -73,7 +73,7 @@ if ($this->session->flashdata('notification')) { ?>
                                 <td><?php echo $r->pasien_jk; ?></td>
                                 <td><?php echo $r->pasien_alamat; ?></td>
                                 <td>
-                                    <a href="<?php echo site_url('admin/pasien/editdata/'.$pasien_id); ?>"><button class="btn btn-primary btn-xs" title="Edit Data"><i class="icon-pencil"></i> Edit</button></a>
+                                    <a href="<?php echo site_url('admin/pasien/editdata/'.$pasien_id.'/'.$r->pasien_nama_seo); ?>"><button class="btn btn-primary btn-xs" title="Edit Data"><i class="icon-pencil"></i> Edit</button></a>
                                 </td>
                             </tr>
                             <?php

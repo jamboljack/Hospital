@@ -71,7 +71,7 @@ class Registrasi_online extends CI_Controller{
 
                 $this->db->insert('hospital_users', $data);
 
-                $sender_email   = 'rselisabeth.semarang@gmail.com';
+                $sender_email   = 'eregister@hotelhomkudus.com';
                 $sender_name    = 'RS St. Elisabeth Semarang';
                 $account        = trim($this->input->post('username'));
                 $name           = strtoupper(trim($this->input->post('nama')));

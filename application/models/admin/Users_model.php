@@ -19,6 +19,8 @@ class Users_model extends CI_Model {
 	    			'user_username' 		=> trim($this->input->post('username')),
 	    			'user_password' 		=> sha1(trim($this->input->post('password'))),
 	    			'user_name' 			=> strtoupper(trim($this->input->post('name'))),
+	    			'user_phone' 			=> trim($this->input->post('phone')),
+	    			'user_level' 			=> trim($this->input->post('lstLevel')),
 	    			'user_image' 			=> $this->upload->file_name,
 	    			'user_date_update' 		=> date('Y-m-d'),
 	    			'user_time_update' 		=> date('Y-m-d H:i:s')
@@ -28,6 +30,8 @@ class Users_model extends CI_Model {
 	    			'user_username' 		=> trim($this->input->post('username')),
 	    			'user_password' 		=> sha1(trim($this->input->post('password'))),
 	    			'user_name' 			=> strtoupper(trim($this->input->post('name'))),
+	    			'user_phone' 			=> trim($this->input->post('phone')),
+	    			'user_level' 			=> trim($this->input->post('lstLevel')),
 	    			'user_date_update' 		=> date('Y-m-d'),
 	    			'user_time_update' 		=> date('Y-m-d H:i:s')  			
 				);
@@ -54,6 +58,8 @@ class Users_model extends CI_Model {
 		    			'user_password' 		=> sha1(trim($this->input->post('password'))),
 	    				'user_name' 			=> strtoupper(trim($this->input->post('name'))),
 	    				'user_status' 			=> trim($this->input->post('lstStatus')),
+	    				'user_phone' 			=> trim($this->input->post('phone')),
+	    				'user_level' 			=> trim($this->input->post('lstLevel')),
 	    				'user_image' 			=> $this->upload->file_name,
 	    				'user_date_update' 		=> date('Y-m-d'),
 	    				'user_time_update' 		=> date('Y-m-d H:i:s')
@@ -63,6 +69,8 @@ class Users_model extends CI_Model {
 		    			'user_password' 		=> sha1(trim($this->input->post('password'))),
 	    				'user_name' 			=> strtoupper(trim($this->input->post('name'))),
 	    				'user_status' 			=> trim($this->input->post('lstStatus')),
+	    				'user_phone' 			=> trim($this->input->post('phone')),
+	    				'user_level' 			=> trim($this->input->post('lstLevel')),
 	    				'user_date_update' 		=> date('Y-m-d'),
 	    				'user_time_update' 		=> date('Y-m-d H:i:s')
 					);
@@ -72,6 +80,8 @@ class Users_model extends CI_Model {
 				$data = array(
 	    				'user_name' 			=> strtoupper(trim($this->input->post('name'))),
 	    				'user_status' 			=> trim($this->input->post('lstStatus')),
+	    				'user_phone' 			=> trim($this->input->post('phone')),
+	    				'user_level' 			=> trim($this->input->post('lstLevel')),
 	    				'user_image' 			=> $this->upload->file_name,
 	    				'user_date_update' 		=> date('Y-m-d'),
 	    				'user_time_update' 		=> date('Y-m-d H:i:s')
@@ -80,6 +90,8 @@ class Users_model extends CI_Model {
 				$data = array(		    					    			
 	    				'user_name' 			=> strtoupper(trim($this->input->post('name'))),
 	    				'user_status' 			=> trim($this->input->post('lstStatus')),
+	    				'user_phone' 			=> trim($this->input->post('phone')),
+	    				'user_level' 			=> trim($this->input->post('lstLevel')),
 	    				'user_date_update' 		=> date('Y-m-d'),
 	    				'user_time_update' 		=> date('Y-m-d H:i:s')
 					);

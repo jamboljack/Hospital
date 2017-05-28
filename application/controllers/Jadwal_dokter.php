@@ -10,7 +10,7 @@ class Jadwal_dokter extends CI_Controller{
     
     public function index() {
         $data['status']         = 'today';
-        //$data['listTipe']       = $this->jadwal_dokter_model->ambil_poliklinik();
+        $data['Informasi']      = $this->jadwal_dokter_model->select_informasi()->row();
         $data['listTipe']       = $this->jadwal_dokter_model->select_tipe()->result();
         $data['listTipeHead']   = $this->jadwal_dokter_model->select_polikliknik()->result();
         $this->template_front->display('jadwal_dokter_view', $data);
@@ -62,7 +62,7 @@ class Jadwal_dokter extends CI_Controller{
 
             $data['info']           = $data;
             $data['status']         = 'cari';
-            //$data['listTipe']       = $this->jadwal_dokter_model->ambil_poliklinik();
+            $data['Informasi']      = $this->jadwal_dokter_model->select_informasi()->row();
             $data['listTipe']       = $this->jadwal_dokter_model->select_tipe()->result();
             $data['listTipeHead']   = $this->jadwal_dokter_model->select_polikliknik()->result();
             $this->template_front->display('jadwal_dokter_view', $data);
@@ -82,7 +82,7 @@ class Jadwal_dokter extends CI_Controller{
 
             $data['info']           = $data;
             $data['status']         = 'cari';
-            //$data['listTipe']       = $this->jadwal_dokter_model->ambil_poliklinik();
+            $data['Informasi']      = $this->jadwal_dokter_model->select_informasi()->row();
             $data['listTipe']       = $this->jadwal_dokter_model->select_tipe()->result();
             $data['listTipeHead']   = $this->jadwal_dokter_model->select_detail_poliklinik($tipe_id)->result();
             $this->template_front->display('jadwal_dokter_view', $data);
@@ -102,7 +102,7 @@ class Jadwal_dokter extends CI_Controller{
 
             $data['info']           = $data;
             $data['status']         = 'cari';
-            //$data['listTipe']       = $this->jadwal_dokter_model->ambil_poliklinik();
+            $data['Informasi']      = $this->jadwal_dokter_model->select_informasi()->row();
             $data['listTipe']       = $this->jadwal_dokter_model->select_tipe()->result();
             $data['listTipeHead']   = $this->jadwal_dokter_model->select_detail_poliklinik($tipe_id)->result();
             $this->template_front->display('jadwal_dokter_view', $data);

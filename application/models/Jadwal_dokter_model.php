@@ -16,6 +16,14 @@ class Jadwal_dokter_model extends CI_Model {
 		return $this->db->get();
 	}
 
+	function select_informasi($info_id = 1) {
+		$this->db->select('*');
+		$this->db->from('hospital_info');
+		$this->db->where('info_id', $info_id);
+		
+		return $this->db->get();
+	}
+
 	public function ambil_poliklinik() {
 		$sql_tipe = $this->db->get($this->tabel_tipe);
 		if($sql_tipe->num_rows()>0) {

@@ -29,7 +29,8 @@ class Users extends CI_Controller {
 	public function savedata() {										
 		$this->form_validation->set_rules('username','<b>Username</b>','trim|required|is_unique[hospital_users.user_username]');
 		$this->form_validation->set_rules('password','<b>Password</b>','trim|required');		
-		$this->form_validation->set_rules('name','<b>Nama Lengkap</b>','trim|required');		
+		$this->form_validation->set_rules('name','<b>Nama Lengkap</b>','trim|required');
+		$this->form_validation->set_rules('phone','<b>No. Handphone</b>','required|integer|max_length[12]');
 
 		if ($this->form_validation->run() == FALSE) {
 			$data['error']	= true;

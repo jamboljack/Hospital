@@ -46,15 +46,14 @@ class Login extends CI_Controller {
 				{	
 					$array_item = array('username' 			=> $temp_account->user_username, 
 										'nama' 				=> $temp_account->user_name,
+										'level' 			=> $temp_account->user_level,
 										'avatar' 			=> $temp_account->user_image,
 										'logged_in_hospital'=> TRUE
 										);
 					
 					$this->session->set_userdata($array_item);
 					redirect(site_url('admin/home'));
-				}
-				else
-				{
+				} else {
 					$this->session->set_flashdata('notification','<b>Login Gagal, Username atau Password Salah.</b>');
 					redirect(site_url('login'));					
 				}				

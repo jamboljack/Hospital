@@ -21,7 +21,6 @@ class Pasien extends CI_Controller {
 	
 	public function editdata($pasien_id) {		
 		$data['detail'] 		= $this->pasien_model->select_by_id($pasien_id)->row();
-		$data['listProvinsi']   = $this->pasien_model->select_provinsi()->result();
 		$data['listIdentitas']  = $this->pasien_model->select_identitas()->result();
 		$data['listAgama']      = $this->pasien_model->select_agama()->result();
 		$data['listDarah']      = $this->pasien_model->select_darah()->result();
@@ -29,6 +28,9 @@ class Pasien extends CI_Controller {
 		$data['listStatus']     = $this->pasien_model->select_status()->result();
 		$data['listKerja']      = $this->pasien_model->select_pekerjaan()->result();
 		$data['listPelanggan']  = $this->pasien_model->select_pelanggan()->result();
+		$data['listProvinsi']   = $this->pasien_model->select_provinsi()->result();
+		$data['listKabupaten']  = $this->pasien_model->select_kabupaten_detail()->result();
+		$data['listKecamatan']  = $this->pasien_model->select_kecamatan_detail()->result();
 		$this->template->display('admin/pasien_edit_view', $data);
 	}
 
@@ -46,8 +48,8 @@ class Pasien extends CI_Controller {
 
 	public function updatedata() {		
 		$this->pasien_model->update_data();
-		$this->session->set_flashdata('notification','Update Data Sukses.');
+		$this->session->set_flashdata('notification','Update Data Pasien Sukses.');
 		redirect(site_url('admin/pasien'));
-	}	
+	}
 }
 /* Location: ./application/controller/admin/Pasien.php */

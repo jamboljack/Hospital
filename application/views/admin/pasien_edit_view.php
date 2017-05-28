@@ -171,9 +171,23 @@
                                         <div class="form-group form-md-line-input">
                                             <label class="col-md-3 control-label">Kab. / Kota</label>
                                             <div class="col-md-9">
+                                                <select class="form-control" name="lstKabupaten" id="kabupaten_id" onChange="TampilKecamatan()" required>
+                                                <option value="">- Kabupaten -</option>
+                                                <?php 
+                                                foreach($listKabupaten as $k) {
+                                                    if ($detail->kabupaten_id == $k->kabupaten_id) {
+                                                ?>
+                                                <option value="<?php echo $k->kabupaten_id; ?>" selected><?php echo $k->kabupaten_nama; ?></option>
+                                                <?php 
+                                                    } 
+                                                } 
+                                                ?>
+                                                </select>
                                                 <?php
+                                                /*
                                                 $style_kabupaten = 'class="form-control" id="kabupaten_id" onChange="TampilKecamatan()"';
                                                 echo form_dropdown("lstKabupaten", array('' => '- Kabupaten -'), '',$style_kabupaten);
+                                                */
                                                 ?>
                                             </div>
                                         </div>
@@ -184,9 +198,23 @@
                                         <div class="form-group form-md-line-input">
                                             <label class="col-md-3 control-label">Kecamatan</label>
                                             <div class="col-md-9">
+                                                <select class="form-control" name="lstKecamatan" id="kecamatan_id" required>
+                                                <option value="">- Kecamatan -</option>
+                                                <?php 
+                                                foreach($listKecamatan as $c) {
+                                                    if ($detail->kecamatan_id == $c->kecamatan_id) {
+                                                ?>
+                                                <option value="<?php echo $c->kecamatan_id; ?>" selected><?php echo $c->kecamatan_nama; ?></option>
+                                                <?php 
+                                                    } 
+                                                } 
+                                                ?>
+                                                </select>
                                                 <?php
+                                                /*
                                                 $style_kecamatan = 'class="form-control" id="kecamatan_id"';
                                                 echo form_dropdown("lstKecamatan", array('' => '- Kecamatan -'), '',$style_kecamatan);
+                                                */
                                                 ?>
                                             </div>
                                         </div>
@@ -312,7 +340,7 @@
                                         <div class="form-group form-md-line-input">
                                             <label class="col-md-3 control-label">Pendidikan</label>
                                             <div class="col-md-9">
-                                                <select class="form-control" name="lstDidik" required>
+                                                <select class="form-control" name="lstPendidikan" required>
                                                     <option value="">- Pilih Pendidikan -</option>
                                                     <?php
                                                     foreach($listDidik as $d) {

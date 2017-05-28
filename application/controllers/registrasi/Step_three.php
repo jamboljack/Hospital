@@ -24,6 +24,7 @@ class Step_three extends CI_Controller{
             $pasien_id              = $this->uri->segment(4);
             $data['error']          = 'false';
             $data['status']         = 'awal';
+            $data['Informasi']      = $this->step_three_model->select_informasi()->row();
             $data['detail']         = $this->step_three_model->select_detail_pasien($pasien_id)->row();
             $data['listPelanggan']  = $this->step_three_model->select_pelanggan()->result();
             $data['listPoliklinik'] = $this->step_three_model->select_poliklinik()->result();
@@ -55,6 +56,7 @@ class Step_three extends CI_Controller{
             $data['info']           = $data;
             $data['status']         = 'cari';
             $pasien_id              = $this->uri->segment(4);
+            $data['Informasi']      = $this->step_three_model->select_informasi()->row();
             $data['detail']         = $this->step_three_model->select_detail_pasien($pasien_id)->row();
             $data['listPelanggan']  = $this->step_three_model->select_pelanggan()->result();
             $data['listPoliklinik'] = $this->step_three_model->select_poliklinik()->result();
@@ -75,6 +77,7 @@ class Step_three extends CI_Controller{
             $data['info']           = $data;
             $data['status']         = 'cari';
             $pasien_id              = $this->uri->segment(4);
+            $data['Informasi']      = $this->step_three_model->select_informasi()->row();
             $data['detail']         = $this->step_three_model->select_detail_pasien($pasien_id)->row();
             $data['listPelanggan']  = $this->step_three_model->select_pelanggan()->result();
             $data['listPoliklinik'] = $this->step_three_model->select_poliklinik()->result();
@@ -121,6 +124,7 @@ class Step_three extends CI_Controller{
             'jadwal_id'             => $this->input->post('jadwal_id'),
             'antrian_kode'          => $kode,
             'antrian_tanggal'       => $this->input->post('tanggal'),
+            'antrian_tgl_daftar'    => date('Y-m-d'),
             'antrian_jam_layani'    => $jamantrian,
             'antrian_date_update'   => date('Y-m-d'),
             'antrian_time_update'   => date('Y-m-d H:i:s')

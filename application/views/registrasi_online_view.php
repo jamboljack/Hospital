@@ -1429,6 +1429,15 @@
                                             <?php if ($status == 'cari') { ?>
                                             <div class="row">
                                                 <div class="col-md-12">
+                                                    <div class="alert alert-danger alert-dismissable">
+                                                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>
+                                                        <?php echo $Informasi->info_desc; ?>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="row">
+                                                <div class="col-md-12">
                                                     <div class="portlet light">
                                                         <?php 
                                                         $tanggal    = $info['Tanggal']; // Tgl Pemeriksaan

@@ -61,6 +61,25 @@
                                     </div>
                                 </div>
                                 <div class="form-group form-md-line-input">
+                                    <label class="col-md-2 control-label">No. Handphone</label>
+                                    <div class="col-md-4">
+                                        <input type="text" class="form-control" placeholder="Enter No. Handphone" name="phone" value="<?php echo $detail->user_phone; ?>" pattern="^[0-9]{1,12}$" title="Hanya Angka, maksimal 12 Digit" maxlength="12" autocomplete="off" required>
+                                        <div class="form-control-focus"></div>
+                                        <span class="help-block">Isi No. Handphone Anda, Hanya ANGKA</span>
+                                    </div>
+                                </div>
+                                <div class="form-group form-md-line-input">
+                                    <label class="col-md-2 control-label">Level</label>
+                                    <div class="col-md-4">
+                                        <select class="form-control" name="lstLevel" required>
+                                            <option value="">- Pilih Level -</option>
+                                            <option value="Admin" <?php if ($detail->user_level == 'Admin') { echo 'selected'; } ?>>Admin</option>
+                                            <option value="Operator" <?php if ($detail->user_level == 'Operator') { echo 'selected'; } ?>>Operator</option>
+                                        </select>
+                                        <div class="form-control-focus"></div>
+                                    </div>
+                                </div>
+                                <div class="form-group form-md-line-input">
                                     <label class="col-md-2 control-label">Status</label>
                                     <div class="col-md-3">
                                         <select class="form-control" name='lstStatus' required>
