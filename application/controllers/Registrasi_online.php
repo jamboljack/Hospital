@@ -102,7 +102,7 @@ class Registrasi_online extends CI_Controller{
                 $this->session->set_flashdata('notificationsuccess','<b>Registrasi Akun Anda Berhasil, Silahkan Login.</b>');
                 redirect(site_url('registrasi_online'));
             } else {
-                $this->session->set_flashdata('notificationerror','<b>MAAF !!, Captcha Salah, ulangi lagi.</');
+                $this->session->set_flashdata('notificationerror','<b>MAAF !!, Captcha Salah, ulangi lagi.</b>');
                 redirect(site_url('registrasi_online'));
             }
         }

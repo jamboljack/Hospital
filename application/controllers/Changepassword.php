@@ -34,7 +34,7 @@ class Changepassword extends CI_Controller{
             $this->template_front->display('changepassword_view', $data);
         } else {
             $this->changepassword_model->update_password();
-            $this->session->set_flashdata('notificationsuccess','<b>Update Password Anda Berhasil.</b>');
+            $this->session->set_flashdata('notificationsuccess','Update Password Anda Berhasil.');
             redirect(site_url('registrasi_online'));
         }
     }
